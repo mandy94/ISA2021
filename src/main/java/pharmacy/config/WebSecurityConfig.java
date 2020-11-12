@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import pharmacy.security.TokenUtils;
 import pharmacy.security.auth.RestAuthenticationEntryPoint;
 import pharmacy.security.auth.TokenAuthenticationFilter;
-import pharmacy.service.impl.CustomUserDetailsService;
+import pharmacy.service.impl.CustomUserDetailsServiceImpl;
 
 @Configuration
 // Ukljucivanje podrske za anotacije "@Pre*" i "@Post*" koje ce aktivirati autorizacione provere za svaki pristup metodi
@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// Servis koji se koristi za citanje podataka o korisnicima aplikacije
 	@Autowired
-	private CustomUserDetailsService jwtUserDetailsService;
+	private CustomUserDetailsServiceImpl jwtUserDetailsService;
 
 	// Handler za vracanje 401 kada klijent sa neodogovarajucim korisnickim imenom i lozinkom pokusa da pristupi resursu
 	@Autowired

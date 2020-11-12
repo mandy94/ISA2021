@@ -30,7 +30,7 @@ import pharmacy.model.entity.User;
 import pharmacy.security.TokenUtils;
 import pharmacy.security.auth.JwtAuthenticationRequest;
 import pharmacy.service.UserService;
-import pharmacy.service.impl.CustomUserDetailsService;
+import pharmacy.service.impl.CustomUserDetailsServiceImpl;
 
 //Kontroler zaduzen za autentifikaciju korisnika
 @RestController
@@ -44,7 +44,7 @@ public class AuthenticationController {
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	private CustomUserDetailsService userDetailsService;
+	private CustomUserDetailsServiceImpl userDetailsService;
 	
 	@Autowired
 	private UserService userService;
