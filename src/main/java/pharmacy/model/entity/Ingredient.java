@@ -12,18 +12,17 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Ingredient {
-	  @Id
-	    @Column(name = "id")
+		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	  	
 		private String code;
 		private String name; 
 		
-		//-------------------------------------------
 	
 		@ManyToMany
 		private List<Ingredient> foundIn = new ArrayList<>();
+		//-------------------------------------------
 
 		public Long getId() {
 			return id;

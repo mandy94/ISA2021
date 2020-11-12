@@ -8,7 +8,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Appointment {
-	private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")

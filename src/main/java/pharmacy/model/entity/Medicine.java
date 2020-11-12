@@ -4,7 +4,6 @@ package pharmacy.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +14,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Medicine {
-
-
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
     private String code;
     private String name;
     private String type; // medType

@@ -13,19 +13,18 @@ import javax.persistence.OneToMany;
 @Entity
 public class Invoice {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 	private String type;
 	private String payDate;
+	private float total;
+
 	@ManyToOne
 	private Supplier supplier;
-	@OneToMany(mappedBy="fromInvoice")
+	@OneToMany
 	private List<InvoiceItem> orderedMeds = new ArrayList<>();
-	private float total;
 	
-	
+	//--------------------------------------------------------------------
 	public String getType() {
 		return type;
 	}

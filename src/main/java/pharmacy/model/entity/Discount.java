@@ -1,5 +1,6 @@
 package pharmacy.model.entity;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,32 +13,34 @@ import javax.persistence.OneToMany;
 @Entity
 public class Discount {
 	@Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-    private String validFrom;
-    private String validUntil;
+    private Timestamp validFrom;
+    private Timestamp validUntil;
     private String about;
+    
+    @OneToMany
+    private List<Pricelist> inPricelists = new ArrayList<>();
     
     @OneToMany(mappedBy="activeDiscount") 
     private List<Medicine> refersTo = new ArrayList<Medicine>();
     
     //--------------------------------------------------------------------
 
-	public String getValidFrom() {
+	public Timestamp getValidFrom() {
 		return validFrom;
 	}
 
-	public void setValidFrom(String validFrom) {
+	public void setValidFrom(Timestamp validFrom) {
 		this.validFrom = validFrom;
 	}
 
-	public String getValidUntil() {
+	public Timestamp getValidUntil() {
 		return validUntil;
 	}
 
-	public void setValidUntil(String validUntil) {
+	public void setValidUntil(Timestamp validUntil) {
 		this.validUntil = validUntil;
 	}
 
