@@ -17,6 +17,8 @@ public class Manufacturer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private String name;
+    private String adress;
     @OneToMany(mappedBy="manufacturer")
     private List<Medicine> produces = new ArrayList<>();
 
@@ -28,5 +30,21 @@ public class Manufacturer {
 
 	public void setProduces(ArrayList<Medicine> produces) {
 		this.produces = produces;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 }
