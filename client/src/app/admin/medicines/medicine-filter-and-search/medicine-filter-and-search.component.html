@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+  <div class="container text-center">
+    <h1>Pretraga lekova</h1>
+  </div>
+
+  <div class="row">
+    <input class="form-control" type="text" name="search" [formControl]="searchText" autocomplete="off"
+      placeholder="Pretrazuj po imenu leka">
+
+    <button mat-stroked-button (click)="onClick()"> Trazi </button>
+    <button mat-stroked-button (click)="clear()"> Clear </button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+
+      <table class="table table-striped" *ngIf="sortedMedicines">
+        <thead>
+          <tr>
+            <th> <button mat-button (click)="sortById()">Id</button></th>
+            <th><button mat-button (click)="sortByName()">Name</button></th>
+            <th><button mat-button (click)="sortByRating()">Rating</button></th>
+            <th><button mat-button> Tipa leka</button></th>
+            <th> Uputstva</th>
+            <th>Proveri dostupnost u apotekama </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of sortedMedicines | medicineFilter: filter ; let i = index ;trackBy: trackItem" >
+            <td> {{sortedMedicines[i].id}} </td>
+            <td> {{sortedMedicines[i].name}}</td>
+            <td> {{sortedMedicines[i].rating}}</td>
+            <td> {{sortedMedicines[i].type}}</td>
+            <td> download </td>
+            <td> <button mat-button (click)="checkStock(sortedMedicines[i])">
+              <mat-icon aria-hidden="false">home</mat-icon>
+            </button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+  </div>
+</div>

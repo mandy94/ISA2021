@@ -1,0 +1,14 @@
+button{
+    height: 190px;
+    width: 50%;
+    
+    
+}
+.labelText{
+    position :absolute;
+    top: 30%;
+    left: 10%;
+}
+img{
+    object-fit: scale-down;
+}

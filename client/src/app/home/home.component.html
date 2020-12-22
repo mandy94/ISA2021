@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="space-around  center" >
+  <div *ngIf="isSignedIn()">    <!-- Stavi ! kod ngIf-->
+    <app-api-card      
+    fxFlex
+    username="user"
+    password="123"
+    imgUrl="assets/image/user.png"
+    subTitle="Public"
+    title='Logovanje kao farmaceut'
+  >
+  </app-api-card>
+  <app-api-card      
+    fxFlex
+    username="admin"
+    password="123"
+    imgUrl="assets/image/foo.png"
+    subTitle="Public"
+    title='Logovanje kao dermatolog'
+  >
+  </app-api-card> 
+  </div>
+  <app-admin *ngIf="isSignedIn()" style="width : 100%;"></app-admin>
+ 
+  <div *ngIf="!isSignedIn()" > 
+    <app-medicine-filter-and-search></app-medicine-filter-and-search>
+  </div>
+</div>
