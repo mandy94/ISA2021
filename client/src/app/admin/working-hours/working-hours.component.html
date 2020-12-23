@@ -57,9 +57,11 @@
         </div>
         <div fxFlex="60">
           <div *ngFor="let day of week | keys" fxLayout="row" >
-            <div *ngFor="let time of week[day]">
-              <div *ngIf="time ;else elseBlock"> {{time.start}} - {{time.end}}</div>              
+            <div *ngIf="week[day];else elseBlock"> 
+            <div *ngFor="let time of week[day]">              
+               {{time.start}} - {{time.end}}  
              </div>
+            </div>              
             <br>
           </div>
         </div>

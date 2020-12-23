@@ -19,13 +19,13 @@ export class WorkingHoursComponent implements OnInit {
     { name: 'Ambulanta' }
   ]
   week = {
-    'Ponedeljak': undefined,
-    'Utorak': undefined,
-    'Sreda': undefined,
-    'Cetvrtak': undefined,
-    'Petak': undefined,
-    'Subota': undefined,
-    'Nedelja': undefined
+    'Ponedeljak': null,
+    'Utorak': null,
+    'Sreda': null,
+    'Cetvrtak': null,
+    'Petak': null,
+    'Subota': null,
+    'Nedelja': null
   };
   startTime = '';
   endTime = '';
@@ -33,7 +33,8 @@ export class WorkingHoursComponent implements OnInit {
   ngOnInit() {
   }
   addTimeToDay(day) {
-    console.log(this.dayInWeek)
+    console.log('type: ', typeof this.week[this.dayInWeek]); 
+    
     if (this.week[this.dayInWeek] != undefined)
       this.week[this.dayInWeek].push({ start: this.startTime, end: this.endTime });
     else
