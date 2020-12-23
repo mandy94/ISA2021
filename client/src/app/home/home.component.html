@@ -21,7 +21,9 @@
   </div>
   <app-admin *ngIf="isSignedIn()" style="width : 100%;"></app-admin>
  
-  <div *ngIf="!isSignedIn()" > 
-    <app-medicine-filter-and-search></app-medicine-filter-and-search>
+  
+  <div >
+<app-working-hours></app-working-hours>
+    
   </div>
 </div>

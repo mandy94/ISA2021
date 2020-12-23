@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { MedicationStockDialogComponent } from 'app/component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
 import { MedicineFilterPipe } from 'app/component/pipes/medicine-filter.pipe';
-import { timeout } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-medicine-filter-and-search',

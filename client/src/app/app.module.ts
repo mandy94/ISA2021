@@ -23,7 +23,6 @@ import {MatIconRegistry} from '@angular/material';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
-import { NavigationComponent } from './admin/navigation/navigation.component';
 import { MedicinesComponent } from './admin/medicines/medicines.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { PricelistsComponent } from './admin/pricelists/pricelists.component';
@@ -31,11 +30,15 @@ import { EmployeesComponent } from './admin/employees/employees.component';
 import { MedicineFilterAndSearchComponent } from './admin/medicines/medicine-filter-and-search/medicine-filter-and-search.component';
 import { MedicineFilterPipe } from './component/pipes/medicine-filter.pipe';
 import { MedicationStockDialogComponent } from './component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
+import { UserComponent } from './user/user.component';
+import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
+import { KeysPipe } from './component/pipes/dictionary.pipe';
 
 
 @NgModule({
   declarations: [
     MedicineFilterPipe,
+    KeysPipe,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -48,13 +51,14 @@ import { MedicationStockDialogComponent } from './component/dialogs/medication-s
     ForbiddenComponent,
     AdminComponent,
     SignupComponent,
-    NavigationComponent,
     MedicinesComponent,
     OrdersComponent,
     PricelistsComponent,
     EmployeesComponent,
     MedicineFilterAndSearchComponent,
-    MedicationStockDialogComponent
+    MedicationStockDialogComponent,
+    UserComponent,
+    WorkingHoursComponent,
   ],
   imports: [
     BrowserAnimationsModule,

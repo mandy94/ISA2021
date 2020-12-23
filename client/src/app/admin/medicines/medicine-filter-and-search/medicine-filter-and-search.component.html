@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of sortedMedicines | medicineFilter: filter ; let i = index ;trackBy: trackItem" >
+          <tr *ngFor="let c of sortedMedicines ; let i = index ;trackBy: trackItem" >
             <td> {{sortedMedicines[i].id}} </td>
             <td> {{sortedMedicines[i].name}}</td>
             <td> {{sortedMedicines[i].rating}}</td>
