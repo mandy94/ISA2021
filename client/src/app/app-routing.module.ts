@@ -56,6 +56,10 @@ export const routes: Routes = [
     component: ForbiddenComponent
   },
   {
+    path: 'orders',
+    loadChildren: './orders/orders.module#OrdersModule',
+  },
+  {
     path: '**',
     redirectTo: '/404'
   }

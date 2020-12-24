@@ -74,8 +74,7 @@ import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-det
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    AngularMaterialModule,
-
+    AngularMaterialModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
