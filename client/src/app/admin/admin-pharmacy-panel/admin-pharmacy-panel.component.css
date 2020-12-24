@@ -17,3 +17,7 @@ table {
 
     margin-bottom: 10px;
 }
+mat-divider{
+   
+    border-top-width: 8px;
+}

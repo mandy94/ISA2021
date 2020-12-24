@@ -43,7 +43,21 @@ export class AdminPharmacyPanelComponent implements OnInit {
       }
     ]
   }
-  pharmacySource = [this.dummyPharmacy];
+  dummyPharmacy2 ={
+    id: 1,
+    name: 'Jankovic apoteka',
+    adress: 'Bul. Evrope 15',
+    description: 'Drugi pois',
+    availableServices: [
+      {name: 'Ultrazvuk', price: 350}
+    ],
+    medications:[
+      {name: 'Febricet', price: 230}
+    ],
+    farmacists:[],
+    doctors:[]
+  }
+  pharmacySource = [this.dummyPharmacy, this.dummyPharmacy2];
   displayedColumns = ['name', 'adress'];
   ngOnInit() {
   }

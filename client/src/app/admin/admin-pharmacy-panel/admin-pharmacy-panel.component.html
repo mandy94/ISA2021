@@ -26,9 +26,10 @@
 
     <div class="about-text">
       <mat-card *ngIf="selectedPharmacy" class="about">
-        <mat-card-subtitle> Brzi pregled</mat-card-subtitle>
-        <mat-card-title > <h2 class="move-up">{{selectedPharmacy.name}}</h2></mat-card-title>        
+        <mat-card-subtitle> Brzi pregled <button  style=" float: right"><mat-icon>edit</mat-icon></button> </mat-card-subtitle>
+        <mat-card-title > <h2 class="move-up">{{selectedPharmacy.name}}</h2> </mat-card-title>       
         <p > Adresa: {{selectedPharmacy.adress}}</p>
+        <mat-divider></mat-divider> 
         <div fxLayout="row" fxLayoutAlign="space-between start" >
           <span>
             <h3> Spisak dermatologa</h3>
