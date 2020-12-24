@@ -1,0 +1,60 @@
+<div>
+  <h1> Rad sa apotekama </h1>
+  <div fxLayout="row">
+    <div>
+      <table mat-table [dataSource]="pharmacySource" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Spisak apoteka</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="adress">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-stroked-button (click)="showDetials(element)">
+              <mat-icon>list</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+
+    <div class="about-text">
+      <mat-card *ngIf="selectedPharmacy" class="about">
+        <mat-card-subtitle> Brzi pregled</mat-card-subtitle>
+        <mat-card-title > <h2 class="move-up">{{selectedPharmacy.name}}</h2></mat-card-title>        
+        <p > Adresa: {{selectedPharmacy.adress}}</p>
+        <div fxLayout="row" fxLayoutAlign="space-between start" >
+          <span>
+            <h3> Spisak dermatologa</h3>
+            <div *ngFor="let doctor of selectedPharmacy.doctors">
+              <li> {{ doctor.name}} <button>Obrisi</button> </li>
+            </div>
+          </span>
+          <span>
+            <h3> Spisak farmaceuta</h3>
+            <div *ngFor="let doctor of selectedPharmacy.farmacists">
+              <li> {{ doctor.name}} <button>Obrisi</button> </li>
+            </div>
+          </span>
+          <span>
+            <h3> Spisak lekova</h3>
+            <div *ngFor="let item of selectedPharmacy.medications">
+              <li> {{ item.name}}- {{item.price}}din <button>Obrisi</button> </li>
+            </div>
+          </span>
+          <span>
+            <h3> Spisak pregleda</h3>
+            <div *ngFor="let item of selectedPharmacy.availableServices">
+              <li> {{ item.name}} - {{item.price}}din <button>Obrisi</button> </li>
+            </div>
+          </span>
+        </div>
+      </mat-card>
+    </div>
+  </div>

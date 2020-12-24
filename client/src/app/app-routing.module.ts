@@ -8,6 +8,8 @@ import {NotFoundComponent} from './not-found';
 import {ChangePasswordComponent} from './change-password';
 import {ForbiddenComponent} from './forbidden';
 import {SignupComponent} from './signup';
+import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
+import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +22,15 @@ export const routes: Routes = [
     component: SignupComponent,
     canActivate: [GuestGuard],
     pathMatch: 'full'
+  },
+  {
+    path:'admin-pharmacy-panel',
+    component: AdminPharmacyPanelComponent
+
+  },
+  {
+    path: 'working-time',
+    component: WorkingHoursComponent,
   },
   {
     path: 'login',

@@ -1,0 +1,19 @@
+table {
+    min-width: 250px;
+    width: 100%;
+}
+
+.about{
+   
+    margin-left: 10%;
+    width: 100%
+}
+.about-text{
+    padding-top : 5px;
+    width: 70%
+}
+
+.move-up{
+
+    margin-bottom: 10px;
+}

@@ -1,0 +1,11 @@
+<div>
+    <h1>O apoteKi {{current_pharmacy.name}}</h1>
+    <h3> Spisak dermatologa</h3>
+    <div *ngFor="let doctor of current_pharmacy.doctors">
+        <li> {{ doctor.name}} <button>Obrisi</button> </li>
+    </div>
+    <h3> Spisak farmaceuta</h3>
+    <div *ngFor="let doctor of current_pharmacy.farmacists">
+        <li> {{ doctor.name}} <button>Obrisi</button> </li>
+    </div>
+</div>

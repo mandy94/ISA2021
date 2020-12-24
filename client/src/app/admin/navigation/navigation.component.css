@@ -1,0 +1,15 @@
+button{
+    height: 90px;
+    width: 450px;   
+    
+}
+.labelText{
+    position :absolute;
+    top: 30%;
+   
+}
+img{
+    height: 90px;
+    width: 100%;
+    object-fit: cover;
+}

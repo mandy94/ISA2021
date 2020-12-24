@@ -33,6 +33,9 @@ import { MedicationStockDialogComponent } from './component/dialogs/medication-s
 import { UserComponent } from './user/user.component';
 import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
 import { KeysPipe } from './component/pipes/dictionary.pipe';
+import { NavigationComponent } from './admin/navigation/navigation.component';
+import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
+import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
 
 
 @NgModule({
@@ -55,10 +58,13 @@ import { KeysPipe } from './component/pipes/dictionary.pipe';
     OrdersComponent,
     PricelistsComponent,
     EmployeesComponent,
+    NavigationComponent,
     MedicineFilterAndSearchComponent,
     MedicationStockDialogComponent,
     UserComponent,
     WorkingHoursComponent,
+    AdminPharmacyPanelComponent,
+    PharmacyDetailsDialogComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -68,7 +74,8 @@ import { KeysPipe } from './component/pipes/dictionary.pipe';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -87,7 +94,8 @@ import { KeysPipe } from './component/pipes/dictionary.pipe';
     ConfigService,
     MatIconRegistry,
   ],
-  bootstrap: [AppComponent,MedicationStockDialogComponent],
+  bootstrap: [AppComponent],
+  entryComponents:[MedicationStockDialogComponent,PharmacyDetailsDialogComponent]
 })
 export class AppModule {
 }
