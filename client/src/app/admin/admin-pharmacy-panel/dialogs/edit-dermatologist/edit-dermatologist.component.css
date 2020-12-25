@@ -1,0 +1,20 @@
+.input{
+    margin-left: 20px;
+}
+
+th,td,tr{
+    
+    text-align: center;
+    border: 1px solid;
+}
+th, td{
+    width: 13%;
+}
+
+
+.short{
+   width: 25%;
+}
+.short-btn{
+    width: 25px;
+ }

@@ -19,7 +19,7 @@ import {ForbiddenComponent} from './forbidden/forbidden.component';
 import {AdminComponent} from './admin/admin.component';
 import {SignupComponent} from './signup/signup.component';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
-import {MatIconRegistry} from '@angular/material';
+import {MatFormFieldModule, MatIconRegistry, MatInputModule} from '@angular/material';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
@@ -37,6 +37,7 @@ import { NavigationComponent } from './admin/navigation/navigation.component';
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
 import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
+import { EditDermatologistComponent } from './admin/admin-pharmacy-panel/dialogs/edit-dermatologist/edit-dermatologist.component';
 
 
 @NgModule({
@@ -67,8 +68,12 @@ import { DermatologistsComponent } from './admin/dermatologists/dermatologists.c
     AdminPharmacyPanelComponent,
     PharmacyDetailsDialogComponent,
     DermatologistsComponent,
+    EditDermatologistComponent,   
   ],
   imports: [
+    BrowserAnimationsModule,
+ MatFormFieldModule ,
+    MatInputModule ,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
@@ -96,7 +101,7 @@ import { DermatologistsComponent } from './admin/dermatologists/dermatologists.c
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents:[MedicationStockDialogComponent,PharmacyDetailsDialogComponent]
+  entryComponents:[MedicationStockDialogComponent,PharmacyDetailsDialogComponent,EditDermatologistComponent]
 })
 export class AppModule {
 }

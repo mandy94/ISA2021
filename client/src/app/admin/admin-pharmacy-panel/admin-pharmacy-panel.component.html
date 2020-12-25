@@ -1,38 +1,21 @@
 <div>
 
   <div fxLayout="row">
-    <div>
-      <table mat-table [dataSource]="pharmacySource" class="mat-elevation-z8">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Spisak apoteka</th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
 
-        <ng-container matColumnDef="adress">
-          <th mat-header-cell *matHeaderCellDef> </th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-stroked-button (click)="showDetials(element)">
-              <mat-icon>list</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-    </div>
 
     <div class="about-text">
       <mat-card *ngIf="selectedPharmacy" class="about">
-        <mat-card-subtitle> Brzi pregled <button style=" float: right">
-            <mat-icon>edit</mat-icon>
-          </button> </mat-card-subtitle>
+
         <mat-card-title>
+          <button style=" float: right">
+            <mat-icon>edit</mat-icon>
+          </button>
           <h2 class="move-up">{{selectedPharmacy.name}}</h2>
         </mat-card-title>
-        <p> Adresa: {{selectedPharmacy.adress}}</p>
+        <mat-card-subtitle>
+          <p> Adresa: {{selectedPharmacy.adress}}</p>
+
+        </mat-card-subtitle>
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="space-between start">
 
@@ -41,12 +24,23 @@
               <button mat-stroked-button style="width: 100%; margin-top: 10px;"> Dodaj novog dermatologa</button>
               <div fxLayout="column">
                 <div *ngFor="let doctor of selectedPharmacy.doctors">
-                  <h3 >{{doctor.name}}
-                    <button style=" float: right">
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                  </h3>
+                  <div fxLayout="column">
+                    <h3 style=" float: left"> {{doctor.name}} #{{doctor.id}}
+                      <button mat-button (click)="editDoctor(doctor)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </h3>
+                    <span> Datum rodjenja: <b>{{doctor.birthdate}}</b></span>
+                    <span> Adresa: <b>{{doctor.adress}}</b></span>
+                    <span> Godisnji odmor: <b *ngIf="doctor.vacation"> Zakazan za: {{doctor.vacation.startDate}} -
+                        {{doctor.vacation.endDate}}</b>
+                      <b *ngIf="!doctor.vacation">Nema u planu</b></span>
+                    <span> Broj zakazanih pregleda:<b *ngIf="!doctor.scheduledAppointments">0</b>
+                      <b *ngIf="doctor.scheduledAppointments"> {{doctor.scheduledAppointments.length}}</b></span>
+                  </div>
+                  <br>
                   <table>
+                    <th colspan='10'>Radno vreme u ovoj apoteci</th>
                     <tr>
                       <th *ngFor="let item of doctor.workingTime ">
                         {{item.day}}
@@ -54,16 +48,13 @@
                     </tr>
                     <tr>
                       <td *ngFor="let item of doctor.workingTime ">
-                        <p *ngIf="item.time;else workingTimeNotDefined">
-                          {{item.time.start}} - {{item.time.end}}
-                        </p>
+                        <span *ngIf="item.time;else workingTimeNotDefined">
+                          {{item.time.start}} - {{item.time.end}} 
+                        </span>
                       </td>
                     </tr>
                   </table>
-                  <div> <h4>Godisnji odmor: <span *ngIf="doctor.vacation;else noVacationDefined">
-                      {{doctor.vacation.startDate}} - {{doctor.vacation.endDate}} </span></h4></div>
                 </div>
-
               </div>
             </mat-tab>
             <mat-tab label="Farmaceuti">

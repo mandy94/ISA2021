@@ -1,0 +1,83 @@
+<div fxLayout="column">
+  <h2> Izmena dermatologa #74648 </h2>
+  <div>
+    <h4>Ime : <mat-form-field class="input">
+        <input matInput value='{{doctor.name}}'>
+      </mat-form-field>
+      Adresa : <mat-form-field class="input">
+        <input matInput value='{{doctor.adress}}'>
+      </mat-form-field>
+      Datum rodjenja : <mat-form-field class="input">
+        <input matInput value='{{doctor.birthdate}}'>
+      </mat-form-field>
+      <div>
+        <h4>Godisnji odmor:
+          <span *ngIf="doctor.vacation;else noVacationDefined">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="doctor.vacation.startDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+    
+            {{doctor.vacation.startDate}} - {{doctor.vacation.endDate}}
+          </span>
+        </h4>
+      </div>
+
+    </h4>
+  </div>
+
+  <table>
+    <tr>
+      <th *ngFor="let item of doctor.workingTime ">
+        {{item.day}}
+      </th>
+    </tr>
+    <tr>
+      <td *ngFor="let item of doctor.workingTime ">
+        <p *ngIf="!item.time">
+          <span *ngIf="!item.createMode">
+            Ne radi
+            <button mat-button (click)="editWorkingTime(item)" class="short-btn">
+              <mat-icon>add</mat-icon>
+            </button>
+          </span>
+          <span *ngIf="item.createMode">
+
+            <div>
+              <mat-form-field class="short">
+                <input matInput [(ngModel)]="newStart">
+              </mat-form-field> -
+              <mat-form-field class="short">
+                <input matInput [(ngModel)]="newEnd">
+              </mat-form-field>
+              <br>
+              <button mat-button (click)='addNewWorkingTime(item)'>
+                <mat-icon>save</mat-icon>
+              </button>
+              <button mat-button (click)='cancelOperation(item)'>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </div>
+
+
+          </span>
+        </p>
+        <p *ngIf="item.time">
+          {{item.time.start}} - {{item.time.end}}
+          <button mat-button (click)="deleteWorkingTime(item)" class="short-btn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </p>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+
+<button mat-button>Sacuvaj izmenu</button>
+
+<ng-template #addingNewWorkingTime>
+
+</ng-template>
