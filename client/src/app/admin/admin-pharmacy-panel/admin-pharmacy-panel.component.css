@@ -1,7 +1,9 @@
 table {
     min-width: 250px;
     width: 100%;
+ 
 }
+table,tr,th,td{   border:1px ; text-align: center;}
 
 .about{
    

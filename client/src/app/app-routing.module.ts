@@ -10,6 +10,7 @@ import {ForbiddenComponent} from './forbidden';
 import {SignupComponent} from './signup';
 import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
+import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
 
 export const routes: Routes = [
   {
@@ -54,7 +55,11 @@ export const routes: Routes = [
   {
     path: '403',
     component: ForbiddenComponent
-  },
+  },{
+    path: 'dermatologists',
+    component: DermatologistsComponent
+  }
+  ,
   {
     path: 'orders',
     loadChildren: './orders/orders.module#OrdersModule',

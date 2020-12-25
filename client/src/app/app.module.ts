@@ -36,6 +36,7 @@ import { KeysPipe } from './component/pipes/dictionary.pipe';
 import { NavigationComponent } from './admin/navigation/navigation.component';
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
+import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-det
     WorkingHoursComponent,
     AdminPharmacyPanelComponent,
     PharmacyDetailsDialogComponent,
+    DermatologistsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
