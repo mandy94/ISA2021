@@ -1,8 +1,6 @@
 <div>
 
   <div fxLayout="row">
-
-
     <div class="about-text">
       <mat-card *ngIf="selectedPharmacy" class="about">
 
@@ -21,41 +19,9 @@
 
           <mat-tab-group animationDuration='0ms' mat-align-tabs="center" style="width: 100%;">
             <mat-tab label="Dermatolozi">
-              <button mat-stroked-button style="width: 100%; margin-top: 10px;"> Dodaj novog dermatologa</button>
-              <div fxLayout="column">
-                <div *ngFor="let doctor of selectedPharmacy.doctors">
-                  <div fxLayout="column">
-                    <h3 style=" float: left"> {{doctor.name}} #{{doctor.id}}
-                      <button mat-button (click)="editDoctor(doctor)">
-                        <mat-icon>edit</mat-icon>
-                      </button>
-                    </h3>
-                    <span> Datum rodjenja: <b>{{doctor.birthdate}}</b></span>
-                    <span> Adresa: <b>{{doctor.adress}}</b></span>
-                    <span> Godisnji odmor: <b *ngIf="doctor.vacation"> Zakazan za: {{doctor.vacation.startDate}} -
-                        {{doctor.vacation.endDate}}</b>
-                      <b *ngIf="!doctor.vacation">Nema u planu</b></span>
-                    <span> Broj zakazanih pregleda:<b *ngIf="!doctor.scheduledAppointments">0</b>
-                      <b *ngIf="doctor.scheduledAppointments"> {{doctor.scheduledAppointments.length}}</b></span>
-                  </div>
-                  <br>
-                  <table>
-                    <th colspan='10'>Radno vreme u ovoj apoteci</th>
-                    <tr>
-                      <th *ngFor="let item of doctor.workingTime ">
-                        {{item.day}}
-                      </th>
-                    </tr>
-                    <tr>
-                      <td *ngFor="let item of doctor.workingTime ">
-                        <span *ngIf="item.time;else workingTimeNotDefined">
-                          {{item.time.start}} - {{item.time.end}} 
-                        </span>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
+              
+             <app-medication-tab></app-medication-tab>
+              
             </mat-tab>
             <mat-tab label="Farmaceuti">
               <h3> Spisak farmaceuta</h3>
@@ -64,10 +30,7 @@
               </div>
             </mat-tab>
             <mat-tab label="Third">
-              <h3> Spisak lekova</h3>
-              <div *ngFor="let item of selectedPharmacy.medications">
-                <li> {{ item.name}}- {{item.price}}din <button>Obrisi</button> </li>
-              </div>
+              <app-dermatologists-tab></app-dermatologists-tab>
             </mat-tab>
             <mat-tab label="Forth">
               <h3> Spisak pregleda</h3>
@@ -82,5 +45,4 @@
     </div>
   </div>
 
-  <ng-template #workingTimeNotDefined> Ne radi</ng-template>
-  <ng-template #noVacationDefined> Nema u planu </ng-template>
+  

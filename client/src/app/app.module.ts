@@ -38,6 +38,8 @@ import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
 import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
 import { EditDermatologistComponent } from './admin/admin-pharmacy-panel/dialogs/edit-dermatologist/edit-dermatologist.component';
+import { DermatologistsTabComponent } from './admin/admin-pharmacy-panel/tabs/dermatologists-tab/dermatologists-tab.component';
+import { MedicationTabComponent } from './admin/admin-pharmacy-panel/tabs/medication-tab/medication-tab.component';
 
 
 @NgModule({
@@ -68,11 +70,14 @@ import { EditDermatologistComponent } from './admin/admin-pharmacy-panel/dialogs
     AdminPharmacyPanelComponent,
     PharmacyDetailsDialogComponent,
     DermatologistsComponent,
-    EditDermatologistComponent,   
+    EditDermatologistComponent,
+    DermatologistsTabComponent,
+    MedicationTabComponent,   
   ],
   imports: [
+    
     BrowserAnimationsModule,
- MatFormFieldModule ,
+  MatFormFieldModule ,
     MatInputModule ,
     BrowserAnimationsModule,
     BrowserModule,
