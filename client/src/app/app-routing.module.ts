@@ -1,16 +1,16 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home';
-import {LoginComponent} from './login';
-import {AdminComponent} from './admin';
-import {AdminGuard, GuestGuard, LoginGuard} from './guard';
-import {NotFoundComponent} from './not-found';
-import {ChangePasswordComponent} from './change-password';
-import {ForbiddenComponent} from './forbidden';
-import {SignupComponent} from './signup';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home';
+import { LoginComponent } from './shared/component/pages/login';
+import { AdminComponent } from './admin';
+import { AdminGuard, GuestGuard, LoginGuard } from './guard';
+import { ChangePasswordComponent } from './shared/component/pages/change-password';
 import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
 import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
+import { ForbiddenComponent } from './shared/component/pages/forbidden';
+import { NotFoundComponent } from './shared/component/pages/not-found';
+import { SignupComponent } from './shared/component/pages/signup';
 
 export const routes: Routes = [
   {
@@ -25,7 +25,7 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'admin-pharmacy-panel',
+    path: 'admin-pharmacy-panel',
     component: AdminPharmacyPanelComponent
 
   },
@@ -55,7 +55,7 @@ export const routes: Routes = [
   {
     path: '403',
     component: ForbiddenComponent
-  },{
+  }, {
     path: 'dermatologists',
     component: DermatologistsComponent
   }

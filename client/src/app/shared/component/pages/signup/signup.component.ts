@@ -1,19 +1,18 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DisplayMessage} from '../shared/models/display-message';
-import {AuthService, UserService} from '../service';
 import {Subject} from 'rxjs/Subject';
 import {takeUntil} from 'rxjs/operators';
+import { UserService, AuthService } from 'app/service';
+import { DisplayMessage } from 'app/shared/models/display-message';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  title = 'Login';
-  githubLink = 'https://github.com/bfwg/angular-spring-starter';
+export class SignupComponent implements OnInit, OnDestroy {
+  title = 'Sign up';
   form: FormGroup;
 
   /**
@@ -52,17 +51,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.form = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])]
+      password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])],
+      firstname: [''],
+      lastname: [''],
+      email: ['']
     });
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  repository() {
-    window.location.href = this.githubLink;
   }
 
   onSubmit() {
@@ -72,14 +70,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.notification = undefined;
     this.submitted = true;
 
-    this.authService.login(this.form.value)
+    this.authService.signup(this.form.value)
       .subscribe(data => {
-          this.userService.getMyInfo().subscribe();
+          console.log(data);
+          this.authService.login(this.form.value).subscribe(() => {
+            this.userService.getMyInfo().subscribe();
+          });
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.submitted = false;
-          this.notification = {msgType: 'error', msgBody: 'Incorrect username or password.'};
+          console.log('Sign up error');
+          this.notification = {msgType: 'error', msgBody: error['error'].message};
         });
 
   }

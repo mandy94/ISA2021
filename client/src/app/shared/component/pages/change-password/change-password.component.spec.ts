@@ -1,40 +1,42 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
+import {ApiService, AuthService, ConfigService, UserService} from '../../../../service';
+import {MockApiService} from '../../../../service/mocks';
 
-import {ApiService, AuthService, ConfigService, UserService} from '../../../service';
-import {MockApiService, MockUserService} from '../../../service/mocks';
-import {AccountMenuComponent} from './account-menu.component';
+import {ChangePasswordComponent} from './change-password.component';
 
-describe('AccountMenuComponent', () => {
-  let component: AccountMenuComponent;
-  let fixture: ComponentFixture<AccountMenuComponent>;
+describe('ChangePasswordComponent', () => {
+  let component: ChangePasswordComponent;
+  let fixture: ComponentFixture<ChangePasswordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [
+        ChangePasswordComponent
       ],
       providers: [
-        {
-          provide: UserService,
-          useClass: MockUserService
-        },
         {
           provide: ApiService,
           useClass: MockApiService
         },
         AuthService,
+        UserService,
         ConfigService
       ],
-      declarations: [AccountMenuComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccountMenuComponent);
+    fixture = TestBed.createComponent(ChangePasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { MedicationStockDialogComponent } from 'app/component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
-import { MedicineFilterPipe } from 'app/component/pipes/medicine-filter.pipe';
+import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
 
 
 @Component({
