@@ -1,5 +1,5 @@
 import { Route } from '@angular/compiler/src/core';
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService, AuthService, ConfigService, UserService } from 'app/service';
 
@@ -15,10 +15,10 @@ export class ApiCardComponent implements OnInit {
   @Input() content: string;
   @Input() username: string;
   @Input() password: string;
-  
+
   logged = false;
-  
-  constructor(private authService : AuthService,
+
+  constructor(private authService: AuthService,
     private conf: ConfigService,
     private userService: UserService,
     private router: Router) {
@@ -28,15 +28,15 @@ export class ApiCardComponent implements OnInit {
   }
 
   onButtonClick() {
-    var body ={
-      "username" : this.username,
-      "password" :this.password
+    var body = {
+      "username": this.username,
+      "password": this.password
     };
     this.authService.login(body)
-          .subscribe(() => {         
-            this.userService.getMyInfo().subscribe();
-            this.router.navigate(['/']);
-          });
+      .subscribe(() => {
+        this.userService.getMyInfo().subscribe();
+        this.router.navigate(['/']);
+      });
   }
 
 

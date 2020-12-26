@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { KeysPipe } from 'app/component/pipes/dictionary.pipe';
 
 @Component({
   selector: 'app-working-hours',
