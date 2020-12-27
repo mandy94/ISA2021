@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MedicineFilterPipe } from 'app/component/pipes/medicine-filter.pipe';
+import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
 
 @Component({
   selector: 'app-medication-tab',
