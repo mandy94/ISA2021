@@ -1,0 +1,45 @@
+<mat-card>
+  <h2> Kreiranje nove promocije</h2>
+  <form class="example-form" [formGroup]="discountControl"  (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Naziv promocije" formControlName="discountName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Kratki opis" formControlName="discountDesc"></textarea>
+    </mat-form-field>
+    <mat-form-field class="space">
+      <textarea matInput placeholder="Iznos popusta" formControlName="discountValue"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="space">
+      <mat-label>Tip promocije</mat-label>
+      <mat-select formControlName="discountType">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="space">
+      <input matInput [matDatepicker]="pickerFrom" placeholder="Promocija vazi od" formControlName="discountValidFrom">
+      <mat-datepicker-toggle matSuffix [for]="pickerFrom" ></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="space">
+      <input matInput [matDatepicker]="pickerUntil" placeholder="Promocija vazi do" formControlName="discountValidUntil">
+      <mat-datepicker-toggle matSuffix [for]="pickerUntil"></mat-datepicker-toggle>
+      <mat-datepicker #pickerUntil></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Primeni na sledece lekove</mat-label>
+      <mat-select multiple formControlName="discountItem">
+        <mat-option *ngFor="let item of medications" [value]="item">
+          {{item.fullName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button type="submit"> Sacuvaj</button>
+  </form>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
