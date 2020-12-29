@@ -1,0 +1,22 @@
+table{
+     
+    width: 100%;
+   text-align: center;
+}
+
+th{
+    width: 13%;
+}
+.no-overflow{
+   
+   overflow: hidden;
+}
+.search-inpt{
+   margin-left: 45px;
+}
+.request-btn{
+   margin-top: 15px;
+   margin-right: 25px;
+   float: right;
+   color:blue;
+}

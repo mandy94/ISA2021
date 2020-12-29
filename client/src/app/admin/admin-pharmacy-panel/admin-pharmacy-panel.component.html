@@ -1,9 +1,7 @@
 <div>
-
   <div fxLayout="row">
     <div class="about-text">
       <mat-card *ngIf="selectedPharmacy" class="about">
-
         <mat-card-title>
           <button style=" float: right">
             <mat-icon>edit</mat-icon>
@@ -12,16 +10,12 @@
         </mat-card-title>
         <mat-card-subtitle>
           <p> Adresa: {{selectedPharmacy.adress}}</p>
-
         </mat-card-subtitle>
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="space-between start">
-
           <mat-tab-group animationDuration='0ms' mat-align-tabs="center" style="width: 100%;">
-            <mat-tab label="Dermatolozi">
-              
-             <app-medication-tab></app-medication-tab>
-              
+            <mat-tab label="Dermatolozi">              
+              <app-dermatologists-tab></app-dermatologists-tab>
             </mat-tab>
             <mat-tab label="Farmaceuti">
               <h3> Spisak farmaceuta</h3>
@@ -29,20 +23,15 @@
                 <li> {{ doctor.name}} <button>Obrisi</button> </li>
               </div>
             </mat-tab>
-            <mat-tab label="Third">
-              <app-dermatologists-tab></app-dermatologists-tab>
+            <mat-tab label="Lekovi">
+              <app-medication-tab></app-medication-tab>
             </mat-tab>
-            <mat-tab label="Forth">
-              <h3> Spisak pregleda</h3>
-              <div *ngFor="let item of selectedPharmacy.availableServices">
-                <li> {{ item.name}} - {{item.price}}din <button>Obrisi</button> </li>
-              </div>
+            <mat-tab label="Pregledi">
+              <app-services-tab></app-services-tab>
+              
             </mat-tab>
           </mat-tab-group>
-
         </div>
       </mat-card>
     </div>
   </div>
-
-  

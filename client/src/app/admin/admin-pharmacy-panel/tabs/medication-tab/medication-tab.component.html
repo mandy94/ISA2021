@@ -1,25 +1,25 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch">
-  <div class="container text-center">
-    <h1>Pretraga lekova</h1>
-  </div>
+<div fxLayout="column" fxLayoutAlign="space-around stretch" class="no-overflow ">
 
-  <div class="row">
+  <div class="search-inpt">
     <mat-form-field>
-    <input matInput  type="text" name="search" [formControl]="searchText" autocomplete="off"
-      placeholder="Pretrazuj po imenu leka">
+      <input matInput type="text" name="search" [formControl]="searchText" autocomplete="off"
+        placeholder="Pretrazuj po imenu leka">
     </mat-form-field>
 
     <button mat-button (click)="onClick()"> Trazi </button>
+    <button mat-button class="request-btn"> Podnesi zahtev za novi lek</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="space-around start">
     <table class="table table-striped" *ngIf="sortedMedicines">
       <thead>
         <tr>
-          <th> <button mat-button (click)="sortById()">ID</button></th>
-          <th><button mat-button (click)="sortByName()">Naziv</button></th>
-          <th><button mat-button >Doza</button></th>
-          <th><button mat-button (click)="sortByRating()">Ocena</button></th>          
-          <th><button mat-button> Tipa leka</button></th>
+          <th><button mat-button (click)="sortById()"><b>ID</b></button></th>
+          <th><button mat-button (click)="sortByName()"><b>Naziv</b></button></th>
+          <th><button mat-button><b>Doza</b></button></th>
+          <th><button mat-button (click)="sortByRating()"><b>Ocena</b></button></th>
+          <th><button mat-button><b>Kolicina na stanju</b></button></th>
+          <th><button mat-button> <b>Tipa leka</b></button></th>
+          <th> Akcije</th>
 
         </tr>
       </thead>
@@ -29,7 +29,11 @@
           <td> {{sortedMedicines[i].name}}</td>
           <td> {{sortedMedicines[i].dosage}}</td>
           <td> {{sortedMedicines[i].rating}}</td>
+          <td> {{sortedMedicines[i].stock}} <span *ngIf="!sortedMedicines[i].stock">Nema na stanju</span></td>
           <td> {{sortedMedicines[i].type}}</td>
+          <td> <button mat-button (click)="edit(sortedMedicines[i])">
+              <mat-icon>menu</mat-icon>
+            </button></td>
 
 
         </tr>

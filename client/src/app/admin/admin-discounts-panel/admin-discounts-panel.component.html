@@ -1,0 +1,30 @@
+<div>
+  <div fxLayout="row">
+    <div class="about-text">
+      <mat-card *ngIf="selectedPharmacy" class="about">
+        <mat-card-title>
+          <h2 class="move-up">{{selectedPharmacy.name}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p> Adresa: {{selectedPharmacy.adress}}</p>
+        </mat-card-subtitle>
+        <mat-divider></mat-divider>
+        <button mat-button class="strech-btn" (click)="createDiscount()"> Dodaj novu promociju </button>
+        <table >
+          <th>Naziv popusta</th>
+          <th>Datum vazenja</th>
+          <th>Opis popusta</th>
+          <th>Popust vazi za</th>
+          <tr *ngFor="let item of discounts">
+            <td> {{item.name}}
+            </td>
+            <td>{{item.duration.startDate}} - {{item.duration.endDate}}</td>
+            <td>{{item.type}}</td>
+            <td> <button mat-raised-button> Prikazi listu</button></td>
+          </tr>
+
+
+        </table>
+      </mat-card>
+    </div>
+  </div>

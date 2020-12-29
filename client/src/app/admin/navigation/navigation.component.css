@@ -1,13 +1,9 @@
 button{
     height: 90px;
-    width: 450px;   
+    width: 100%;   
     
 }
-.labelText{
-    position :absolute;
-    top: 30%;
-   
-}
+
 img{
     height: 90px;
     width: 100%;

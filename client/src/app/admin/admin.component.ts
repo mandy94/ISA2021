@@ -14,6 +14,12 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
   }
+  dummyPharmacy = {
+    id: 2,
+    name: 'Apoteka dobro srce',
+    adress: 'Radnicka 23, Novi Sad',
+    description: 'Neki opis apoteke'}
+    selectedPharmacy =this.dummyPharmacy;
   goto(url) {
     
       this.router.navigate([url]);

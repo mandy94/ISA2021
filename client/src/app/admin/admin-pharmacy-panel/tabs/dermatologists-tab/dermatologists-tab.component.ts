@@ -111,11 +111,9 @@ export class DermatologistsTabComponent implements OnInit {
   week = ['Ponedeljak', 'Utorak', 'Sreda', 'Cetvrtak', 'Petak'];
   ngOnInit() {
   }
-
   showDetials(item): void {
     this.selectedPharmacy = item;
   }
-
   selectADoctor(doctor) {
     this.selectedDoctor = doctor;
   }

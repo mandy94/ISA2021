@@ -5,12 +5,12 @@ import { LoginComponent } from './shared/component/pages/login';
 import { AdminComponent } from './admin';
 import { AdminGuard, GuestGuard, LoginGuard } from './guard';
 import { ChangePasswordComponent } from './shared/component/pages/change-password';
-import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
+
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
-import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
 import { ForbiddenComponent } from './shared/component/pages/forbidden';
 import { NotFoundComponent } from './shared/component/pages/not-found';
 import { SignupComponent } from './shared/component/pages/signup';
+import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
 
 export const routes: Routes = [
   {
@@ -29,10 +29,7 @@ export const routes: Routes = [
     component: AdminPharmacyPanelComponent
 
   },
-  {
-    path: 'working-time',
-    component: WorkingHoursComponent,
-  },
+
   {
     path: 'login',
     component: LoginComponent,
@@ -55,9 +52,10 @@ export const routes: Routes = [
   {
     path: '403',
     component: ForbiddenComponent
-  }, {
-    path: 'dermatologists',
-    component: DermatologistsComponent
+  }
+  ,{
+    path:'discounts',
+    component: AdminDiscountsPanelComponent
   }
   ,
   {

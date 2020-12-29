@@ -1,24 +1,25 @@
 <div>
-  <h1>Profil administraotra apoteke</h1>
-  <div fxLayout="row" fxLayoutAlign="start start">
-    <div fxLayout="column" fxLayoutAlign="start start">
-      <app-navigation fxFlex title="Rad sa apotekama" (click)="goto('/admin-pharmacy-panel')" imgUrl="assets/image/none.png">
-      </app-navigation>
+  <div fxLayout="row">
+    <div class="about-text">
+      <mat-card *ngIf="selectedPharmacy" class="about">
+        <mat-card-title>
+          <h2 class="move-up">{{selectedPharmacy.name}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p> Adresa: {{selectedPharmacy.adress}}</p>
+        </mat-card-subtitle>
+        <mat-divider></mat-divider>
 
-    </div>
-    <div fxLayout="column" fxLayoutAlign="start start">
+        <div fxLayout="column" fxLayoutAlign="space-around stretch"  class="strech-btn" >
+          <app-navigation fxFlex title="Osnovne infomacije o apoteci" (click)="goto('/admin-pharmacy-panel')"
+            imgUrl="assets/image/none.png">
+          </app-navigation>
+          <app-navigation fxFlex title="Porudbenice" (click)="goto('orders')" imgUrl="assets/image/orders.png">
+          </app-navigation>
+          <app-navigation fxFlex title="Cenovnici i promocije" (click)="goto('discounts')"
+            imgUrl="assets/image/discounts.jpg"> </app-navigation>
 
-      <app-navigation fxFlex title="Lekovi" (click)="goto('/medicines')" imgUrl="assets/image/medicine.png">
-      </app-navigation>
-
-      <app-navigation fxFlex title="Definisanje slobodnih termina za dermatologe" imgUrl="assets/image/working-time.png"
-        (click)="goto('/working-time')"> </app-navigation>
-
-      <app-navigation fxFlex title="Porudbenice" (click)="goto('orders')" imgUrl="assets/image/orders.png">
-      </app-navigation>
-      <app-navigation fxFlex title="Cenovnici i promocije" (click)="goto('medicines')"
-        imgUrl="assets/image/discounts.jpg"> </app-navigation>
-
+        </div>
+      </mat-card>
     </div>
   </div>
-</div>

@@ -16,20 +16,23 @@ import { MatFormFieldModule, MatIconRegistry, MatInputModule } from '@angular/ma
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
-import { MedicinesComponent } from './admin/medicines/medicines.component';
-import { OrdersComponent } from './admin/orders/orders.component';
-import { PricelistsComponent } from './admin/pricelists/pricelists.component';
-import { EmployeesComponent } from './admin/employees/employees.component';
-import { MedicineFilterAndSearchComponent } from './admin/medicines/medicine-filter-and-search/medicine-filter-and-search.component';
+import { MedicinesComponent } from './user/medicines/medicines.component';
+
+import { MedicineFilterAndSearchComponent } from './user/medicines/medicine-filter-and-search/medicine-filter-and-search.component';
 import { MedicationStockDialogComponent } from './component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
 import { UserComponent } from './user/user.component';
-import { WorkingHoursComponent } from './admin/working-hours/working-hours.component';
 import { NavigationComponent } from './admin/navigation/navigation.component';
 import { AdminPharmacyPanelComponent } from './admin/admin-pharmacy-panel/admin-pharmacy-panel.component';
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
-import { DermatologistsComponent } from './admin/dermatologists/dermatologists.component';
 import { EditDermatologistComponent } from './admin/admin-pharmacy-panel/dialogs/edit-dermatologist/edit-dermatologist.component';
 import { SharedModule } from './shared/shared.module';
+import { MedicationTabComponent } from './admin/admin-pharmacy-panel/tabs/medication-tab/medication-tab.component';
+import { DermatologistsTabComponent } from './admin/admin-pharmacy-panel/tabs/dermatologists-tab/dermatologists-tab.component';
+import { EditMedicationComponent } from './admin/admin-pharmacy-panel/dialogs/edit-medication/edit-medication.component';
+import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
+import { CreateDiscountsComponent } from './admin/admin-discounts-panel/dialogs/create-discounts/create-discounts.component';
+import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services-tab/services-tab.component';
+
 
 
 @NgModule({
@@ -38,18 +41,23 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     AdminComponent,
     MedicinesComponent,
-    OrdersComponent,
-    PricelistsComponent,
-    EmployeesComponent,
     NavigationComponent,
     MedicineFilterAndSearchComponent,
+    MedicationTabComponent,
+    DermatologistsTabComponent,
     MedicationStockDialogComponent,
     UserComponent,
-    WorkingHoursComponent,
     AdminPharmacyPanelComponent,
     PharmacyDetailsDialogComponent,
-    DermatologistsComponent,
-    EditDermatologistComponent
+    EditDermatologistComponent,
+    
+    EditMedicationComponent,
+    
+    AdminDiscountsPanelComponent,
+    
+    CreateDiscountsComponent,
+    
+    ServicesTabComponent
   ],
   imports: [
     
@@ -84,6 +92,6 @@ import { SharedModule } from './shared/shared.module';
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MedicationStockDialogComponent, PharmacyDetailsDialogComponent, EditDermatologistComponent]
+  entryComponents: [MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent, EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }
