@@ -1,0 +1,14 @@
+.strech{
+    width: 100%;
+    border: 1px solid;}
+
+.margin{
+margin: 5px;
+}
+mat-card{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+li{
+    margin : 5px;
+}

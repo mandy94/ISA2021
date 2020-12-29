@@ -33,6 +33,9 @@ import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admi
 import { CreateDiscountsComponent } from './admin/admin-discounts-panel/dialogs/create-discounts/create-discounts.component';
 import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services-tab/services-tab.component';
 
+import { AddAlergenComponent } from './user/dialogs/add-alergen/add-alergen.component';
+import { EditUsersInfoComponent } from './user/dialogs/edit-users-info/edit-users-info.component';
+
 
 
 @NgModule({
@@ -57,7 +60,15 @@ import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services
     
     CreateDiscountsComponent,
     
-    ServicesTabComponent
+    ServicesTabComponent,
+    
+    
+    
+    AddAlergenComponent,
+    
+    
+    
+    EditUsersInfoComponent
   ],
   imports: [
     
@@ -92,6 +103,6 @@ import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent, EditDermatologistComponent, EditMedicationComponent]
+  entryComponents: [MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }

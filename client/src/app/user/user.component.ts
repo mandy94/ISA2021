@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { AddAlergenComponent } from './dialogs/add-alergen/add-alergen.component';
+import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-info.component';
 
 @Component({
   selector: 'app-user',
@@ -7,18 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  editInfo(): void {
+    const dialogRef = this.dialog.open(EditUsersInfoComponent, {
+      width: '550px',
+      data: this.user.basicInfo
+    });
+    dialogRef.afterClosed().subscribe(result => {  
+      console.log(result);
+    });
+  }
+  addAlergen(): void {
+    const dialogRef = this.dialog.open(AddAlergenComponent, {
+      width: '550px',
+      data: {
+        known_alergens: this.user.alergies,
+        all_alegerns: [{ id: 1, name: 'Soja' }, { id: 2, name: 'Gluten' }]
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
   user = {
-  fullName : 'Petar Petrovic',
-  JMBG: 745103741223,
-  birthdate: '12.03.1990',
-  alergies: ['Soja', 'Gluten'],
-  loyalty : {
-    points: 23,
-    category: 'Silver',
-    availableDiscounts: 'Neke sa strane'
+    basicInfo: {
+      name: 'Petar',
+      surname: 'Petrovic',
+      JMBG: 745103741223,
+      birthdate: '10-03-1980',
+      email: 'pera@gmail.com'
+    },
+    alergies: [{ id: 1, name: 'Soja' }],
+    loyalty: {
+      points: 23,
+      category: 'Silver',
+      availableDiscounts: 'Neke sa strane'
+    }
   }
-  }
+
   ngOnInit() {
   }
 

@@ -1,0 +1,15 @@
+
+<h1>
+Izmena poznatih alergenata
+</h1>
+<mat-form-field >
+  <mat-label>Poznati alergeni</mat-label>
+  <mat-select [(ngModel)]="ripOffAlergens" multiple>    
+    <mat-option *ngFor="let item of data.all_alegerns" [value]="item.name">
+      {{item.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-button (click)="cancel()"> Odustani </button>
+<button mat-button (click)="saveChanges()"> Sacuvaj promene</button>

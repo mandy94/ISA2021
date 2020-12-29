@@ -1,29 +1,32 @@
-<div>
-  <h2 fxLayout="row" fxLayoutAlign="space-around center"> Korisnicka pocetna stranica</h2>
+<div class="strech">
+  <h2 fxLayout="row" fxLayoutAlign="space-around center"> Korisnicka pocetna stranica
+  </h2>
   <mat-card>
-    <mat-card-content>
-    <h4> {{user.fullName}} </h4>
-    <h6> Datum rodjenja: {{user.birthdate}} </h6>
-  </mat-card-content>
+    <button mat-button style="float:right" (click)="editInfo()"> <mat-icon>edit</mat-icon> </button>
+     <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+       <h2> Osnovne infomacije </h2>
+       <li> Email adresa: {{user.basicInfo.email}}</li>
+       <li>Ime i prezime: {{user.basicInfo.name}} {{user.basicInfo.surname}} </li>
+       <li>Datum rodjenja: {{user.basicInfo.birthdate}} </li>
+    </mat-card-content>
+    
   </mat-card>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="row" fxLayoutAlign="space-around start">
+    <div class="margin">
+      <h2> Korisnik je alergican na:</h2>
+      <ul *ngFor="let alergen of user.alergies">
+        <li>{{ alergen.name }}</li>
+      </ul>
+      <button mat-raised-button (click)='addAlergen()'> Izmeni listu alergiju </button>
+    </div>
 
-  <div>
-      
-    <h2> Spisak poznatih alergija</h2>
-    <ul *ngFor="let alergen of user.alergies">
-      <li>{{ alergen }}</li>
-    </ul>
-    <button mat-raised-button> Dodaj novu alergiju </button>
-  </div>
-
-  <div>
-    <h2> Loyalty program </h2>
-    <h4> Kategorija korisnika: {{user.loyalty.category}}</h4>
-    <p> Trenutno skupljenih poena: {{user.loyalty.points}}</p>
-    <p> Sa ovom kategorijom omogucene su ti seldece pogodnosti:
-      <b> {{ user.loyalty.availableDiscounts}}</b>
-    </p>
+    <div class="margin">
+      <h2> Loyalty program </h2>
+      <h4> Kategorija korisnika: {{user.loyalty.category}}</h4>
+      <p> Trenutno skupljenih poena: {{user.loyalty.points}}</p>
+      <p> Sa ovom kategorijom omogucene su ti seldece pogodnosti:
+        <b> {{ user.loyalty.availableDiscounts}}</b>
+      </p>
+    </div>
   </div>
 </div>
