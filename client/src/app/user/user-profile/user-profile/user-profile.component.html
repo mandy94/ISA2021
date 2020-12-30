@@ -1,0 +1,21 @@
+<mat-card>
+  <button mat-button style="float:right" (click)="editInfo()"> <mat-icon>edit</mat-icon> </button>
+   <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+     <h2> Osnovne infomacije </h2>
+     <li> Email adresa: {{user.basicInfo.email}}</li>
+     <li>Ime i prezime: {{user.basicInfo.name}} {{user.basicInfo.surname}} </li>
+     <li>Datum rodjenja: {{user.basicInfo.birthdate}} </li>
+  </mat-card-content>
+  
+</mat-card>
+
+<div fxLayout="row" fxLayoutAlign="space-around start">
+  <div class="margin">
+    <h2> Korisnik je alergican na:</h2>
+    <ul *ngFor="let alergen of user.alergies">
+      <li>{{ alergen.name }}</li>
+    </ul>
+    <button mat-raised-button (click)='addAlergen()'> Izmeni listu alergiju </button>
+  </div>
+  </div>
+  

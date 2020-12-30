@@ -1,14 +1,41 @@
-.strech{
-    width: 100%;
-    border: 1px solid;}
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .width-30{
+    
 
-.margin{
-margin: 5px;
+    width: 30%;
 }
-mat-card{
-    margin-left: 10%;
-    margin-right: 10%;
-}
-li{
-    margin : 5px;
-}
+ .width-45{
+     margin-left: 5px;
+
+     width: 45%;
+ }
+
+  .side{
+      width: 15%;
+      min-width: 250px;
+      background-color: #6544d0;
+  }
+  
+  button, img, .side-div{
+      margin:  15px;
+  }
+  .margin-btn{
+      margin-top: 40px;
+  }
+  .white{
+      color:white
+  }
+  .main-content{
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+  }
+  .pharmacy-card {
+    width: 80%;
+   }

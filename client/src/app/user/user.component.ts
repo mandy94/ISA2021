@@ -10,29 +10,7 @@ import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-inf
 })
 export class UserComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
-
-  editInfo(): void {
-    const dialogRef = this.dialog.open(EditUsersInfoComponent, {
-      width: '550px',
-      data: this.user.basicInfo
-    });
-    dialogRef.afterClosed().subscribe(result => {  
-      console.log(result);
-    });
-  }
-  addAlergen(): void {
-    const dialogRef = this.dialog.open(AddAlergenComponent, {
-      width: '550px',
-      data: {
-        known_alergens: this.user.alergies,
-        all_alegerns: [{ id: 1, name: 'Soja' }, { id: 2, name: 'Gluten' }]
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
-  }
+  sortOptions = ['Ceni - rastucoj', ' Ceni - opadajucoj', 'Nazivu - rastucem', 'Nazivu - opadajucem', 'Gradu', 'Oceni']; // itd...
   user = {
     basicInfo: {
       name: 'Petar',
@@ -48,7 +26,7 @@ export class UserComponent implements OnInit {
       availableDiscounts: 'Neke sa strane'
     }
   }
-
+  pharmacyList = [{ name: 'Medicine Alcove' }, { name: 'Therapy Signs' }, { name: 'Therapy Aloe' }, { name: 'Medicinecy' }, { name: 'Choice Medication' }, { name: 'We Medication' }, { name: 'Pharmacyous' }, { name: 'Medical All' }, { name: 'Medicine Hop' }];
   ngOnInit() {
   }
 

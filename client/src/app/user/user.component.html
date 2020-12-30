@@ -1,32 +1,62 @@
-<div class="strech">
-  <h2 fxLayout="row" fxLayoutAlign="space-around center"> Korisnicka pocetna stranica
-  </h2>
-  <mat-card>
-    <button mat-button style="float:right" (click)="editInfo()"> <mat-icon>edit</mat-icon> </button>
-     <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
-       <h2> Osnovne infomacije </h2>
-       <li> Email adresa: {{user.basicInfo.email}}</li>
-       <li>Ime i prezime: {{user.basicInfo.name}} {{user.basicInfo.surname}} </li>
-       <li>Datum rodjenja: {{user.basicInfo.birthdate}} </li>
-    </mat-card-content>
-    
-  </mat-card>
-  <div fxLayout="row" fxLayoutAlign="space-around start">
-    <div class="margin">
-      <h2> Korisnik je alergican na:</h2>
-      <ul *ngFor="let alergen of user.alergies">
-        <li>{{ alergen.name }}</li>
-      </ul>
-      <button mat-raised-button (click)='addAlergen()'> Izmeni listu alergiju </button>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened mode="side" class="side">
+    <div fxLayout="column" class="side-div">
+      <div fxLayout="row">
+        <img width="75px" height="75px" alt="something" src="../../assets/image/user.png">
+        <div fxLayout="column" class="white">
+          <p> 
+            {{user.basicInfo.name}} {{user.basicInfo.surname}} 
+            <br>
+            {{user.loyalty.category}}
+            <br>
+            <button mat-button> Uredi profil </button>
+          </p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="margin-btn" fxLayout="column">
+        <button mat-raised-button> Lista apoteka</button>
+        <button mat-raised-button> Posete i savetovalista</button>
+        <button mat-raised-button> eRecepti </button>
+        <button mat-raised-button> Rezervacija lekova</button>
+        <button mat-raised-button> Preuzimanje lekova </button>
+      </div>
     </div>
+  </mat-sidenav>
 
-    <div class="margin">
-      <h2> Loyalty program </h2>
-      <h4> Kategorija korisnika: {{user.loyalty.category}}</h4>
-      <p> Trenutno skupljenih poena: {{user.loyalty.points}}</p>
-      <p> Sa ovom kategorijom omogucene su ti seldece pogodnosti:
-        <b> {{ user.loyalty.availableDiscounts}}</b>
-      </p>
-    </div>
+  <div class="main-content">
+    <h1> Spisak registrovanih apoteka</h1>
+    <form>
+    <mat-form-field class="width-30">
+      <input matInput placeholder="Pretraga apoteka po imenu">
+    </mat-form-field>
+  
+    <mat-form-field class="width-45" style="float:right">
+      <mat-label>Sortiraj rezultate po</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of sortOptions" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button> Tazi </button>
+
+  </form>
+
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let item of pharmacyList">
+        <mat-card class="pharmacy-card">
+          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-content>
+            o apoteci
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Vidi</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
-</div>
+</mat-sidenav-container>
