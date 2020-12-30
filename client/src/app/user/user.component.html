@@ -28,27 +28,28 @@
     <h1> Spisak registrovanih apoteka</h1>
     <form>
     <mat-form-field class="width-30">
-      <input matInput placeholder="Pretraga apoteka po imenu">
+      <input matInput placeholder="Pretraga apoteka po imenu" [formControl]="searchText">
     </mat-form-field>
   
     <mat-form-field class="width-45" style="float:right">
       <mat-label>Sortiraj rezultate po</mat-label>
-      <mat-select>
+      <mat-select [formControl]="searchControl">
         <mat-option *ngFor="let item of sortOptions" [value]="item">
-          {{item}}
+          {{item.text}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-button> Tazi </button>
+    <button mat-button (click)="onClick()"> Tazi </button>
 
   </form>
 
     <mat-grid-list cols="3" rowHeight="2:1">
-      <mat-grid-tile *ngFor="let item of pharmacyList">
+      <mat-grid-tile *ngFor="let item of sortedpharmacyList ; let i = index ;trackBy: trackItem">
         <mat-card class="pharmacy-card">
-          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-title>{{item.name}} </mat-card-title>
           <mat-card-content>
             o apoteci
+            {{item.rating}}
           </mat-card-content>
           <mat-card-actions>
             <button mat-button>Vidi</button>

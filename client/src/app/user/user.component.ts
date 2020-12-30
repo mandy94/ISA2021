@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
+import { stringify } from 'querystring';
 import { AddAlergenComponent } from './dialogs/add-alergen/add-alergen.component';
 import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-info.component';
 
@@ -10,7 +13,10 @@ import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-inf
 })
 export class UserComponent implements OnInit {
 
-  sortOptions = ['Ceni - rastucoj', ' Ceni - opadajucoj', 'Nazivu - rastucem', 'Nazivu - opadajucem', 'Gradu', 'Oceni']; // itd...
+  sortOptions = [ { text: 'Nazivu - rastucem', prop: 'name', order: 'asc' },
+                  { text: 'Nazivu - opadajucem', prop: 'name', order: 'desc' },
+                  { text: 'Gradu', prop: 'adress' },
+                  { text: 'Oceni', prop: 'rating' }]; // itd...
   user = {
     basicInfo: {
       name: 'Petar',
@@ -26,8 +32,47 @@ export class UserComponent implements OnInit {
       availableDiscounts: 'Neke sa strane'
     }
   }
-  pharmacyList = [{ name: 'Medicine Alcove' }, { name: 'Therapy Signs' }, { name: 'Therapy Aloe' }, { name: 'Medicinecy' }, { name: 'Choice Medication' }, { name: 'We Medication' }, { name: 'Pharmacyous' }, { name: 'Medical All' }, { name: 'Medicine Hop' }];
+  pharmacyList = [{ name: 'Medicine Alcove', rating : 1 },
+                   { name: 'Therapy Signs', rating : 3 }, 
+                   { name: 'Therapy Aloe', rating : 4 }, 
+                   { name: 'Medicinecy', rating : 1 }, 
+                   { name: 'Choice Medication', rating : 2 },
+                   { name: 'We Medication', rating : 5 }, 
+                   { name: 'Pharmacyous' , rating : 5}, 
+                   { name: 'Medical All' , rating : 2},
+                   { name: 'Medicine Hop', rating : 1 }];
+  sortedpharmacyList;
+  filter = '';
+  searchText = new FormControl('');
+  searchControl = new FormControl('');
   ngOnInit() {
+    this.sortedpharmacyList = this.pharmacyList;
+  }
+  trackItem(index, item) {
+    return this.sortedpharmacyList ? this.sortedpharmacyList : undefined;
+  }
+
+  sortResult(prop, order) {
+    if (order === 'asc'){
+      this.sortedpharmacyList = this.sortedpharmacyList.sort((a, b) => this.abstractSort(a[prop], b[prop]));        
+    }else{
+      this.sortedpharmacyList = this.sortedpharmacyList.sort((a, b) => this.abstractSort(b[prop], a[prop]));
+    }
+  }
+  abstractSort(first, second){
+    if( typeof first  === "string"){
+        return first.localeCompare(second)
+    }else if( typeof first === "number"){
+      return first - second;
+    }
+
+  }
+  onClick() {
+    this.filter = this.searchText.value;
+    this.sortedpharmacyList = new MedicineFilterPipe().transform(this.pharmacyList, this.searchText.value);
+
+    this.sortResult(this.searchControl.value.prop, this.searchControl.value.order);
+
   }
 
 }

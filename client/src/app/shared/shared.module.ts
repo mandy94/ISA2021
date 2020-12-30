@@ -13,10 +13,12 @@ import { ForbiddenComponent } from './component/pages/forbidden';
 import { NotFoundComponent } from './component/pages/not-found';
 import { SignupComponent } from './component/pages/signup';
 import { KeysPipe } from './pipe/dictionary.pipe';
-import { MedicineFilterPipe } from './pipe/medicine-filter.pipe';
+
 import { ApiCardComponent } from './component/api-card/api-card.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+
+import { MedicineFilterPipe } from './pipe/medicine-filter.pipe';
 
 @NgModule({
     declarations: [
@@ -44,6 +46,7 @@ import { RouterModule } from '@angular/router';
     ],
     exports: [
         MedicineFilterPipe,
+        
         KeysPipe,
         ApiCardComponent,
         MatFormFieldModule,
