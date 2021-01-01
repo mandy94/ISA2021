@@ -1,0 +1,24 @@
+<div class="main-content">
+  <h1> Istorija vasih poseta</h1>
+  <form>
+ 
+  <mat-form-field class="width-45">
+    <mat-label>Odaberi posete</mat-label>
+    <mat-select [formControl]="visitPicker">
+      <mat-option *ngFor="let item of availableVisits" [value]="item.option">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button (click)="onClick()"> Tazi </button>
+
+</form>
+
+ 
+    <table *ngFor="let item of visitHistoryList ; let i = index ;trackBy: trackItem">
+      <th>O pregledu</th>
+      <tr> <td> {{item | json }}</td></tr>
+
+
+  </table>
+</div>

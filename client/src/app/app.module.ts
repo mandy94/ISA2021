@@ -35,7 +35,9 @@ import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services
 
 import { AddAlergenComponent } from './user/dialogs/add-alergen/add-alergen.component';
 import { EditUsersInfoComponent } from './user/dialogs/edit-users-info/edit-users-info.component';
-import { UserProfileComponent } from './user/user-profile/user-profile/user-profile.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
+import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 
 
 
@@ -54,26 +56,15 @@ import { UserProfileComponent } from './user/user-profile/user-profile/user-prof
     AdminPharmacyPanelComponent,
     PharmacyDetailsDialogComponent,
     EditDermatologistComponent,
-    
     EditMedicationComponent,
-    
     AdminDiscountsPanelComponent,
-    
     CreateDiscountsComponent,
-    
     ServicesTabComponent,
-    
-    
-    
     AddAlergenComponent,
-    
-    
-    
-    EditUsersInfoComponent,
-    
-    
-    
-    UserProfileComponent
+     EditUsersInfoComponent,
+    UserProfileComponent,
+    UserVisitsComponent,
+    UserPharmacySearchComponent
   ],
   imports: [
     

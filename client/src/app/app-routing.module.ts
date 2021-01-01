@@ -11,6 +11,8 @@ import { ForbiddenComponent } from './shared/component/pages/forbidden';
 import { NotFoundComponent } from './shared/component/pages/not-found';
 import { SignupComponent } from './shared/component/pages/signup';
 import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
+import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
+import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +67,15 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: '/404'
+  },
+  {
+    path: 'user-home',
+    component: UserPharmacySearchComponent
+  }
+  ,
+  {
+    path: 'user-visits',
+    component: UserVisitsComponent
   }
 ];
 
