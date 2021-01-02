@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
+import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 import { stringify } from 'querystring';
 import { AddAlergenComponent } from './dialogs/add-alergen/add-alergen.component';
 import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-info.component';

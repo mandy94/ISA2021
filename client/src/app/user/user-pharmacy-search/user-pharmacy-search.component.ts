@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
+import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
+import { sortAsc, sortDesc } from 'app/shared/utilities/collection.utils';
 
 @Component({
   selector: 'app-user-pharmacy-search',
@@ -46,30 +47,15 @@ export class UserPharmacySearchComponent implements OnInit {
   ngOnInit() {
     this.sortedpharmacyList = this.pharmacyList;
   }
-  trackItem(index, item) {
-    return this.sortedpharmacyList ? this.sortedpharmacyList : undefined;
-  }
 
-  sortResult(prop, order) {
-    if (order === 'asc'){
-      this.sortedpharmacyList = this.sortedpharmacyList.sort((a, b) => this.abstractSort(a[prop], b[prop]));        
-    }else{
-      this.sortedpharmacyList = this.sortedpharmacyList.sort((a, b) => this.abstractSort(b[prop], a[prop]));
+  onClick() {    
+    this.sortedpharmacyList = new PropFilterPipe().transform(this.pharmacyList, this.searchText.value, 'name');
+    if(this.searchControl.value.order === 'asc'){
+      sortAsc(this.sortedpharmacyList , this.searchControl.value.prop);
+      return;
     }
-  }
-  abstractSort(first, second){
-    if( typeof first  === "string"){
-        return first.localeCompare(second)
-    }else if( typeof first === "number"){
-      return first - second;
-    }
-
-  }
-  onClick() {
-    this.filter = this.searchText.value;
-    this.sortedpharmacyList = new MedicineFilterPipe().transform(this.pharmacyList, this.searchText.value);
-
-    this.sortResult(this.searchControl.value.prop, this.searchControl.value.order);
+    sortDesc(this.sortedpharmacyList, this.searchControl.value.prop);
+    //this.sortResult(this.searchControl.value.prop, this.searchControl.value.order);
 
   }
 }

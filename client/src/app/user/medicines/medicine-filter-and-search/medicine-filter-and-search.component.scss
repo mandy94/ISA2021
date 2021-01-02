@@ -38,3 +38,12 @@
   .form-control::placeholder  {
     font-family: FontAwesome;
   }
+
+  .sort-indicator {
+    display: hidden;
+  }
+  .active-sort  {
+    span.sort-indicator {
+      display: block;
+    }
+  }

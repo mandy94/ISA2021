@@ -18,7 +18,7 @@
 </form>
 
   <mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let item of sortedpharmacyList ; let i = index ;trackBy: trackItem">
+    <mat-grid-tile *ngFor="let item of sortedpharmacyList">
       <mat-card class="pharmacy-card">
         <mat-card-title>{{item.name}} </mat-card-title>
         <mat-card-content>

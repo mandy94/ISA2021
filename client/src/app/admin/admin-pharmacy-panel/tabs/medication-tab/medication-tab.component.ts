@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { MedicineFilterPipe } from 'app/shared/pipe/medicine-filter.pipe';
+import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 import { EditMedicationComponent } from '../../dialogs/edit-medication/edit-medication.component';
 
 @Component({
@@ -49,6 +49,6 @@ export class MedicationTabComponent implements OnInit {
   }
   onClick() {
     this.filter = this.searchText.value;
-    this.sortedMedicines = new MedicineFilterPipe().transform(this.pharmacy.medications, this.searchText.value);
+    this.sortedMedicines = new PropFilterPipe().transform(this.pharmacy.medications, this.searchText.value,'name');
   }
 }
