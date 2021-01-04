@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Manufacturer {
 
@@ -19,6 +21,8 @@ public class Manufacturer {
     
     private String name;
     private String adress;
+    
+    @JsonIgnore
     @OneToMany(mappedBy="manufacturer")
     private List<Medicine> produces = new ArrayList<>();
 
@@ -47,4 +51,14 @@ public class Manufacturer {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package pharmacy.controller.dto.orders;
 
+import pharmacy.model.entity.OrderItem;
+
 public class OrderItemDTO {
 	
 	private Long medicineId;
@@ -16,6 +18,12 @@ public class OrderItemDTO {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public static OrderItemDTO mapToDTO(OrderItem item) {
+		OrderItemDTO dto = new OrderItemDTO();
+		dto.medicineId = item.getId().getMedicineId();
+		dto.quantity = item.getQuantity();
+		return dto;
 	}
 
 	

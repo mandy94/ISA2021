@@ -52,6 +52,12 @@ export class ConfigService {
     return this._signup_url;
   }
 
+  
+  private _medicine_all_url = this._api_url + '/medicine/all';
+
+  get medicine_all_url(): string {
+    return this._medicine_all_url;
+  }
 
   private _orders_all_url = this._api_url + '/orders';
 

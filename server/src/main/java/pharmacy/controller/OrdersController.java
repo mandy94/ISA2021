@@ -37,6 +37,10 @@ public class OrdersController {
 		List<OrderDTO> dtos = new ArrayList<OrderDTO>();
 		
 		List<Order> orders = ordersService.findAll();
+		for(Order order : orders) {
+			OrderDTO dto = OrderDTO.mapToDTO(order);
+			dtos.add(dto);
+		}
 		return dtos;
 	}
 	

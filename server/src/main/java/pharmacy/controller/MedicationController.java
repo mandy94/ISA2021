@@ -1,5 +1,8 @@
 package pharmacy.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,13 @@ public class MedicationController {
 	public String testMed() {
 		
 		return "test response done ok";
+	}
+	
+	@GetMapping("/all")
+	public List<Medicine> getAllMedications(Principal user) {
+		// user.getCompany () ?
+		// user.getUserCompany user.getUserPharmacy()
+		return medicineService.findAllMedications();
 	}
 
 }

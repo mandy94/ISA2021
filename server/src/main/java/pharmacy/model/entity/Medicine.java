@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Medicine {
     @Id
@@ -36,8 +38,12 @@ public class Medicine {
     private List<Offer> inOffers = new ArrayList<>();
     @ManyToMany
     private List<Order> inOrders = new ArrayList<>();
+    
+    @JsonIgnore
     @ManyToOne
     private Medicine medicine; // for selfreferencing 
+    
+    @JsonIgnore
     @OneToMany(mappedBy="medicine")
     private List<Medicine> replacements = new ArrayList<>();
     
@@ -139,4 +145,11 @@ public class Medicine {
 	public void setReplacements(List<Medicine> replacements) {
 		this.replacements = replacements;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }

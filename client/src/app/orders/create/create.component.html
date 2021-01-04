@@ -1,16 +1,16 @@
 <mat-card>
   <h2> Kreiranje nove narudzbenice</h2>
 
-  <button>DODAJ JOS jednu stavku</button>
+  <button (click)="onAddNewItemClick()">DODAJ JOS jednu stavku</button>
   <form class="example-form" [formGroup]="orderControl" (ngSubmit)="onSubmit()">
 
 
     <ng-container *ngFor="let orderItem of orderItems; let i = index; ">
       <mat-form-field>
-        <mat-label>{{orderItem.key}} Lek {{i+1 }} </mat-label>
-        <mat-select [formControlName]="orderItem.keyMedicine">
+        <mat-label>{{orderItem.name}} </mat-label>
+        <mat-select [formControlName]="orderItem.key">
           <mat-option *ngFor="let medicine of medicines" [value]="medicine.id">
-            {{opt.value}}
+            {{opt.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

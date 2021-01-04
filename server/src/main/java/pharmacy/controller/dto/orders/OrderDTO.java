@@ -1,8 +1,11 @@
 package pharmacy.controller.dto.orders;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pharmacy.model.entity.Order;
+import pharmacy.model.entity.OrderItem;
 import pharmacy.model.entity.OrderStatus;
 
 public class OrderDTO {
@@ -34,6 +37,21 @@ public class OrderDTO {
 	}
 	public void setItems(List<OrderItemDTO> items) {
 		this.items = items;
+	}
+	
+	public static OrderDTO mapToDTO(Order order) {
+		OrderDTO dto = new OrderDTO();
+		
+		dto.id = order.getId();
+		dto.expirationDate = order.getExpirationDate();
+		dto.status = order.getStatus();
+		List<OrderItemDTO> items = new ArrayList<>();
+		for(OrderItem item : order.getItems()) {
+			OrderItemDTO itemDTO = OrderItemDTO.mapToDTO(item);
+			items.add(itemDTO);
+		}
+		dto.setItems(items);
+		return dto;
 	}
 
       

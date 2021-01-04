@@ -8,5 +8,5 @@ import pharmacy.model.entity.Offer;
 
 public interface OfferRepository extends JpaRepository<Offer, Long>{
 
-	List<Offer> findByOrderId(long orderId);
+	List<Offer> findByForOrder(long orderId);
 }

@@ -1,6 +1,7 @@
 package pharmacy.model.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,8 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="OrderTbl")
 public class Order {
 	// COMPANY'S TENDER FOR SUPPLIER'S OFFERS
 	@Id
@@ -20,32 +23,37 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	    
-	private String shippingDate;
-	private String expirationDate;
+	private Date shippingDate;
+	private Date expirationDate;
 		
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 
 	
+    @OneToMany(mappedBy="order")
+	private List<OrderItem> items = new ArrayList<>();
+    
+    
     @OneToMany(mappedBy="forOrder")
 	private List<Offer> offers = new ArrayList<>();
     
     //--------------------------------------------------
-	public String getShippingDate() {
-		return shippingDate;
-	}
-	public void setShippingDate(String shippingDate) {
-		this.shippingDate = shippingDate;
-	}
-	public String getExpirationDate() {
-		return expirationDate;
-	}
-	public void setExpirationDate(String expirationDate) {
-		this.expirationDate = expirationDate;
-	}
+    
 
 	public List<Offer> getOffers() {
 		return offers;
+	}
+	public Date getShippingDate() {
+		return shippingDate;
+	}
+	public void setShippingDate(Date shippingDate) {
+		this.shippingDate = shippingDate;
+	}
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
@@ -62,6 +70,14 @@ public class Order {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
+	public List<OrderItem> getItems() {
+		return items;
+	}
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
+	
+	
 	
 	
 

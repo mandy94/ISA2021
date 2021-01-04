@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService, ConfigService } from 'app/service';
+import { Medicine } from 'app/shared/models/medicine.model';
 import { Offer } from 'app/shared/models/orders/offer.model';
 import { Order } from 'app/shared/models/orders/order.model';
 
@@ -14,6 +15,12 @@ export class OrdersService {
     orders: Order[];
 
     constructor(private apiService: ApiService, private config: ConfigService) { }
+
+
+
+    getListOfMedicines() {
+        return this.apiService.getTyped<Medicine[]>(this.config.medicine_all_url);
+    }
 
     getAllOrders() {
         return this.apiService.getTyped<Order[]>(this.config.orders_all_url);
