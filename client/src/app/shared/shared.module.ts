@@ -15,9 +15,9 @@ import { SignupComponent } from './component/pages/signup';
 import { KeysPipe } from './pipe/dictionary.pipe';
 
 import { ApiCardComponent } from './component/api-card/api-card.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { PropFilterPipe } from './pipe/prop-filter.pipe';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import { PropFilterPipe } from './pipe/prop-filter.pipe';
         SignupComponent
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         MatFormFieldModule,
         MatInputModule,
         FormsModule,
@@ -46,7 +46,6 @@ import { PropFilterPipe } from './pipe/prop-filter.pipe';
     ],
     exports: [
         PropFilterPipe,
-        
         KeysPipe,
         ApiCardComponent,
         MatFormFieldModule,

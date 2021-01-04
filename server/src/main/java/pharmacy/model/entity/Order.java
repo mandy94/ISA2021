@@ -5,10 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,9 +22,11 @@ public class Order {
 	    
 	private String shippingDate;
 	private String expirationDate;
+		
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
+
 	
-	@ManyToMany
-    private List<Medicine> medication = new ArrayList<>();	 
     @OneToMany(mappedBy="forOrder")
 	private List<Offer> offers = new ArrayList<>();
     
@@ -40,17 +43,26 @@ public class Order {
 	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
-	public List<Medicine> getMedication() {
-		return medication;
-	}
-	public void setMedication(List<Medicine> medication) {
-		this.medication = medication;
-	}
+
 	public List<Offer> getOffers() {
 		return offers;
 	}
 	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public OrderStatus getStatus() {
+		return status;
+	}
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+	
+	
 
 }

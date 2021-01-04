@@ -1,0 +1,33 @@
+<mat-card>
+  <h2> Kreiranje nove narudzbenice</h2>
+
+  <button>DODAJ JOS jednu stavku</button>
+  <form class="example-form" [formGroup]="orderControl" (ngSubmit)="onSubmit()">
+
+
+    <ng-container *ngFor="let orderItem of orderItems; let i = index; ">
+      <mat-form-field>
+        <mat-label>{{orderItem.key}} Lek {{i+1 }} </mat-label>
+        <mat-select [formControlName]="orderItem.keyMedicine">
+          <mat-option *ngFor="let medicine of medicines" [value]="medicine.id">
+            {{opt.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{orderItem.key}} Kolicina</mat-label>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="kolicina" [formControlName]="orderItem.keyQuanity">
+        </mat-form-field>
+      </mat-form-field>
+    </ng-container>
+
+
+
+
+    <button mat-button type="submit"> Sacuvaj</button>
+  </form>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>

@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class ConfigService {
 
+
   private _api_url = 'http://localhost:8081/api';
   private _auth_url = 'http://localhost:8081/auth';
   private _user_url = this._api_url + '/user';
@@ -49,6 +50,31 @@ export class ConfigService {
 
   get signup_url(): string {
     return this._signup_url;
+  }
+
+
+  private _orders_all_url = this._api_url + '/orders';
+
+  get orders_all_url(): string {
+    return this._orders_all_url;
+  }
+
+  
+  private _get_orders_offers_url = this._api_url + '/orders/';
+
+  get_orders_offers_url(orderId: number): string {
+    return this._get_orders_offers_url + orderId + '/offers';
+  }
+
+  private _orders_create = this._api_url + '/orders';
+
+  get orders_create(): string {
+    return this._orders_create;
+  }
+
+  
+  get_orders_accept_offer_url(orderId: number): string {
+    return this._api_url + '/orders' + orderId;
   }
 
 }

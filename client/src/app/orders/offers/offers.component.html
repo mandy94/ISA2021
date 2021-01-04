@@ -1,0 +1,41 @@
+<mat-card>
+  <button class="mat-raised-button mat-primary" mat-button routerLink="/orders">
+    <span>NAZAD</span>
+  </button>
+  <h2> PONUDE ZA NARUDZBENICU # {{orderId}} </h2>
+
+
+  <div fxLayout="column" fxLayoutAlign="space-around stretch" class="no-overflow ">
+
+    <div fxLayout="column" fxLayoutAlign="space-around start">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><button mat-button><b>ID</b></button></th>
+            <th><button mat-button><b>Cena</b></button></th>
+            <th><button mat-button><b>Ponudjac</b></button></th>
+            <th><button mat-button><b>Rok isporuke</b></button></th>
+            <th><button mat-button><b>Prihvati</b></button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let o of offers ; let i = index;">
+            <td> {{offers[i].id}} </td>
+            <td> {{offers[i].price}}</td>
+            <td> {{offers[i].supplierName}}</td>
+            <td> {{offers[i].shippingDate}}</td>
+
+            <td> <button mat-button (click)="onOfferAccept(offers[i])">
+                <mat-icon>menu</mat-icon>
+              </button></td>
+
+
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+</mat-card>

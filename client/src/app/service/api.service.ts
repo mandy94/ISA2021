@@ -40,6 +40,19 @@ export class ApiService {
       .pipe(catchError(this.checkError.bind(this)));
   }
 
+  getTyped<T>(path: string, args?: any): Observable<T> {
+    const options = {
+      headers: this.headers,
+    };
+
+    if (args) {
+      options['params'] = serialize(args);
+    }
+
+    return this.http.get<T>(path, options)
+      .pipe(catchError(this.checkError.bind(this)));
+  }
+
   post(path: string, body: any, customHeaders?: HttpHeaders): Observable<any> {
     return this.request(path, body, RequestMethod.Post, customHeaders);
   }

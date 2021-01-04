@@ -1,3 +1,37 @@
-<p>
-  home works!
-</p>
+<button class="mat-raised-button mat-primary" mat-button routerLink="/orders/create">
+  <span>NOVA NARUDZBENICA</span>
+</button>
+
+<div fxLayout="column" fxLayoutAlign="space-around stretch" class="no-overflow ">
+
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><button mat-button ><b>ID</b></button></th>
+          <th><button mat-button><b>Rok</b></button></th>
+          <th><button mat-button><b>Broj Ponuda</b></button></th>
+          <th><button mat-button><b>Status</b></button></th>
+          <th><button mat-button><b>Ponude</b></button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of orders ; let i = index;">
+          <td> {{orders[i].id}} </td>
+          <td> {{orders[i].expirationDate}}</td>
+          <td> {{orders[i].expirationDate}}</td>
+          <td> {{orders[i].status}}</td>
+  
+          <td> <button mat-button (click)="onOffersClick(orders[i])">
+              POGLEDAJ PONUDE
+            </button></td>
+
+
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>

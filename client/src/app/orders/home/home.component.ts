@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Order, OrderStatus } from 'app/shared/models/orders/order.model';
 
 @Component({
   selector: 'orders-home',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersHomeComponent implements OnInit {
 
-  constructor() { }
+
+  orders: Order[] = [
+    new Order({id: 1, expirationDate: new Date(), status: OrderStatus.New, items: [] }),
+    new Order({id: 2, expirationDate: new Date(), status: OrderStatus.Expired, items: [] }),
+
+  ];
+
+  constructor( private router: Router) { }
 
   ngOnInit() {
+  }
+
+
+  onOffersClick(order: Order) {
+    this.router.navigateByUrl('orders/' + order.id + '/offers');
   }
 
 }

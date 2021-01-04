@@ -1,1 +1,6 @@
 client/node_modules
+server/target/
+server/target/**
+server/target/**/*
+**/META-INF/
+!.mvn/wrapper/maven-wrapper.jar
