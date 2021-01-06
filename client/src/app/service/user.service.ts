@@ -29,13 +29,38 @@ export class UserService {
       .catch(() => null);
     return promise;
   }
-  amIAdmin(){
-    if(this.currentUser != null){
-      if(this.currentUser.role == "ADMIN")
-      return true;
+  checkRole(role){
+    
+    let bool = false;
+    if(this.currentUser != null){            
+      // console.log(this.currentUser.authorities);
+      this.currentUser.authorities.forEach(element => {
+        console.log("comparing for:" +element.authority +" and :" +role);          
+        if(element.authority === role){
+          console.log("done");
+          bool = true;
+       }
+      });         
     }
-    return false;
+    return bool;
   }
+  amIAdmin(){
+    
+    return this.checkRole("ROLE_ADMIN");
+  }
+  amIUser(){
+    return this.checkRole("ROLE_USER");
+  }
+  amISuperAdmin(){
+    return this.checkRole("ROLE_SUPER_ADMIN");
+  }
+  amIDermatolog(){
+    return this.checkRole("ROLE_DERMATOLOG");
+  }
+  amIPharmacolog(){
+    return this.checkRole("ROLE_PHARMACOLOG");
+  }
+  
   getMyId() {
     return this.apiService.get(this.config.whoami_url)
       .pipe(map(user => {

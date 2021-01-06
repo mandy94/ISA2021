@@ -16,9 +16,6 @@ import { MatFormFieldModule, MatIconRegistry, MatInputModule } from '@angular/ma
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
-import { MedicinesComponent } from './user/medicines/medicines.component';
-
-import { MedicineFilterAndSearchComponent } from './user/medicines/medicine-filter-and-search/medicine-filter-and-search.component';
 import { MedicationStockDialogComponent } from './component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
 import { UserComponent } from './user/user.component';
 import { NavigationComponent } from './admin/navigation/navigation.component';
@@ -38,6 +35,7 @@ import { EditUsersInfoComponent } from './user/dialogs/edit-users-info/edit-user
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
+import { GuestComponent } from './guest/guest.component';
 
 
 
@@ -45,10 +43,8 @@ import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-ph
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminComponent,
-    MedicinesComponent,
-    NavigationComponent,
-    MedicineFilterAndSearchComponent,
+    AdminComponent,    
+    NavigationComponent,    
     MedicationTabComponent,
     DermatologistsTabComponent,
     MedicationStockDialogComponent,
@@ -64,7 +60,8 @@ import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-ph
      EditUsersInfoComponent,
     UserProfileComponent,
     UserVisitsComponent,
-    UserPharmacySearchComponent
+    UserPharmacySearchComponent,
+    GuestComponent
   ],
   imports: [
     

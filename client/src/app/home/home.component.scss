@@ -1,9 +1,15 @@
-app-api-card {
-  margin: 0 50px 0 0;
+img {
+  margin-top: 10px;
+  object-fit:cover;
+  height: 400px;
+  width: 100%;
+}
 
-  &.last {
-    margin: 0 0 0 0;
-  }
+.top-margin{
+  margin-top: 15px;
+}
+.content {
+  margin: 10px 70px;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1279px) {

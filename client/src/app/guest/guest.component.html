@@ -1,14 +1,17 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch">
+<div fxLayout="column" fxLayoutAlign="center stretch">
   <div class="container text-center">
     <h1>Pretraga lekova</h1>
   </div>
 
   <div class="row">
-    <input class="form-control" type="text" name="search" [formControl]="searchText" autocomplete="off"
-      placeholder="Pretrazuj po imenu leka">
+    <mat-form-field class="full-width">
+      <mat-label> Pretrazuj po imenu leka</mat-label>
+      <input matInput  class="form-control" type="text" name="search" [formControl]="searchText" autocomplete="off" >
+    </mat-form-field> 
+    
 
-    <button mat-stroked-button (click)="onSearch()"> Trazi </button>
-    <button mat-stroked-button (click)="clear()"> Clear </button>
+    <button mat-raised-button (click)="onSearch()"> Trazi </button>
+    <button mat-raised-button (click)="clear()"> Clear </button>
   </div>
   <div fxLayout="column" fxLayoutAlign="space-around start">
 
@@ -24,13 +27,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of sortedMedicines ; let i = index ;trackBy: trackItem" >
-            <td> {{sortedMedicines[i].id}} </td>
-            <td> {{sortedMedicines[i].name}}</td>
-            <td> {{sortedMedicines[i].rating}}</td>
-            <td> {{sortedMedicines[i].type}}</td>
+          <tr *ngFor="let medicine of sortedMedicines " >
+            <td> {{medicine.id}} </td>
+            <td> {{medicine.name}}</td>
+            <td> {{medicine.rating}}</td>
+            <td> {{medicine.type}}</td>
             <td> download </td>
-            <td> <button mat-button (click)="checkStock(sortedMedicines[i])">
+            <td> <button mat-button (click)="checkStock(medicine)">
               <mat-icon aria-hidden="false">home</mat-icon>
             </button></td>
           </tr>

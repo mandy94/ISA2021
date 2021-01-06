@@ -19,11 +19,27 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getMyInfo();
   }
 
   isSignedAsAdmin() {
     return this.userService.amIAdmin();
   }
+  isSignedAsUser(){
+    return this.userService.amIUser();
+  }
+  isSignedAsDermatolog(){
+    return this.userService.amIDermatolog();
+  }
+  isSignedAsPharmacolog(){
+    console.log(this.userService.amIPharmacolog());
+    
+    return this.userService.amIPharmacolog();
+  }
+  isSignedAsSuperUser(){
+  return this.userService.amISuperAdmin();
+  }
+
   test;
 
   isSignedIn() {

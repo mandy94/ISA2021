@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { MedicationStockDialogComponent } from 'app/component/dialogs/medication-stock-dialog/medication-stock-dialog.component';
@@ -7,11 +8,11 @@ import { sortAsc, sortDesc } from 'app/shared/utilities/collection.utils';
 
 
 @Component({
-  selector: 'app-medicine-filter-and-search',
-  templateUrl: './medicine-filter-and-search.component.html',
-  styleUrls: ['./medicine-filter-and-search.component.scss']
+  selector: 'app-guest',
+  templateUrl: './guest.component.html',
+  styleUrls: ['./guest.component.css']
 })
-export class MedicineFilterAndSearchComponent implements OnInit {
+export class GuestComponent implements OnInit {
 
 
   showResult = true;
