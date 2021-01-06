@@ -40,5 +40,7 @@ export class UserComponent implements OnInit {
   
   showVisits(){ this.view = 'user-visits';}
   showPharamcySearch(){this.view ='pharmacy-search';}
+  showMedications(){this.view = 'user-reservations';}
+  showPrescriptions(){this.view='user-prescriptions';}
 
 }

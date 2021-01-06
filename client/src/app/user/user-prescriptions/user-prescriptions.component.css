@@ -1,0 +1,19 @@
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+
+  .content {
+    margin: 50px 70px;
+  }
+  
+  .main-content{
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+  }

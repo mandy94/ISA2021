@@ -1,0 +1,39 @@
+<div class="main-content">
+  <h1> eRecepti </h1>
+  <form>
+    <mat-form-field class="width-30">
+      <mat-label>Filtiraj recepte po statusu</mat-label>
+      <mat-select [formControl]="searchPrescriptionsControl">
+        <mat-option *ngFor="let item of status" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="width-45" style="float:right">
+      <mat-label>Sortiraj recepte po</mat-label>
+      <mat-select [formControl]="sortControl">
+        <mat-option *ngFor="let item of sortOptions" [value]="item">
+          {{item.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="submit()"> Tazi </button>
+
+  </form>
+
+  <table class="my-table-style">
+    <th colspan="10">Rezervisani lekovi</th>
+    <tr class="header">
+    <td>Sifra</td>
+    <td>Datum izdavanja</td>
+    <td>Pripisani lek</td>
+    </tr>
+    <tr *ngFor="let item of prescriptionList ">
+      <td> {{item.code }}</td>
+      <td> {{item.date}}</td>
+      <td> {{item.medication.name}} </td>
+
+    </tr>
+
+  </table>
+</div>

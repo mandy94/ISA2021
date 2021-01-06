@@ -1,24 +1,45 @@
 <div class="main-content">
-  <h1> Istorija vasih poseta</h1>
+  <h1> Kalendar vasih poseta</h1>
   <form>
- 
-  <mat-form-field class="width-45">
-    <mat-label>Odaberi posete</mat-label>
-    <mat-select [formControl]="visitPicker">
-      <mat-option *ngFor="let item of availableVisits" [value]="item.option">
-        {{item.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button (click)="onClick()"> Tazi </button>
+    <mat-form-field class="width-30">
+      <mat-label>Odaberi vrstu posete</mat-label>
+      <mat-select [formControl]="visitTypePicker">
+        <mat-option *ngFor="let item of visitType" [value]="item">
+          {{item.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-</form>
+    <mat-form-field class="width-45">
+      <mat-label>Odaberi posete</mat-label>
+      <mat-select [formControl]="visitPicker">
+        <mat-option *ngFor="let item of availableVisits" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="onClick()"> Tazi </button>
 
- 
-    <table *ngFor="let item of visitHistoryList ; let i = index ;trackBy: trackItem">
-      <th>O pregledu</th>
-      <tr> <td> {{item | json }}</td></tr>
+  </form>
 
+  <table class="my-table-style" *ngIf="requestedData">
+    <th colspan="10">{{visitPicker.value.name}}</th>
+    <tr class="header"> <td>#</td>
+    <td> Datum i vreme</td>
+    <td> Opis pregleda</td>
+    <td> Cena</td>
+    <td *ngIf="showActions"> Akcije</td>
+    </tr>
+
+    <tr *ngFor="let item of requestedData ">
+      <td>{{item.id}}</td>
+      <td> {{item.date}} u {{item.time}}</td>
+      <td> {{item.description}}</td>
+      <td> {{item.price}}.00 din</td>
+      <td *ngIf="showActions" class="padding-8">
+        <button [disabled]="canCanel(item)" mat-button class="warning"> Otkazi pregled </button>
+      </td>
+    </tr>
 
   </table>
 </div>

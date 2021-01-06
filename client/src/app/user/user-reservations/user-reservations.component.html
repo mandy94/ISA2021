@@ -1,0 +1,25 @@
+<div class="main-content">
+  <h1> Moji lekovi </h1>
+  <form>
+
+    <mat-form-field class="width-45">
+      <mat-label>Prikazi lekove</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of searchOptions" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="submit()"> Tazi </button>
+  </form>
+
+  <table *ngFor="let item of medicineList">
+    <th>Rezervisani lekovi</th>
+    <tr>
+      <td> {{item | json }}</td>
+      <td> <button mat-button> Preuzimi lek</button></td>
+      <td *ngIf="canCanel(item.reservation)"> <button mat-button> Otkazi </button></td>
+    </tr>
+
+  </table>
+</div>

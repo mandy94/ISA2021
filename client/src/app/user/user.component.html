@@ -17,9 +17,9 @@
       <div class="margin-btn" fxLayout="column">
         <button mat-raised-button (click)="showPharamcySearch()"> Lista apoteka</button>
         <button mat-raised-button (click)="showVisits()"> Posete i savetovalista</button>
-        <button mat-raised-button> eRecepti </button>
-        <button mat-raised-button> Rezervacija lekova</button>
-        <button mat-raised-button> Preuzimanje lekova </button>
+        <button mat-raised-button (click)="showPrescriptions()"> eRecepti </button>
+        <button mat-raised-button (click)="showMedications()"> Moji lekova</button>
+        
       </div>
     </div>
   </mat-sidenav>
@@ -27,4 +27,6 @@
   <app-user-pharmacy-search *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search>
   <app-user-visits *ngIf="view === 'user-visits'"></app-user-visits>
   <app-user-profile *ngIf="view === 'user-profile'"></app-user-profile>
+  <app-user-reservations *ngIf="view === 'user-reservations'"></app-user-reservations>
+  <app-user-prescriptions *ngIf="view ==='user-prescriptions'"></app-user-prescriptions>
 </mat-sidenav-container>

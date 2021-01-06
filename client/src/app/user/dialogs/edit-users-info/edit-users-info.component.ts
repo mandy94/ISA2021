@@ -3,8 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import * as moment from 'moment';
-
+import { dateFormat, parseFromMoment, parseToMoment } from 'app/shared/utilities/date-and-time.utils';
 
 @Component({
   selector: 'app-edit-users-info',
@@ -20,10 +19,10 @@ export class EditUsersInfoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditUsersInfoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-  dateFormat = 'DD-MM-YYYY';
+  
 
   editBasicInfo = new FormGroup({
-    dateControl: new FormControl(moment(this.data.birthdate, this.dateFormat)),
+    dateControl: new FormControl(parseToMoment(this.data.birthdate)),
     nameControl: new FormControl(this.data.name),
     surnameControl: new FormControl(this.data.surname)
 
@@ -35,7 +34,7 @@ export class EditUsersInfoComponent implements OnInit {
   }
   saveChanges() {
 
-    this.data.birthdate = this.editBasicInfo.value.dateControl.format(this.dateFormat);
+    this.data.birthdate = parseFromMoment( this.editBasicInfo.value.dateControl);
     this.data.name = this.editBasicInfo.value.nameControl;
     this.data.surname = this.editBasicInfo.value.surnameControl;
 
