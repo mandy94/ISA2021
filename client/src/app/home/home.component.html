@@ -1,8 +1,6 @@
-<div fxLayout="row" class="top-margin"> 
+<div fxLayout="row" class="top-margin"  *ngIf="!isSignedIn()"> 
     <!-- Stavi ! kod ngIf-->
-    <app-api-card fxFlex username="pharmacolog" password="123" imgUrl="assets/image/user.png" subTitle="Public"
-      title='Logovanje kao farmaceut'>
-    </app-api-card>
+    
     <app-api-card fxFlex username="dermatolog" password="123" imgUrl="assets/image/foo.png" subTitle="Public"
       title='Logovanje kao dermatolog'>
     </app-api-card>
@@ -20,8 +18,8 @@
   <img src="assets/image/wallpaper.jpg">
 </div>
 <div fxLayout="row" class="content">
-  <app-admin  style="width: 100%;" *ngIf="isSignedAsAdmin()"></app-admin> 
+  <app-admin *ngIf="isSignedAsAdmin()" style="width: 100%;" ></app-admin> 
   <app-user  *ngIf="isSignedAsUser()"></app-user>
-  <app-pharmacolog *ngIf="isSignedAsPharmacolog()"> farmakolog</app-pharmacolog>
+  <app-dermatolog *ngIf="isSignedAsDermatolog()"></app-dermatolog>
   <app-guest *ngIf="!isSignedIn()"></app-guest> 
 </div>

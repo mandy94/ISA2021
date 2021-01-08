@@ -33,11 +33,8 @@ export class UserService {
     
     let bool = false;
     if(this.currentUser != null){            
-      // console.log(this.currentUser.authorities);
-      this.currentUser.authorities.forEach(element => {
-        console.log("comparing for:" +element.authority +" and :" +role);          
+      this.currentUser.authorities.forEach(element => {      
         if(element.authority === role){
-          console.log("done");
           bool = true;
        }
       });         

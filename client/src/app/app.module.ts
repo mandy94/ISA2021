@@ -36,6 +36,9 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 import { GuestComponent } from './guest/guest.component';
+import { DermatologComponent } from './dermatolog/dermatolog.component';
+import { UserReservationsComponent } from './user/user-reservations/user-reservations.component';
+import { UserPrescriptionsComponent } from './user/user-prescriptions/user-prescriptions.component';
 
 
 
@@ -61,7 +64,10 @@ import { GuestComponent } from './guest/guest.component';
     UserProfileComponent,
     UserVisitsComponent,
     UserPharmacySearchComponent,
-    GuestComponent
+    GuestComponent,
+    DermatologComponent,
+    UserReservationsComponent,
+    UserPrescriptionsComponent
   ],
   imports: [
     

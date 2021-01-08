@@ -31,16 +31,12 @@ export class HomeComponent implements OnInit {
   isSignedAsDermatolog(){
     return this.userService.amIDermatolog();
   }
-  isSignedAsPharmacolog(){
-    console.log(this.userService.amIPharmacolog());
-    
-    return this.userService.amIPharmacolog();
-  }
+ 
   isSignedAsSuperUser(){
   return this.userService.amISuperAdmin();
   }
 
-  test;
+ 
 
   isSignedIn() {
 
