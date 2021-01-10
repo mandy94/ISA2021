@@ -12,11 +12,10 @@ export class CreateNewOrderDTO {
 @Injectable()
 export class OrdersService {
 
+
     orders: Order[];
 
     constructor(private apiService: ApiService, private config: ConfigService) { }
-
-
 
     getListOfMedicines() {
         return this.apiService.getTyped<Medicine[]>(this.config.medicine_all_url);
@@ -40,6 +39,10 @@ export class OrdersService {
         };
         return this.apiService.put(this.config.get_orders_accept_offer_url(orderId), dto);
 
+    }
+
+    generateOffers(orderId: number) {
+        return this.apiService.post(this.config.get_orders_generate_offers_url(orderId), null);
     }
 
 }

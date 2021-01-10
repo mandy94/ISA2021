@@ -80,7 +80,11 @@ export class ConfigService {
 
   
   get_orders_accept_offer_url(orderId: number): string {
-    return this._api_url + '/orders' + orderId;
+    return this._api_url + '/orders' + orderId; 
+  }
+
+  get_orders_generate_offers_url(orderId: number): string {
+    return this._api_url + '/orders' + orderId + '/generate-offers';
   }
 
 }

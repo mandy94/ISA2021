@@ -20,7 +20,11 @@ export class OrdersOffersComponent implements OnInit {
   }
 
   onOfferAccept(offer: Offer) {
-    this.ordersService.acceptOffer(this.orderId, offer.id);
+    this.ordersService.acceptOffer(this.orderId, offer.id).subscribe( () => {});
+  }
+
+  onGenerateOffersClick() {
+    this.ordersService.generateOffers(this.orderId).subscribe( () => {});
   }
 
 }

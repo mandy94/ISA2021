@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,6 +29,9 @@ public class Order {
 		
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+	
+	@ManyToOne
+	private Pharmacy pharmacy;
 
 	
     @OneToMany(mappedBy="order")
@@ -75,6 +79,12 @@ public class Order {
 	}
 	public void setItems(List<OrderItem> items) {
 		this.items = items;
+	}
+	public Pharmacy getPharmacy() {
+		return pharmacy;
+	}
+	public void setPharmacy(Pharmacy pharmacy) {
+		this.pharmacy = pharmacy;
 	}
 	
 	

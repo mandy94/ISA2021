@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ import pharmacy.model.auth.Authority;
 
 @Entity
 @Table(name="USERS")
+@DiscriminatorValue("USER")
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;

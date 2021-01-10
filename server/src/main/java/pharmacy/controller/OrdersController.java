@@ -1,8 +1,10 @@
 package pharmacy.controller;
 
-import java.net.URI;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.PostLoad;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,9 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import pharmacy.controller.dto.orders.AcceptOfferDTO;
 import pharmacy.controller.dto.orders.CreateNewOrderDTO;
@@ -33,10 +35,15 @@ public class OrdersController {
 
 	@GetMapping("/orders")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public List<OrderDTO> loadById() {
+	public List<OrderDTO> loadById(Principal user) {
+		
+		user = getMockedUser();
+		System.out.println(">>>" + user.getName());
+		
+		
 		List<OrderDTO> dtos = new ArrayList<OrderDTO>();
 		
-		List<Order> orders = ordersService.findAll();
+		List<Order> orders = ordersService.findAll(user);
 		for(Order order : orders) {
 			OrderDTO dto = OrderDTO.mapToDTO(order);
 			dtos.add(dto);
@@ -44,26 +51,34 @@ public class OrdersController {
 		return dtos;
 	}
 	
+	
+	private Principal getMockedUser() {
+		Principal user = new Principal() {
+			
+			@Override
+			public String getName() {
+				return "pharmacyAdmin1";
+			}
+		};
+
+		return user;
+	}
+
 	@PostMapping("/orders")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Order> createNewOrder(CreateNewOrderDTO dto) {
+	public ResponseEntity<Order> createNewOrder(Principal user, @RequestBody CreateNewOrderDTO dto) {
 		
 		Order mappedOrder = null;
 		Order createdOrder = ordersService.createNewOrder(mappedOrder);
 		
-		
-//		  URI location = ServletUriComponentsBuilder
-//                  .fromCurrentRequest().path("/orders/{id}")
-//                  .buildAndExpand(createdOrder.getId()).toUri();
-//
-//              return ResponseEntity.created(location).build();
+
 		return ResponseEntity.noContent().build();
 	}
 	
 
 	@GetMapping("/orders/{orderId}/offers")
 //	@PreAuthorize("hasRole('ADMIN')")
-	public List<OrderOfferDTO> getOrderOffers(@PathVariable Long orderId) {
+	public List<OrderOfferDTO> getOrderOffers(@PathVariable Long orderId, Principal user) {
 		List<OrderOfferDTO> dtos = new ArrayList<OrderOfferDTO>();
 		
 		
@@ -73,14 +88,18 @@ public class OrdersController {
 	}
 	
 	
-
-	
 	@PutMapping("/orders/{orderId}")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<String> acceptOffer(AcceptOfferDTO dto) {
+	public ResponseEntity<String> acceptOffer(@PathVariable Long orderId, AcceptOfferDTO dto, Principal user) {
 		return ResponseEntity.noContent().build();
 	}
 	
 
+	@PostMapping("/orders/{orderId}/generate-offers")
+	//@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<String> generateOffers(@PathVariable Long orderId, Principal user) {
+		return ResponseEntity.noContent().build();
+	}
+	
 	
 }
