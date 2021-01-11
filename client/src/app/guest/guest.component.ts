@@ -38,9 +38,6 @@ export class GuestComponent implements OnInit {
       this.pharmacy1, this.pharmacy2, this.pharmacy3,  this.pharmacy4
     ] }
   ]
-
-
-
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {}
@@ -74,11 +71,5 @@ export class GuestComponent implements OnInit {
     });
     
   }
-
- 
-
-  
-
-  // private 
 
 }

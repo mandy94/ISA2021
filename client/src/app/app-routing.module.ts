@@ -13,6 +13,8 @@ import { SignupComponent } from './shared/component/pages/signup';
 import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
 import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
+import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +32,10 @@ export const routes: Routes = [
     path: 'admin-pharmacy-panel',
     component: AdminPharmacyPanelComponent
 
+  },
+  {
+    path: 'pharmacy-page/:id',
+    component: PharmacyComponent,
   },
 
   {
@@ -55,8 +61,8 @@ export const routes: Routes = [
     path: '403',
     component: ForbiddenComponent
   }
-  ,{
-    path:'discounts',
+  , {
+    path: 'discounts',
     component: AdminDiscountsPanelComponent
   }
   ,
@@ -71,8 +77,8 @@ export const routes: Routes = [
   {
     path: 'user-home',
     component: UserPharmacySearchComponent
-  }
-  ,
+  },
+ 
   {
     path: 'user-visits',
     component: UserVisitsComponent

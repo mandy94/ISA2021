@@ -38,11 +38,13 @@ export class PharmacyService {
   getById(id: number) {
     return this.pharmacyList.find(element => { return element.id === id });
   }
-  getAllEmplyeesByPharmacyId(id: number): any {
+  getDermatologsByPharmacyId(id: number): any {
     let dermatologsList = this.dermatologs.getByPharmacyId(id);
-    let pharmacistList = this.pharmacists.getByPharmacyId(id);
-    pharmacistList.forEach(element => { dermatologsList.push(element) });
     return dermatologsList;
+  }
+  getPharmacistsByPharmacyId(id: number): any {    
+    let pharmacistList = this.pharmacists.getByPharmacyId(id);
+    return pharmacistList;
   }
   getAvailableMedications(id: number): any {
     return this.medications.getByPharmacyId(id);

@@ -1,4 +1,29 @@
-<div fxLayout="column" fxLayoutAlign="center stretch">
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <h1> {{currentPharmacy.name}} </h1>
+  <h3> {{currentPharmacy.adress}}</h3>
+</div>
+<div fxLayout="column" class="employee-baner">
+  <h1 fxLayoutAlign="center strech" class="white"> Strucno osoblje</h1>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div *ngFor="let dermatolog of emplyees" class="distance">
+      <app-employee-card [data]="dermatolog" (click)="showAvailableTerms(dermatolog.id)"></app-employee-card>
+    </div>
+  </div>
+
+</div>
+<div class="centered-content">
+<div fxLayout="column" fxLayoutAlign="space-around strech" >
+  <h2>Provera leka preko recepta</h2>
+  <mat-form-field >
+    <mat-label>Odaberi pripisan recept</mat-label>
+    <mat-select [formControl]="prescriptionCheckControl">      
+      <mat-option *ngFor="let item of prescrptionList" [value]="item">{{item|json}}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+</div>
+<div fxLayout="column" fxLayoutAlign="space-around center"class="container">
   <div class="container text-center">
     <h1>Pretraga lekova</h1>
   </div>
@@ -11,11 +36,10 @@
 
 
     <button mat-raised-button (click)="onSearch()"> Trazi </button>
-    <button mat-raised-button (click)="clear()"> Clear </button>
+
   </div>
   <div fxLayout="column" fxLayoutAlign="space-around start">
-
-    <table class="table table-striped" *ngIf="sortedMedicines">
+    <table class="my-table-style " *ngIf="sortedMedicines">
       <thead>
         <tr>
           <th><button [class.active-sort]="sortProp === 'id' " mat-button (click)="onSortBy('id')">Id</button> <span
@@ -23,8 +47,7 @@
           <th><button mat-button (click)="onSortBy('name')">Name</button></th>
           <th><button mat-button (click)="onSortBy('rating')">Rating</button></th>
           <th><button mat-button> Tipa leka</button></th>
-          <th> Uputstva</th>
-          <th>Proveri dostupnost u apotekama </th>
+
         </tr>
       </thead>
       <tbody>
@@ -33,15 +56,11 @@
           <td> {{medicine.name}}</td>
           <td> {{medicine.rating}}</td>
           <td> {{medicine.type}}</td>
-          <td> download </td>
-          <td> <button mat-button (click)="checkStock(medicine)">
-              <mat-icon aria-hidden="false">home</mat-icon>
-            </button></td>
+
         </tr>
       </tbody>
     </table>
-
-
-
   </div>
+  <button> Pretplati se na nas program promocija</button>
+</div>
 </div>

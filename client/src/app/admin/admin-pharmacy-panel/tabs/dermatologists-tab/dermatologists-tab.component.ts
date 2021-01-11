@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { DermatologService } from 'app/service/dermatolog.service';
 import { EditDermatologistComponent } from '../../dialogs/edit-dermatologist/edit-dermatologist.component';
 
 @Component({
@@ -11,11 +12,12 @@ import { EditDermatologistComponent } from '../../dialogs/edit-dermatologist/edi
 })
 export class DermatologistsTabComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router) { }
+  constructor(public dialog: MatDialog, private router: Router,
+    private dermatologService: DermatologService) { }
   selectedPharmacyControl = new FormControl('');
 
   selectedDoctor = undefined;
-  dummyPharmacy = {
+  currentPharmacy = {
     id: 2,
     name: 'Apoteka dobro srce',
     adress: 'Radnicka 23, Novi Sad',
@@ -29,99 +31,28 @@ export class DermatologistsTabComponent implements OnInit {
       { name: 'Panklav', price: 350 },
       { name: 'Paracetamol', price: 300 },
     ],
+    
     farmacists: [
       {
         name: 'Jelena'
       }
-    ],
-    doctors: [
-      {
-        id: 2874,
-        name: 'Mita',
-        birthdate: '12.3.1980',
-        adress: 'Bul. Oslobodjenja 120, Novi Sad',
-        workingTime: [
-          {
-            day: 'Ponedeljak',
-            time: { start: '8:00', end: '10:00' }
-          },
-          {
-            day: 'Utorak',
-            time: { start: '8:00', end: '10:00' }
-          },
-          { day: 'Sreda' },
-          { day: 'Cetvrtak' },
-          { day: 'Petak' },
-          { day: 'Subota' },
-          { day: 'Nedelja' }
-        ],
-        vacation: {
-          startDate: '20.07.2020',
-          endDate: '10.08.2020',
-        }
-      },
-      {
-        id: 2876,
-        name: 'Jova',
-        workingTime: [
-          {
-            day: 'Ponedeljak',
-            time: { start: '8:00', end: '10:00' }
-          },
-          { day: 'Utorak' },
-          {
-            day: 'Sreda',
-            time: { start: '8:00', end: '10:00' }
-          }, { day: 'Cetvrtak' },
-          { day: 'Petak' },
-          { day: 'Subota' },
-          { day: 'Nedelja' }
-        ],
-        scheduledAppointments: [
-          {
-            date: '10.12.2020.',
-            time: '12:00',
-            pacient: 'Milan'
-          }
-        ]
-      }, {
-        id: 2878,
-        name: 'Dragan',
-        workingTime: [
-          { day: 'Ponedeljak' },
-          {
-            day: 'Utorak',
-            time: { start: '8:00', end: '10:00' }
-          }, {
-            day: 'Cetvrtak',
-            time: { start: '8:00', end: '10:00' }
-          },
-          { day: 'Sreda' },
-          { day: 'Petak' },
-          { day: 'Subota' },
-          { day: 'Nedelja' }
-        ]
+    ]};
+    pharmacySource;// = this.currentPharmacy;
+    displayedColumns =['name', 'adress'];
+    week =['Ponedeljak', 'Utorak', 'Sreda', 'Cetvrtak', 'Petak'];
+    ngOnInit() {
 
-      }
-    ]
-  }
-  selectedPharmacy = this.dummyPharmacy;
-  pharmacySource = this.dummyPharmacy;
-  displayedColumns = ['name', 'adress'];
-  week = ['Ponedeljak', 'Utorak', 'Sreda', 'Cetvrtak', 'Petak'];
-  ngOnInit() {
-  }
-  showDetials(item): void {
-    this.selectedPharmacy = item;
-  }
+      this.currentPharmacy['doctors'] = this.dermatologService.getByPharmacyId(this.currentPharmacy.id);
+    }
+ 
   selectADoctor(doctor) {
-    this.selectedDoctor = doctor;
-  }
+      this.selectedDoctor = doctor;
+    }
   editDoctor(doctor) {
-    const dialogRef = this.dialog.open(EditDermatologistComponent,{
-      width: '80%',
-      data: doctor
-    });
+      const dialogRef = this.dialog.open(EditDermatologistComponent, {
+        width: '80%',
+        data: doctor
+      });
 
+    }
   }
-}

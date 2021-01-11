@@ -1,6 +1,6 @@
 <button mat-stroked-button style="width: 100%; margin-top: 10px;"> Dodaj novog dermatologa</button>
 <div fxLayout="column">
-  <div *ngFor="let doctor of selectedPharmacy.doctors">
+  <div *ngFor="let doctor of currentPharmacy.doctors">
     <div fxLayout="column">
       <h3 style=" float: left"> {{doctor.name}} #{{doctor.id}}
         <button mat-button (click)="editDoctor(doctor)">

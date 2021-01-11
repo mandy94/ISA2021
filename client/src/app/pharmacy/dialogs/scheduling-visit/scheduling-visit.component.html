@@ -1,0 +1,18 @@
+<mat-card>
+  <h1>Zakazivanje posete kod dermatologa</h1>
+   <table *ngIf="dermatolog">
+    <th colspan='10'>Radno vreme u ovoj apoteci</th>
+    <tr>
+      <th *ngFor="let item of dermatolog.workingTime " >
+        {{item.day}}
+      </th>
+    </tr>
+    <tr>
+      <td *ngFor="let item of dermatolog.workingTime ">
+        <button *ngIf="item.time">
+          {{item.time.start}} - {{item.time.end}}
+        </button>
+      </td>
+    </tr>
+  </table>
+</mat-card>

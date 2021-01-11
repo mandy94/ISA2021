@@ -30,11 +30,24 @@
 .width-45{
   width: 45%;
 }
+.container {   
+  padding-bottom: 10px;
+}
+.centered-content{
+  padding-left: 20%;
+  padding-top: 25px;
+  min-width: 350px;
+  width: 60%;
+}
+
 .valid{
   color: rgb(29, 199, 37);
 }
 .warning{
   color:rgb(238, 37, 1)
+}
+.white{
+  color:white;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

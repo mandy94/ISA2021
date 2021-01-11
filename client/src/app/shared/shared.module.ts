@@ -20,6 +20,7 @@ import { PropFilterPipe } from './pipe/prop-filter.pipe';
 import { CommonModule } from '@angular/common';
 
 
+
 @NgModule({
     declarations: [
         PropFilterPipe,
@@ -32,7 +33,7 @@ import { CommonModule } from '@angular/common';
         AccountMenuComponent,
         ChangePasswordComponent,
         ForbiddenComponent,
-        SignupComponent
+        SignupComponent,
     ],
     imports: [
         CommonModule,

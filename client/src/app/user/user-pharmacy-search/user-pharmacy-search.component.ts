@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PharmacyService } from 'app/service';
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 import { sortAsc, sortDesc } from 'app/shared/utilities/collection.utils';
 
@@ -29,23 +31,22 @@ export class UserPharmacySearchComponent implements OnInit {
       availableDiscounts: 'Neke sa strane'
     }
   }
-  pharmacyList = [{ name: 'Medicine Alcove', rating : 1 },
-                   { name: 'Therapy Signs', rating : 3 }, 
-                   { name: 'Therapy Aloe', rating : 4 }, 
-                   { name: 'Medicinecy', rating : 1 }, 
-                   { name: 'Choice Medication', rating : 2 },
-                   { name: 'We Medication', rating : 5 }, 
-                   { name: 'Pharmacyous' , rating : 5}, 
-                   { name: 'Medical All' , rating : 2},
-                   { name: 'Medicine Hop', rating : 1 }];
+  pharmacyList;
   sortedpharmacyList;
   filter = '';
   searchText = new FormControl('');
   searchControl = new FormControl('');
-  constructor() { }
+  @Output() emiter = new EventEmitter<string>();
+  constructor(private router: Router,
+    private pharmacyService: PharmacyService,
+    ) { }
 
   ngOnInit() {
+    this.pharmacyList = this.pharmacyService.getAll();
     this.sortedpharmacyList = this.pharmacyList;
+  }
+  gotoPharmacyPage( pharmacyid ){
+    this.emiter.emit(pharmacyid);
   }
 
   onClick() {    
@@ -55,7 +56,6 @@ export class UserPharmacySearchComponent implements OnInit {
       return;
     }
     sortDesc(this.sortedpharmacyList, this.searchControl.value.prop);
-    //this.sortResult(this.searchControl.value.prop, this.searchControl.value.order);
 
   }
 }

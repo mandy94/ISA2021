@@ -39,6 +39,9 @@ import { GuestComponent } from './guest/guest.component';
 import { DermatologComponent } from './dermatolog/dermatolog.component';
 import { UserReservationsComponent } from './user/user-reservations/user-reservations.component';
 import { UserPrescriptionsComponent } from './user/user-prescriptions/user-prescriptions.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { EmployeeCardComponent } from './pharmacy/employee-card/employee-card.component';
+import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/scheduling-visit.component';
 
 
 
@@ -67,7 +70,10 @@ import { UserPrescriptionsComponent } from './user/user-prescriptions/user-presc
     GuestComponent,
     DermatologComponent,
     UserReservationsComponent,
-    UserPrescriptionsComponent
+    UserPrescriptionsComponent,
+    PharmacyComponent,
+    EmployeeCardComponent,
+    SchedulingVisitComponent
   ],
   imports: [
     
@@ -102,6 +108,6 @@ import { UserPrescriptionsComponent } from './user/user-prescriptions/user-presc
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
+  entryComponents: [SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }
