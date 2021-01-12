@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PharmacyService, UserService } from 'app/service';
 
 @Component({
   selector: 'app-admin-pharmacy-panel',
@@ -7,15 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPharmacyPanelComponent implements OnInit {
 
-  constructor() { }
-  dummyPharmacy = {
-    id: 2,
-    name: 'Apoteka dobro srce',
-    adress: 'Radnicka 23, Novi Sad',
-    description: 'Neki opis apoteke'}
-    selectedPharmacy =this.dummyPharmacy;
+  constructor(private pharmacyService: PharmacyService, private userService: UserService) { }
+  currentPharmacy;
+  myId;
   ngOnInit(): void {
- 
+    this.myId = this.userService.getMyPharacyID();
+     this.currentPharmacy = this.pharmacyService.getMyPharamcy(this.myId);
   }
  
 }

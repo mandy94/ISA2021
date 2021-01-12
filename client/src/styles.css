@@ -9,35 +9,55 @@
   
   .my-table-style td, .my-table-style th {
     border: 1px solid #ddd;
+    text-align: center;
     height: 15px;
     padding: 8px;
   }
   
   .my-table-style tr:nth-child(even){background-color: #f2f2f2;}
   
-  .my-table-style tr:hover {background-color: #ddd;}
+  .my-table-style tr:hover { background-color: #ddd;}
   .my-table-style .header{ font-weight: bold; text-align: center;}
   .my-table-style th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4483f8;
+    background-color: #6b44f8;
     color: white;
   }
+.left-distance{
+    margin-left: 10%;
+    margin-bottom: 5px;
+}
+
+.right-distance{
+    margin-right: 10%;
+    margin-bottom: 5px;
+}
+.float-r{
+  float: right;
+}
+.margin-r{
+  margin: 10px;
+  margin-right: 5%;
+}
 .width-30{
   width: 30%;
 }
 .width-45{
   width: 45%;
 }
+.full-width{
+  width: 100%  
+}
 .container {   
   padding-bottom: 10px;
 }
 .centered-content{
-  padding-left: 20%;
+  padding-left: 10%;
   padding-top: 25px;
   min-width: 350px;
-  width: 60%;
+  width: 80%;
 }
 
 .valid{

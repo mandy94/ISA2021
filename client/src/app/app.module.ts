@@ -28,7 +28,7 @@ import { DermatologistsTabComponent } from './admin/admin-pharmacy-panel/tabs/de
 import { EditMedicationComponent } from './admin/admin-pharmacy-panel/dialogs/edit-medication/edit-medication.component';
 import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
 import { CreateDiscountsComponent } from './admin/admin-discounts-panel/dialogs/create-discounts/create-discounts.component';
-import { ServicesTabComponent } from './admin/admin-pharmacy-panel/tabs/services-tab/services-tab.component';
+import { AppointmentsTabComponent } from './admin/admin-pharmacy-panel/tabs/appointments-tab/appointments-tab.component';
 
 import { AddAlergenComponent } from './user/dialogs/add-alergen/add-alergen.component';
 import { EditUsersInfoComponent } from './user/dialogs/edit-users-info/edit-users-info.component';
@@ -42,6 +42,8 @@ import { UserPrescriptionsComponent } from './user/user-prescriptions/user-presc
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { EmployeeCardComponent } from './pharmacy/employee-card/employee-card.component';
 import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/scheduling-visit.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { CreateAppointmentComponent } from './admin/admin-pharmacy-panel/dialogs/create-appointment/create-appointment.component';
 
 
 
@@ -61,7 +63,7 @@ import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/sc
     EditMedicationComponent,
     AdminDiscountsPanelComponent,
     CreateDiscountsComponent,
-    ServicesTabComponent,
+    AppointmentsTabComponent,
     AddAlergenComponent,
      EditUsersInfoComponent,
     UserProfileComponent,
@@ -73,7 +75,9 @@ import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/sc
     UserPrescriptionsComponent,
     PharmacyComponent,
     EmployeeCardComponent,
-    SchedulingVisitComponent
+    SchedulingVisitComponent,
+    SuperAdminComponent,
+    CreateAppointmentComponent
   ],
   imports: [
     
@@ -108,6 +112,6 @@ import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/sc
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
+  entryComponents: [CreateAppointmentComponent,SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }

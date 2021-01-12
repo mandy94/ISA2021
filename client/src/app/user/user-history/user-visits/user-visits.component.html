@@ -24,18 +24,19 @@
 
   <table class="my-table-style" *ngIf="requestedData">
     <th colspan="10">{{visitPicker.value.name}}</th>
-    <tr class="header"> <td>#</td>
-    <td> Datum i vreme</td>
-    <td> Opis pregleda</td>
-    <td> Cena</td>
-    <td *ngIf="showActions"> Akcije</td>
+    <tr class="header">
+      <td>#</td>
+      <td> Datum i vreme</td>
+      <td> Opis pregleda</td>
+      <td> Cena</td>
+      <td *ngIf="showActions"> Akcije</td>
     </tr>
 
     <tr *ngFor="let item of requestedData ">
       <td>{{item.id}}</td>
-      <td> {{item.date}} u {{item.time}}</td>
-      <td> {{item.description}}</td>
-      <td> {{item.price}}.00 din</td>
+      <td> {{item.date}} u {{item.time.start}}</td>
+      <td> {{item.name}}</td>
+      <td> {{item.price}} din</td>
       <td *ngIf="showActions" class="padding-8">
         <button [disabled]="canCanel(item)" mat-button class="warning"> Otkazi pregled </button>
       </td>

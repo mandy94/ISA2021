@@ -1,0 +1,68 @@
+<mat-card-content>
+  <h1> Kreiranje novog pregleda</h1>
+  <form [formGroup]="newAppointment">
+    <mat-form-field class="width-45">
+      <mat-label>Naziv pregleda</mat-label>
+      <input matInput type="text" autocomplete="off" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="left-distance width-30">
+      <mat-label>Cena</mat-label>
+      <input matInput type="text" autocomplete="off" formControlName="price">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Odaberi pacijenta</mat-label>
+      <mat-select formControlName="pacient">
+        <mat-option *ngFor="let pacient of pacientList" [value]="pacient">
+          {{pacient | json}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Odaberi dermatologa</mat-label>
+      <mat-select formControlName="dermatolog">
+        <mat-option *ngFor="let dermatolog of dermotologList" [value]="dermatolog">
+          {{dermatolog |json}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <span>
+       <p> Datum pregleda</p>      
+      <mat-form-field>
+        <mat-label>Odaberi datum</mat-label>
+        <input matInput [matDatepicker]="picker" autocomplete="off" formControlName="date" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </span>
+      <span>
+         <p>Pocetak pregleda</p>
+        <mat-form-field style="width: 30px; ">
+          <mat-label>Sati</mat-label>
+          <input matInput type="number" autocomplete="off" formControlName="startHours" >
+        </mat-form-field>
+        -
+        <mat-form-field style="width: 35px; margin-left:5px;">
+          <mat-label>Minuta</mat-label>
+          <input matInput type="number" autocomplete="off" formControlName="startMinuts" > 
+        </mat-form-field>
+      </span>
+      <span>
+        <p> Kraj pregleda</p>
+        <mat-form-field style="width: 30px;">
+          <mat-label>Sati</mat-label>
+          <input matInput type="number" autocomplete="off" formControlName="endHours" >
+        </mat-form-field>
+        -
+        <mat-form-field style="width: 35px; margin-left:5px;">
+          <mat-label>Minuta</mat-label>
+          <input matInput type="number" autocomplete="off" formControlName="endMinuts" >
+        </mat-form-field>
+      </span>
+    </div>
+  </form>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-stroked-button (click)="submit()" class="width-30 float-r"> Zavrsi </button>
+</mat-card-actions>

@@ -1,10 +1,10 @@
 <mat-card>
   <h2> Kreiranje nove promocije</h2>
   <form class="example-form" [formGroup]="discountControl"  (ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="full-width">
       <input matInput placeholder="Naziv promocije" formControlName="discountName">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="full-width">
       <textarea matInput placeholder="Kratki opis" formControlName="discountDesc"></textarea>
     </mat-form-field>
     <mat-form-field class="space">
@@ -30,7 +30,7 @@
       <mat-datepicker #pickerUntil></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-">
       <mat-label>Primeni na sledece lekove</mat-label>
       <mat-select multiple formControlName="discountItem">
         <mat-option *ngFor="let item of medications" [value]="item">

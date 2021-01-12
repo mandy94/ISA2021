@@ -25,6 +25,9 @@ export class HomeComponent implements OnInit {
   isSignedAsAdmin() {
     return this.userService.amIAdmin();
   }
+  isSignedAsSuperAdmin() {
+    return this.userService.amISuperAdmin();
+  }
   isSignedAsUser(){
     return this.userService.amIUser();
   }

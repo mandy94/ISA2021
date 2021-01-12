@@ -19,7 +19,8 @@
 </div>
 <div fxLayout="row" class="content">
   <app-admin *ngIf="isSignedAsAdmin()" style="width: 100%;" ></app-admin> 
-  <app-user  *ngIf="isSignedAsUser()"></app-user>
+  <app-user *ngIf="isSignedAsUser()"></app-user>
   <app-dermatolog *ngIf="isSignedAsDermatolog()"></app-dermatolog>
   <app-guest *ngIf="!isSignedIn()"></app-guest> 
+  <app-super-admin *ngIf="isSignedAsSuperAdmin()" style="width: 100%;" ></app-super-admin>
 </div>

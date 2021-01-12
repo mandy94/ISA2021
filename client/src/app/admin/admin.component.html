@@ -1,12 +1,12 @@
 <div>
   <div fxLayout="row">
     <div class="about-text">
-      <mat-card *ngIf="selectedPharmacy" class="about">
+      <mat-card *ngIf="currentPharmacy" class="about">
         <mat-card-title>
-          <h2 class="move-up">{{selectedPharmacy.name}}</h2>
+          <h2 class="move-up">{{currentPharmacy.name}}</h2>
         </mat-card-title>
         <mat-card-subtitle>
-          <p> Adresa: {{selectedPharmacy.adress}}</p>
+          <p> Adresa: {{currentPharmacy.adress}}</p>
         </mat-card-subtitle>
         <mat-divider></mat-divider>
 
@@ -18,7 +18,7 @@
           </app-navigation>
           <app-navigation fxFlex title="Cenovnici i promocije" (click)="goto('discounts')"
             imgUrl="assets/image/discounts.jpg"> </app-navigation>
-
+           
         </div>
       </mat-card>
     </div>

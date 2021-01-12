@@ -23,5 +23,5 @@ export function isOver24h( inputDate : string, inputTime = '00:00' ){
         return false;
 }
 
-export var dateFormat = 'DD-MM-YYYY';
-export var timeAnddateFormat = 'DD-MM-YYYY HH:mm';
+export var dateFormat = 'DD/MM/YYYY';
+export var timeAnddateFormat = 'DD/MM/YYYY HH:mm';

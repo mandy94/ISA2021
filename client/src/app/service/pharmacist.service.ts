@@ -12,8 +12,8 @@ export class PharmacistService {
   ]
   constructor() { }
   getAll(){}
-
   getById(){}
+  
   getByPharmacyId( id:number){
     return this.pharmacist.filter(element => { return element.pharmacyid === id});
   }

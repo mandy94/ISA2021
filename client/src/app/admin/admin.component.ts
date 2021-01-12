@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'app/service';
+import { PharmacyService, UserService } from 'app/service';
 
 @Component({
   selector: 'app-admin',
@@ -9,21 +9,20 @@ import { UserService } from 'app/service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private userService: UserService, private router:Router) {
+  currentPharmacy;
+  constructor(private pharmacyService: PharmacyService,
+    private userService: UserService,
+    private router: Router) {
+  }
+  ngOnInit() {
+    this.currentPharmacy = this.pharmacyService.getMyPharamcy(this.userService.getMyPharacyID());
   }
 
-  ngOnInit() {
-  }
-  dummyPharmacy = {
-    id: 2,
-    name: 'Apoteka dobro srce',
-    adress: 'Radnicka 23, Novi Sad',
-    description: 'Neki opis apoteke'}
-    selectedPharmacy =this.dummyPharmacy;
+
   goto(url) {
-    
-      this.router.navigate([url]);
-    
+
+    this.router.navigate([url]);
+
   }
 
 }

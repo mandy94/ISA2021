@@ -1,0 +1,44 @@
+.cointainer{
+    margin-left: 30%;
+    
+}
+table {
+    min-width: 250px;
+    width: 100%;
+ 
+}
+table { 
+      border:1px solid ;
+      text-align: center;
+      width: 100% ;
+}
+th{
+    width: 13%;
+}
+mat-card{
+    border:1px solid ; 
+}
+mat-card-title, mat-card-subtitle{text-align: center;}
+.about{
+   
+    margin-left: 10%;
+    width: 100%
+}
+.about-text{
+
+    width: 70%
+}
+
+.move-up{
+
+    margin-bottom: 10px;
+}
+mat-divider{
+   
+    border-top-width: 8px;
+
+}
+.strech-btn{
+    margin-top: 10%;
+    width: 100%;
+}

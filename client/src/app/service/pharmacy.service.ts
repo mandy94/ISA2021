@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { element } from '@angular/core/src/render3';
+import { UserService } from '.';
 import { DermatologService } from './dermatolog.service';
 import { MedicineService } from './medicine.service';
 import { PharmacistService } from './pharmacist.service';
@@ -8,7 +8,6 @@ import { PharmacistService } from './pharmacist.service';
   providedIn: 'root'
 })
 export class PharmacyService {
-
 
   pharmacyList = [
     {
@@ -30,10 +29,15 @@ export class PharmacyService {
 
 
   constructor(private dermatologs: DermatologService,
+    //private userService: UserService,
     private pharmacists: PharmacistService,
     private medications: MedicineService) { }
   getAll() {
     return this.pharmacyList;
+  }
+  getMyPharamcy(myId){
+    //let id = this.userService.getMyPharacyID();
+    return this.getById(myId);
   }
   getById(id: number) {
     return this.pharmacyList.find(element => { return element.id === id });

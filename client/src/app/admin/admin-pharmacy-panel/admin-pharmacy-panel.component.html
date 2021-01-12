@@ -1,15 +1,15 @@
 <div>
   <div fxLayout="row">
     <div class="about-text">
-      <mat-card *ngIf="selectedPharmacy" class="about">
+      <mat-card *ngIf="currentPharmacy" class="about">
         <mat-card-title>
           <button style=" float: right">
             <mat-icon>edit</mat-icon>
           </button>
-          <h2 class="move-up">{{selectedPharmacy.name}}</h2>
+          <h2 class="move-up">{{currentPharmacy.name}}</h2>
         </mat-card-title>
         <mat-card-subtitle>
-          <p> Adresa: {{selectedPharmacy.adress}}</p>
+          <p> Adresa: {{currentPharmacy.adress}}</p>
         </mat-card-subtitle>
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="space-between start">
@@ -19,7 +19,7 @@
             </mat-tab>
             <mat-tab label="Farmaceuti">
               <h3> Spisak farmaceuta</h3>
-              <div *ngFor="let doctor of selectedPharmacy.farmacists">
+              <div *ngFor="let doctor of currentPharmacy.farmacists">
                 <li> {{ doctor.name}} <button>Obrisi</button> </li>
               </div>
             </mat-tab>
@@ -27,7 +27,7 @@
               <app-medication-tab></app-medication-tab>
             </mat-tab>
             <mat-tab label="Pregledi">
-              <app-services-tab></app-services-tab>
+              <app-appointments-tab [myId]="myId"></app-appointments-tab>
               
             </mat-tab>
           </mat-tab-group>
