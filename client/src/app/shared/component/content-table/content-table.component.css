@@ -1,0 +1,12 @@
+table {
+    width: 80%;
+    text-align: center;
+  }
+  .mat-header-cell{
+    text-align: center;
+  }
+  tr:hover {
+    background: whitesmoke;
+    text-align: center;
+  }
+  
