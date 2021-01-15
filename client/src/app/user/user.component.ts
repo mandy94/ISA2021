@@ -16,6 +16,7 @@ import { EditUsersInfoComponent } from './dialogs/edit-users-info/edit-users-inf
 export class UserComponent implements OnInit {
 
   pickedPharmacyId;
+  whatToShow;
   constructor(private router: Router){}
   ngOnInit() {
   
@@ -38,11 +39,20 @@ export class UserComponent implements OnInit {
   }
   
   gotoPharmacyPage($event){
-    this.showPickedPharamcy();
+    this.showPickedPharamcy();   
+    this.whatToShow = 'Dermatologs'; 
     this.pickedPharmacyId = $event;
     
   }
+  gotoPharmacistPage($event){
+    this.showPickedPharamcy();    
+    this.whatToShow ='Pharmacists';
+    this.pickedPharmacyId = $event;
+    // plus jos neesto
+    
+  }
   showVisits(){ this.view = 'user-visits';}
+  showConsultations(){}
   showPharamcySearch(){this.view ='pharmacy-search';}
   showMedications(){this.view = 'user-reservations';}
   showPrescriptions(){this.view='user-prescriptions';}

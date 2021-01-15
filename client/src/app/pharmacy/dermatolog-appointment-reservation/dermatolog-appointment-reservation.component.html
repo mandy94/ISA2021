@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="start">
+  <h1> Slobodni termini dermatologa</h1>
+  <table class="my-table-style" *ngIf="predefinedAppointments">
+    <tr>
+      <th><button mat-button (click)="sortByName()"><b>Naziv</b></button></th>
+      <th><button mat-button (click)="sortByRating()"><b>Cena</b></button></th>
+      <th>Kod dermatologa</th>
+      <th>Datum</th>
+      <th>Vreme</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let appointment of predefinedAppointments">
+        <td> {{appointment.name}}</td>
+        <td> {{appointment.price}}din</td>
+        <td> {{appointment.dermatolog_fullname}}</td>
+        <td> {{appointment.date}}</td>
+        <td> {{appointment.time.start}} - {{appointment.time.end}} </td>
+        <td> <button mat-stroked-button *ngIf="appointment.status === 'Slobodan'"
+            (click)="createReservation(appointment)"> Rezervisi termin </button>
+          <button mat-stroked-button *ngIf="appointment.status != 'Slobodan'" class="valid"> Uspesno ste rezervisani
+            termin</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

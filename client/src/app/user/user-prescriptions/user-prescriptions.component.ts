@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { PrescriptionService } from 'app/service/prescription.service';
+import { PrescriptionService } from 'app/service/entity-handling/prescription.service';
+
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 
 @Component({

@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="start">
+  <h1> Slobodni termini farmaceuta</h1>
+  <table class="my-table-style" *ngIf="availablePharmacists">
+    <tr>
+      <th><button mat-button (click)="sortByName()"><b>Naziv</b></button></th>
+      <th><button mat-button (click)="sortByRating()"><b>Cena</b></button></th>
+      <th>Kod farmaceuta</th>
+      <th>Datum</th>
+      <th>Vreme</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let pharmacist of availablePharmacists">
+        <td> {{pharmacist.name}}</td>
+        <td> {{pharmacist.price}}din</td>
+        <td> {{pharmacist.dermatolog_fullname}}</td>
+        <td> {{pharmacist.date}}</td>
+        <td> {{pharmacist.time.start}} - {{pharmacist.time.end}} </td>
+        <td> <button mat-stroked-button *ngIf="pharmacist.status === 'Slobodan'"
+            (click)="createReservation(pharmacist)"> Rezervisi termin </button>
+          <button mat-stroked-button *ngIf="pharmacist.status != 'Slobodan'" class="valid"> Uspesno ste rezervisani
+            termin</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

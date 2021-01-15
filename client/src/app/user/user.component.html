@@ -4,8 +4,8 @@
       <div fxLayout="row">
         <img width="75px" height="75px" alt="something" src="../../assets/image/user.png">
         <div fxLayout="column" class="white">
-          <p> 
-            {{user.basicInfo.name}} {{user.basicInfo.surname}} 
+          <p>
+            {{user.basicInfo.name}} {{user.basicInfo.surname}}
             <br>
             {{user.loyalty.category}}
             <br>
@@ -16,19 +16,22 @@
       <mat-divider></mat-divider>
       <div class="margin-btn" fxLayout="column">
         <button mat-raised-button (click)="showPharamcySearch()"> Lista apoteka</button>
-        <button mat-raised-button (click)="showVisits()"> Posete i savetovalista</button>
+        <button mat-raised-button (click)="showVisits()"> Posete kod dermatologa </button>
+        <button mat-raised-button (click)="showConsultations()">Savetovanja kod farmaceuta</button>
         <button mat-raised-button (click)="showPrescriptions()"> eRecepti </button>
         <button mat-raised-button (click)="showMedications()"> Moji lekova</button>
-        
+
       </div>
     </div>
   </mat-sidenav>
 
-  <app-user-pharmacy-search (emiter)="gotoPharmacyPage($event)" *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search>
+  <app-user-pharmacy-search (pharamcyEmiter)="gotoPharmacyPage($event)" (pharmacistEmiter)="gotoPharmacistPage($event)"
+    *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search>
   <app-user-visits *ngIf="view === 'user-visits'"></app-user-visits>
   <app-user-profile *ngIf="view === 'user-profile'"></app-user-profile>
   <app-user-reservations *ngIf="view === 'user-reservations'"></app-user-reservations>
   <app-user-prescriptions *ngIf="view ==='user-prescriptions'"></app-user-prescriptions>
-  <app-pharmacy [pharmacyId]='pickedPharmacyId' *ngIf="view === 'user-pharmacy-page'"></app-pharmacy>
-  
+  <app-pharmacy [pharmacyId]='pickedPharmacyId' [dataType]='whatToShow' *ngIf="view === 'user-pharmacy-page'">
+  </app-pharmacy>
+
 </mat-sidenav-container>

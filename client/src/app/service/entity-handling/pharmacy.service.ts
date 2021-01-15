@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '.';
+import { Moment } from 'moment';
+
 import { DermatologService } from './dermatolog.service';
 import { MedicineService } from './medicine.service';
 import { PharmacistService } from './pharmacist.service';
@@ -49,6 +50,9 @@ export class PharmacyService {
   getPharmacistsByPharmacyId(id: number): any {    
     let pharmacistList = this.pharmacists.getByPharmacyId(id);
     return pharmacistList;
+  }
+  getByAvailablePharacistOnDateAndTime(date: Moment, time: any){
+    return this.pharmacyList; // za sad
   }
   getAvailableMedications(id: number): any {
     return this.medications.getByPharmacyId(id);

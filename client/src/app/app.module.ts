@@ -40,10 +40,12 @@ import { DermatologComponent } from './dermatolog/dermatolog.component';
 import { UserReservationsComponent } from './user/user-reservations/user-reservations.component';
 import { UserPrescriptionsComponent } from './user/user-prescriptions/user-prescriptions.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
-import { EmployeeCardComponent } from './pharmacy/employee-card/employee-card.component';
+
 import { SchedulingVisitComponent } from './pharmacy/dialogs/scheduling-visit/scheduling-visit.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { CreateAppointmentComponent } from './admin/admin-pharmacy-panel/dialogs/create-appointment/create-appointment.component';
+import { PharmacistAppointmentReservationComponent } from './pharmacy/pharmacist-appointment-reservation/pharmacist-appointment-reservation.component';
+import { DermatologAppointmentReservationComponent } from './pharmacy/dermatolog-appointment-reservation/dermatolog-appointment-reservation.component';
 
 
 
@@ -74,10 +76,11 @@ import { CreateAppointmentComponent } from './admin/admin-pharmacy-panel/dialogs
     UserReservationsComponent,
     UserPrescriptionsComponent,
     PharmacyComponent,
-    EmployeeCardComponent,
     SchedulingVisitComponent,
     SuperAdminComponent,
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    PharmacistAppointmentReservationComponent,
+    DermatologAppointmentReservationComponent
   ],
   imports: [
     

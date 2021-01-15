@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { element } from '@angular/core/src/render3';
 import { AppointmentDTO } from 'app/shared/models/entitis/appointment.model';
+import { PharmacistService } from './pharmacist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -74,12 +75,15 @@ export class VisitsAndAppointmentsService {
       price: 0,
       status: 'Realizovan'
     }];
+
   nextId = 4;
-constructor() {}
+constructor(private pharmacistService: PharmacistService) {}
 addNewAppointment( item: any){
   item.id = this.nextId++; // imitiranje SUBP-a
   this.scheduledAppointments.push(item);
 }
+
+
 getAllAppointmentsForPharmacy( id: number){
   return this.scheduledAppointments;
 }
@@ -108,9 +112,9 @@ getScheduledAppointmentsForPacient(id: number){
   );
 }
 
-makeReservationForTheAppointment(id, me){
+makeReservationForTheAppointment(appointmentId, me){
   let target = this.scheduledAppointments.find(
-    element => element.id === id
+    element => element.id === appointmentId
   );
   target.status = 'Rezervisan';
   target.pacientid = me.id;
@@ -118,4 +122,5 @@ makeReservationForTheAppointment(id, me){
   
   
 }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UserService } from 'app/service';
-import { VisitsAndAppointmentsService } from 'app/service/visits-and-appointments.service';
+import { VisitsAndAppointmentsService } from 'app/service/entity-handling/visits-and-appointments.service';
 import { isUnder24h } from 'app/shared/utilities/date-and-time.utils';
 
 @Component({

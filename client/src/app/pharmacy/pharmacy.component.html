@@ -2,77 +2,53 @@
   <h1> {{currentPharmacy.name}} </h1>
   <h3> {{currentPharmacy.adress}}</h3>
 </div>
+<div class="centered-content" *ngIf="dataType==='Dermatologs'">
+  <app-dermatolog-appointment-reservation [pharmacyId]="pharmacyId"></app-dermatolog-appointment-reservation>
+</div>
+<div class="centered-content" *ngIf="dataType==='Pharmacist'">
+  <add-pharmacist-appointment-reservation [pharmacyId]="pharmacyId"></add-pharmacist-appointment-reservation>
+</div>
 
-<div class="centered-content">
-  <div fxLayout="column" fxLayoutAlign="start">
-    <h1> Slobodni termini u apoteci</h1>
-    <table class="my-table-style" *ngIf="predefinedAppointments">    
-      <tr>
-        <th><button mat-button (click)="sortByName()"><b>Naziv</b></button></th>
-        <th><button mat-button (click)="sortByRating()"><b>Cena</b></button></th>
-        <th>Kod dermatologa</th>
-        <th>Datum</th>
-        <th>Vreme</th>
-        <th></th>
-      </tr>
+<div fxLayout="column" fxLayoutAlign="space-around center" class="container">
+  <h1>Pretraga lekova</h1>
+  <div fxLayout="row">
+
+    <mat-form-field>
+      <mat-label>Pretraga preko recepta</mat-label>
+      <mat-select [formControl]="prescriptionCheckControl">
+        <mat-option *ngFor="let item of prescrptionList" [value]="item">{{item|json}}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label> Pretrazuj po imenu leka</mat-label>
+      <input matInput class="form-control" type="text" name="search" [formControl]="searchText" autocomplete="off">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button (click)="onSearch()"> Trazi </button>
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+    <table class="my-table-style " *ngIf="sortedMedicines">
+      <thead>
+        <tr>
+          <th><button [class.active-sort]="sortProp === 'id' " mat-button (click)="onSortBy('id')">Id</button> <span
+              class="sort-indicator"></span></th>
+          <th><button mat-button (click)="onSortBy('name')">Name</button></th>
+          <th><button mat-button (click)="onSortBy('rating')">Rating</button></th>
+          <th><button mat-button> Tipa leka</button></th>
+
+        </tr>
+      </thead>
       <tbody>
-        <tr *ngFor="let appointment of predefinedAppointments " >
-          <td> {{appointment.name}}</td>
-          <td> {{appointment.price}}din</td>
-          <td> {{appointment.dermatolog_fullname}}</td>
-          <td> {{appointment.date}}</td>
-          <td> {{appointment.time.start}} - {{appointment.time.end}} </td>
-          <td> <button mat-stroked-button *ngIf="appointment.status === 'Slobodan'" (click)="createReservation(appointment)"> Rezervisi termin </button>
-            <button mat-stroked-button *ngIf="appointment.status != 'Slobodan'" class="valid" > Uspesno ste rezervisani termin</button></td> 
+        <tr *ngFor="let medicine of sortedMedicines ">
+          <td> {{medicine.id}} </td>
+          <td> {{medicine.name}}</td>
+          <td> {{medicine.rating}}</td>
+          <td> {{medicine.type}}</td>
+
         </tr>
       </tbody>
     </table>
-
-
-
   </div>
-  <div fxLayout="column" fxLayoutAlign="space-around center" class="container">
-
-    <h1>Pretraga lekova</h1>
-    <div fxLayout="row">
-
-      <mat-form-field>
-        <mat-label>Pretraga preko recepta</mat-label>
-        <mat-select [formControl]="prescriptionCheckControl">
-          <mat-option *ngFor="let item of prescrptionList" [value]="item">{{item|json}}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="full-width">
-        <mat-label> Pretrazuj po imenu leka</mat-label>
-        <input matInput class="form-control" type="text" name="search" [formControl]="searchText" autocomplete="off">
-      </mat-form-field>
-    </div>
-
-    <button mat-raised-button (click)="onSearch()"> Trazi </button>
-    <div fxLayout="column" fxLayoutAlign="space-around start">
-      <table class="my-table-style " *ngIf="sortedMedicines">
-        <thead>
-          <tr>
-            <th><button [class.active-sort]="sortProp === 'id' " mat-button (click)="onSortBy('id')">Id</button> <span
-                class="sort-indicator"></span></th>
-            <th><button mat-button (click)="onSortBy('name')">Name</button></th>
-            <th><button mat-button (click)="onSortBy('rating')">Rating</button></th>
-            <th><button mat-button> Tipa leka</button></th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let medicine of sortedMedicines ">
-            <td> {{medicine.id}} </td>
-            <td> {{medicine.name}}</td>
-            <td> {{medicine.rating}}</td>
-            <td> {{medicine.type}}</td>
-
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <button> Pretplati se na nas program promocija</button>
-  </div>
+  <button> Pretplati se na nas program promocija</button>
 </div>

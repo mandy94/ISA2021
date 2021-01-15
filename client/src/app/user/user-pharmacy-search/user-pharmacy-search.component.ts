@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PharmacyService } from 'app/service';
+import { TimePickerService } from 'app/service/static-data/time-picker.service';
+
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 import { sortAsc, sortDesc } from 'app/shared/utilities/collection.utils';
 
@@ -32,30 +34,52 @@ export class UserPharmacySearchComponent implements OnInit {
     }
   }
   pharmacyList;
+  timeList;
   sortedpharmacyList;
   filter = '';
+  ifAdvancedSearch=false;
   searchText = new FormControl('');
-  searchControl = new FormControl('');
-  @Output() emiter = new EventEmitter<string>();
+  searchControl = new FormControl('');  
+  dateControl = new FormControl('');
+  timeControl = new FormControl('');
+  
+  @Output() pharamcyEmiter = new EventEmitter<string>();
+  @Output() pharmacistEmiter = new EventEmitter<string>();
+  
   constructor(private router: Router,
     private pharmacyService: PharmacyService,
+    private timePickerService: TimePickerService
     ) { }
 
   ngOnInit() {
-    this.pharmacyList = this.pharmacyService.getAll();
-    this.sortedpharmacyList = this.pharmacyList;
+    //this.pharmacyList = this.pharmacyService.getAll();
+    //this.sortedpharmacyList = this.pharmacyList;
+    this.timeList = this.timePickerService.getTimeListByH();
   }
   gotoPharmacyPage( pharmacyid ){
-    this.emiter.emit(pharmacyid);
+    this.pharamcyEmiter.emit(pharmacyid);
+  }
+  gotoPharmacistPage(pharmacyid){
+    this.pharmacistEmiter.emit(pharmacyid);
   }
 
-  onClick() {    
+  onPharmacistSearch(){
+    let date, time;
+    date = this.dateControl.value;
+    time = this.timeControl.value;
+    this.pharmacyList = this.pharmacyService.getAll();
+    this.sortedpharmacyList = this.pharmacyService.getByAvailablePharacistOnDateAndTime( date, time);
+    this.ifAdvancedSearch=true;
+  }
+  onPharmacySearch() {  
+    this.pharmacyList = this.pharmacyService.getAll();  
     this.sortedpharmacyList = new PropFilterPipe().transform(this.pharmacyList, this.searchText.value, 'name');
     if(this.searchControl.value.order === 'asc'){
       sortAsc(this.sortedpharmacyList , this.searchControl.value.prop);
       return;
     }
     sortDesc(this.sortedpharmacyList, this.searchControl.value.prop);
-
+    this.ifAdvancedSearch=false;
+    
   }
 }

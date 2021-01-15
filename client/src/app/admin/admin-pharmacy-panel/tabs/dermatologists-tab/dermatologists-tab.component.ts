@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { DermatologService } from 'app/service/dermatolog.service';
+import { DermatologService } from 'app/service/entity-handling/dermatolog.service';
 import { EditDermatologistComponent } from '../../dialogs/edit-dermatologist/edit-dermatologist.component';
 
 @Component({

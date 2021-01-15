@@ -18,6 +18,7 @@ import { ApiCardComponent } from './component/api-card/api-card.component';
 import { RouterModule } from '@angular/router';
 import { PropFilterPipe } from './pipe/prop-filter.pipe';
 import { CommonModule } from '@angular/common';
+import { ContentTableComponent } from './component/content-table/content-table.component';
 
 
 
@@ -34,6 +35,7 @@ import { CommonModule } from '@angular/common';
         ChangePasswordComponent,
         ForbiddenComponent,
         SignupComponent,
+        ContentTableComponent,
     ],
     imports: [
         CommonModule,
@@ -46,6 +48,7 @@ import { CommonModule } from '@angular/common';
         RouterModule
     ],
     exports: [
+        ContentTableComponent,
         PropFilterPipe,
         KeysPipe,
         ApiCardComponent,
