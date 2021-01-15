@@ -19,5 +19,5 @@ public class BusinessHours {
 	    private Long id;
 	 
 	 	@ManyToMany
-	 	private List<Employee> employee = new ArrayList<>();
+	 	private List<User> employee = new ArrayList<>();
 }

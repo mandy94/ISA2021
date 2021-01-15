@@ -1,12 +1,12 @@
 package pharmacy.model.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,9 +26,7 @@ import pharmacy.model.auth.Authority;
 
 @Entity
 @Table(name="USERS")
-@DiscriminatorValue("USER")
-public class User implements UserDetails {
-
+public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
     @Id
@@ -57,6 +55,17 @@ public class User implements UserDetails {
 
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
+    
+    @ManyToMany
+    private List<BusinessHours> working_hours = new ArrayList<>();
+    
+    @ManyToMany    
+   // @JoinTable(
+   // inverseJoinColumns = @JoinColumn(name = "pharmacy_id", referencedColumnName = "id"))
+	private List<Pharmacy> pharmacy_id = new ArrayList<Pharmacy>();
+	
+    private String work_role; 
+	
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
@@ -157,5 +166,13 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
+	public String getWork_role() {
+		return work_role;
+	}
+
+	public void setWork_role(String works_role) {
+		this.work_role = works_role;
+	}
 
 }

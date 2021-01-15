@@ -19,9 +19,9 @@ public class VacationRequest {
 	private Timestamp endDate;
 	private String returnMessage;
 	@OneToOne
-	private Employee whoAsked;
+	private User whoAsked;
 	@OneToOne
-	private Admin admin;
+	private User admin;
 	
 	//-------------------------------------------
 	public Boolean getIsAproved() {
@@ -54,17 +54,6 @@ public class VacationRequest {
 	public void setReturnMessage(String returnMessage) {
 		this.returnMessage = returnMessage;
 	}
-	public Employee getWhoAsked() {
-		return whoAsked;
-	}
-	public void setWhoAsked(Employee whoAsked) {
-		this.whoAsked = whoAsked;
-	}
-	public Admin getAdmin() {
-		return admin;
-	}
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
+	
 	
 }
