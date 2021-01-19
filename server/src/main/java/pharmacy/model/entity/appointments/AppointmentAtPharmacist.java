@@ -20,10 +20,25 @@ public class AppointmentAtPharmacist {
     private User pharmacist;
     @ManyToOne
     private User pacient;
-    private String time;
+    private Long startTime;
+ 
+	private Long endTime;
     private String date;
     private String status;
    
+    
+    public Long getStartTime() {
+ 		return startTime;
+ 	}
+ 	public void setStartTime(Long startTime) {
+ 		this.startTime = startTime;
+ 	}
+ 	public Long getEndTime() {
+ 		return endTime;
+ 	}
+ 	public void setEndTime(Long endTime) {
+ 		this.endTime = endTime;
+ 	}
 	public Long getId() {
 		return id;
 	}
@@ -42,12 +57,7 @@ public class AppointmentAtPharmacist {
 	public void setPacient(User pacient) {
 		this.pacient = pacient;
 	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
+	
 	public String getDate() {
 		return date;
 	}

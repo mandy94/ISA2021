@@ -17,10 +17,17 @@ INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 4, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 5, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 5, 2);
 
-INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name,price,status,time,dermatolog_id,pacient_id) VALUES 
-('15/01/2021', 'Kratki pregled', 1200, 'Aktivan', '08:00', 4, 1);
-INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name,price,status,time,dermatolog_id,pacient_id) VALUES 
-('17/01/2021', 'Konsultacije oko lekova', 0, 'Aktivan', '09:00', 4, 1);
+INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (29000, 35400 , 1,4);
+INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28800, 32400 , 1,5);
+INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (43200 ,46800 , 2,5);
+
+INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name, price, status, start_time, end_time, dermatolog_id, pacient_id) VALUES 
+('15/01/2021', 'Kratki pregled', 1200, 'Aktivan', 28800, 32400, 4, 1);
+INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name, price, status, start_time, end_time, dermatolog_id, pacient_id) VALUES 
+('17/01/2021', 'Konsultacije oko lekova', 0, 'Aktivan', 32400, 39600, 4, 1);
+
+INSERT INTO appointment_at_pharmacist (date,status,start_time, end_time, pharmacist_id ,pacient_id) VALUES 
+('17/01/2021',  'Aktivan', 32400, 39600, 5, 1);
 
 INSERT INTO AUTHORITY (name) VALUES ('ROLE_USER');
 INSERT INTO AUTHORITY (name) VALUES ('ROLE_ADMIN');

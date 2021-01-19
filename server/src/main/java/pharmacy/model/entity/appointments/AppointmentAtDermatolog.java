@@ -22,8 +22,10 @@ public class AppointmentAtDermatolog {
     private User pacient;
     private String name;
     private int price;
-    private String time;
-    private String date;
+    private Long startTime;
+    private Long endTime;
+   
+	private String date;
     private String status;
 	public Long getId() {
 		return id;
@@ -55,12 +57,7 @@ public class AppointmentAtDermatolog {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
+	
 	public String getDate() {
 		return date;
 	}
@@ -73,6 +70,18 @@ public class AppointmentAtDermatolog {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	 public Long getStarttime() {
+			return startTime;
+		}
+		public void setStarttime(Long starttime) {
+			this.startTime = starttime;
+		}
+		public Long getEndtime() {
+			return endTime;
+		}
+		public void setEndtime(Long endtime) {
+			this.endTime = endtime;
+		}
     
     
     /*

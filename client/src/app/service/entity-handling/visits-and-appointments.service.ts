@@ -9,17 +9,7 @@ import { PharmacistService } from './pharmacist.service';
 export class VisitsAndAppointmentsService {
   scheduledAppointments = [
     {
-      id: 1,
-      pharmacyid: 1,
-      name: 'Ultrazvuk',
-      price: 3400,
-      dermatologid: 1,
-      dermatolog_fullname: 'dr. Mila Jovic',
-      pacientid: 1,
-      pacient_fullname: "Milan Paroski",
-      time: { start: '10:00', end: '10:30' },
-      date: "12/01/2021",
-      status: 'Rezervisan'
+  
     },
     {
       id: 2,

@@ -60,11 +60,24 @@ public class User implements UserDetails{
     private List<BusinessHours> working_hours = new ArrayList<>();
     
     @ManyToMany    
-   // @JoinTable(
-   // inverseJoinColumns = @JoinColumn(name = "pharmacy_id", referencedColumnName = "id"))
-	private List<Pharmacy> pharmacy_id = new ArrayList<Pharmacy>();
+    @JoinTable(name = "users_work_in_pharmacies",
+    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "pharmacy_id", referencedColumnName = "id"))
+	private List<Pharmacy> pharmacy = new ArrayList<Pharmacy>();
 	
-    private String work_role; 
+    public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Pharmacy> getPharmacy() {
+		return pharmacy;
+	}
+
+	public void setPharmacy(List<Pharmacy> pharmacy) {
+		this.pharmacy = pharmacy;
+	}
+
+	private String work_role; 
 	
 
     @ManyToMany(fetch = FetchType.EAGER)
