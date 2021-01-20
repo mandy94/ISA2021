@@ -10,7 +10,7 @@ import { SchedulingVisitComponent } from '../dialogs/scheduling-visit/scheduling
   styleUrls: ['./dermatolog-appointment-reservation.component.css']
 })
 export class DermatologAppointmentReservationComponent implements OnInit {
-  @Input() pharmacyId;
+  @Input() pharmacyId : number;
   dermatologs;
   predefinedAppointments
   constructor( private pharmacyService: PharmacyService,
@@ -22,8 +22,8 @@ export class DermatologAppointmentReservationComponent implements OnInit {
     this.showVisits();   
   }
   showVisits(){
-    this.predefinedAppointments = this.appointmentService.getMyReservationForPharmacy( this.pharmacyId, 1);
-    this.appointmentService.getAvailableAppointmentsForPharmacy(1).forEach( e => this.predefinedAppointments.push(e));
+    this.predefinedAppointments = []; //this.appointmentService.getMyReservationAtPharmacy( this.pharmacyId, 1);
+    this.appointmentService.getAvailableAppointmentsForPharmacy(this.pharmacyId).subscribe(data => this.predefinedAppointments = data);
   }
   
   createReservation(appointment) {

@@ -3,7 +3,7 @@ import * as moment from 'moment';
 export function parseToMoment(inputString : string){
     return moment(inputString, dateFormat);
 }
-export function parseFromMoment( inputMoment : moment.Moment){
+export function parseFromMoment( inputMoment: moment.Moment ){
     return inputMoment.format(dateFormat);
 }
 export function isUnder24h( inputDate : string, inputTime = '00:00' ){

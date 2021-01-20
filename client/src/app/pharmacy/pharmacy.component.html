@@ -5,8 +5,9 @@
 <div class="centered-content" *ngIf="dataType==='Dermatologs'">
   <app-dermatolog-appointment-reservation [pharmacyId]="pharmacyId"></app-dermatolog-appointment-reservation>
 </div>
-<div class="centered-content" *ngIf="dataType==='Pharmacist'">
-  <add-pharmacist-appointment-reservation [pharmacyId]="pharmacyId"></add-pharmacist-appointment-reservation>
+<div class="centered-content">
+
+  <app-pharmacist-appointment-reservation [pharmacyId]="pharmacyId"></app-pharmacist-appointment-reservation>
 </div>
 
 <div fxLayout="column" fxLayoutAlign="space-around center" class="container">

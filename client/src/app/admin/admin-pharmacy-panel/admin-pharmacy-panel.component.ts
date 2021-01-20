@@ -10,10 +10,9 @@ export class AdminPharmacyPanelComponent implements OnInit {
 
   constructor(private pharmacyService: PharmacyService, private userService: UserService) { }
   currentPharmacy;
-  myId;
   ngOnInit(): void {
-    this.myId = this.userService.getMyPharacyID();
-     this.currentPharmacy = this.pharmacyService.getMyPharamcy(this.myId);
+    
+     this.currentPharmacy = this.pharmacyService.getById( this.userService.getMyPharacyID());
   }
  
 }

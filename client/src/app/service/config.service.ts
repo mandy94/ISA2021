@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
+import { Period } from 'app/shared/models/Period';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
+  
 
 
   private _api_url = 'http://localhost:8081/api';
@@ -87,4 +89,51 @@ export class ConfigService {
     return this._api_url + '/orders' + orderId + '/generate-offers';
   }
 
+
+  // PHARMACY CONTROLLER
+  get _pharmacy_all_url(): string{
+    return this._api_url + '/pharmacy/all'; 
+  }
+  get_pharmacy_by_id_url( id: number): string{
+    return this._api_url + '/pharmacy/' + id; 
+  }
+  get_dermatologs_by_pharmacy_id(id: number) : string{
+    return this._api_url + '/pharmacy/' + id + '/dermatologs/all';
+  }
+  get_pharmacists_by_pharmacy_id(id: number): string{
+    return this._api_url + '/pharmacy/' + id + '/pharmacists/all';    
+  }
+  get_pharmacies_by_available_pharmacist_on_date_and_time(): string{
+    return this._api_url + '/pharmacy/available';
+  }
+  get_available_pharmacist_in_pharmacy(id : number): string{
+    return this._api_url + '/pharmacy/' + id + '/available/pharmacists';
+  }
+
+  // APPOINTMENT CONTROLLER
+  get_history_appointments_at_dermatolog_for_pacient(id: number):string{
+    return this._api_url + '/appointments/user/' + id + '/dermatolog/history';
+  }
+  get_reservation_appointments_at_dermatolog_for_pacient(id: number):string{
+    return this._api_url + '/appointments/user/' + id + '/dermatolog/reservation';
+  }
+  get_available_appointments_at_dermatolog(id: number):string{
+    return this._api_url + '/appointments/dermatolog/' + id + '/available';
+    
+  }
+  get_available_appointments_at_dermatolog_for_pharmacy(id: number):string{
+    return this._api_url + '/appointments/dermatolog/pharmacy/' + id + '/available';    
+  }
+  get_reserved_consultation_for_pacient(id: number): string{
+      return this._api_url + '/appointments/user/' + id+ '/pharmacist/reservation';
+      
+  }
+  get_history_consultation_for_pacient(id: number): string{
+    return this._api_url + '/appointments/user/' + id+ '/pharmacist/history';
+  }
+  // PHARMACIST CONTROLLER
+  get_available_pharmacist_on_date_and_time(): string {
+    throw new Error('Method not implemented.');
+  }
+ 
 }

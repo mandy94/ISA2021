@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
     private router: Router) {
   }
   ngOnInit() {
-    this.currentPharmacy = this.pharmacyService.getMyPharamcy(this.userService.getMyPharacyID());
+    this.currentPharmacy = this.pharmacyService.getById(this.userService.getMyPharacyID());
   }
 
 

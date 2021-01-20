@@ -10,22 +10,27 @@ import { VisitsAndAppointmentsService } from 'app/service/entity-handling/visits
 })
 export class PharmacistAppointmentReservationComponent implements OnInit {
   @Input() pharmacyId;
-  @Input() pickedDate;
-  @Input() pickedTimes;
+
   availablePharmacists;
   constructor(private pharmacyService: PharmacyService,
     private pharmacistService: PharmacistService,
     private userService: UserService,
-   ) { }
+  ) { }
 
   ngOnInit() {
-    this.availablePharmacists = this.pharmacyService.getPharmacistsByPharmacyId(this.pharmacyId);
+    this.pharmacyService.getByAvailablePharacistInPharmacy(this.pharmacyId)
+      .subscribe(data => {
+        this.availablePharmacists = data;
+        console.log(data)
+      }
+      );
   }
- 
+
   createReservation(pharmacistId: number) {
-    this.userService.getMyId().subscribe(me => {
-      this.pharmacistService.makeReservationForVisit(
-       pharmacistId, me.id,  this.pickedDate, this.pickedTimes);      
-    });
+    /*  this.userService.getMyId().subscribe(me => {
+        this.pharmacistService.makeReservationForVisit(
+         pharmacistId, me.id,  this.pickedDate, this.pickedTimes);      
+      });
+    }*/
   }
 }

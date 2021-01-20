@@ -54,7 +54,15 @@ export class ApiService {
   }
 
   post(path: string, body: any, customHeaders?: HttpHeaders): Observable<any> {
-    return this.request(path, body, RequestMethod.Post, customHeaders);
+    if(!customHeaders)
+      customHeaders= new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*'
+      });
+      
+    return this.request(path, body, RequestMethod.Post, customHeaders);   
+
   }
 
   put(path: string, body: any): Observable<any> {

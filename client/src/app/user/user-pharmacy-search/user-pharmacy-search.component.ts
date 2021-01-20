@@ -52,11 +52,12 @@ export class UserPharmacySearchComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    //this.pharmacyList = this.pharmacyService.getAll();
+    this.pharmacyService.getAll().subscribe(data => this.pharmacyList = data);
     //this.sortedpharmacyList = this.pharmacyList;
     this.timeList = this.timePickerService.getTimeListByH();
   }
   gotoPharmacyPage( pharmacyid ){
+  
     this.pharamcyEmiter.emit(pharmacyid);
   }
   gotoPharmacistPage(pharmacyid){
@@ -67,12 +68,12 @@ export class UserPharmacySearchComponent implements OnInit {
     let date, time;
     date = this.dateControl.value;
     time = this.timeControl.value;
-    this.pharmacyList = this.pharmacyService.getAll();
-    this.sortedpharmacyList = this.pharmacyService.getByAvailablePharacistOnDateAndTime( date, time);
+    this.pharmacyService.storeData(time, date);    
+    this.pharmacyService.getPharmaciesByAvailablePharamcistsOnDateAndTime(date, time)
+        .subscribe( data => this.sortedpharmacyList = data);
     this.ifAdvancedSearch=true;
   }
-  onPharmacySearch() {  
-    this.pharmacyList = this.pharmacyService.getAll();  
+  onPharmacySearch() {      
     this.sortedpharmacyList = new PropFilterPipe().transform(this.pharmacyList, this.searchText.value, 'name');
     if(this.searchControl.value.order === 'asc'){
       sortAsc(this.sortedpharmacyList , this.searchControl.value.prop);
@@ -81,5 +82,10 @@ export class UserPharmacySearchComponent implements OnInit {
     sortDesc(this.sortedpharmacyList, this.searchControl.value.prop);
     this.ifAdvancedSearch=false;
     
+  }
+  canSearch(){
+    if( this.dateControl.value != '' && this.timeControl.value != '')
+      return true;
+    return false;
   }
 }

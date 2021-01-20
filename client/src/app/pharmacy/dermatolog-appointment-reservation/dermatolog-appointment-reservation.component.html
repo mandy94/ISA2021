@@ -13,9 +13,9 @@
       <tr *ngFor="let appointment of predefinedAppointments">
         <td> {{appointment.name}}</td>
         <td> {{appointment.price}}din</td>
-        <td> {{appointment.dermatolog_fullname}}</td>
+        <td> {{appointment.dermatolog.firstName}}</td>
         <td> {{appointment.date}}</td>
-        <td> {{appointment.time.start}} - {{appointment.time.end}} </td>
+        <td> {{appointment.starttime}} - {{appointment.endtime}} </td>
         <td> <button mat-stroked-button *ngIf="appointment.status === 'Slobodan'"
             (click)="createReservation(appointment)"> Rezervisi termin </button>
           <button mat-stroked-button *ngIf="appointment.status != 'Slobodan'" class="valid"> Uspesno ste rezervisani

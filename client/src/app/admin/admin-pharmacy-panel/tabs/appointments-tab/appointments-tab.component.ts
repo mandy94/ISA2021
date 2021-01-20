@@ -12,18 +12,16 @@ import { CreateAppointmentComponent } from '../../dialogs/create-appointment/cre
   styleUrls: ['./appointments-tab.component.css']
 })
 export class AppointmentsTabComponent implements OnInit {
-  @Input() myId;
+  @Input() pharmacy;
   constructor(public dialog: MatDialog,
     private appointmentsService: VisitsAndAppointmentsService,
     private pharamcyService: PharmacyService) { }
   searchText = new FormControl('');
   currentPharmacy;
   scheduledAppointments;
-
   ngOnInit() {
-    console.log(this.myId)
-    this.currentPharmacy = this.pharamcyService.getMyPharamcy(this.myId);
-    this.scheduledAppointments = this.appointmentsService.getAllAppointmentsForPharmacy(this.currentPharmacy.id);
+ 
+    //this.scheduledAppointments = this.appointmentsService.getAllAppointmentsForPharmacy(this.pharmacy.id);
   }
   addNewAppointment(){   
       const dialogRef = this.dialog.open(CreateAppointmentComponent, {

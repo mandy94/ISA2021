@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Period } from 'app/shared/models/Period';
+import { parseFromMoment } from 'app/shared/utilities/date-and-time.utils';
 import { Moment } from 'moment';
+import { ApiService } from '../api.service';
+import { ConfigService } from '../config.service';
 
 import { DermatologService } from './dermatolog.service';
 import { MedicineService } from './medicine.service';
@@ -9,50 +13,47 @@ import { PharmacistService } from './pharmacist.service';
   providedIn: 'root'
 })
 export class PharmacyService {
-
-  pharmacyList = [
-    {
-      id: 1,
-      name: 'Apoteka dobro srce',
-      adress: 'Radnicka 23, Novi Sad',
-      description: 'Neki opis apoteke',
-
-    },
-    { id: 2, name: 'Therapy Signs', rating: 3 },
-    { id: 3, name: 'Therapy Aloe', rating: 4 },
-    { id: 4, name: 'Medicinecy', rating: 1 },
-    { id: 5, name: 'Choice Medication', rating: 2 },
-    { id: 6, name: 'We Medication', rating: 5 },
-    { id: 7, name: 'Pharmacyous', rating: 5 },
-    { id: 8, name: 'Medical All', rating: 2 },
-    { id: 9, name: 'Medicine Hop', rating: 1 },
-    { id: 10, name: 'Medicine Alcove', rating: 1 }];
-
+  //shared data
+  pickedTime;
+  pickedDate;
 
   constructor(private dermatologs: DermatologService,
-    //private userService: UserService,
+    private config: ConfigService,
+    private apiService: ApiService,
     private pharmacists: PharmacistService,
     private medications: MedicineService) { }
+  storeData( time : Period, date : string){
+    this.pickedTime = time;
+    this.pickedDate = date;
+  }
   getAll() {
-    return this.pharmacyList;
+    return this.apiService.get(this.config._pharmacy_all_url);
   }
-  getMyPharamcy(myId){
-    //let id = this.userService.getMyPharacyID();
-    return this.getById(myId);
-  }
+
   getById(id: number) {
-    return this.pharmacyList.find(element => { return element.id === id });
+    return this.apiService.get(this.config.get_pharmacy_by_id_url(id));
   }
   getDermatologsByPharmacyId(id: number): any {
-    let dermatologsList = this.dermatologs.getByPharmacyId(id);
-    return dermatologsList;
+    return this.apiService.get(this.config.get_dermatologs_by_pharmacy_id(id));
   }
   getPharmacistsByPharmacyId(id: number): any {    
-    let pharmacistList = this.pharmacists.getByPharmacyId(id);
-    return pharmacistList;
+    return this.apiService.get(this.config.get_pharmacists_by_pharmacy_id(id));
   }
-  getByAvailablePharacistOnDateAndTime(date: Moment, time: any){
-    return this.pharmacyList; // za sad
+  getPharmaciesByAvailablePharamcistsOnDateAndTime(date: Moment, time: Period){
+    return this.apiService.post(this.config.get_pharmacies_by_available_pharmacist_on_date_and_time(), 
+            {
+              date: date.toLocaleString(), 
+              start : time.start, 
+              end: time.end});
+}
+  getByAvailablePharacistInPharmacy(id: number){
+        let date = this.pickedDate;
+        let time = this.pickedTime;
+        return this.apiService.post(this.config.get_available_pharmacist_in_pharmacy(id),
+                {
+                  date: date,
+                  start : time.start,
+                  end: time.end});
   }
   getAvailableMedications(id: number): any {
     return this.medications.getByPharmacyId(id);

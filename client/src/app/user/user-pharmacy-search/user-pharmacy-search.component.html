@@ -18,7 +18,7 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Napredna pretraga
+              
             </mat-panel-title>
             <mat-panel-description>
               Pretraga po slobodnim farmaceutima
@@ -27,19 +27,19 @@
 
           <mat-form-field class="margin-r">
             <mat-label>Odaberi datum savetovanja</mat-label>
-            <input matInput [matDatepicker]="picker" autocomplete="false">
+            <input matInput [matDatepicker]="picker" autocomplete="false" [formControl]="dateControl">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Odaberite zeljene periode</mat-label>
-            <mat-select multiple>
+            <mat-label>Odaberite zeljeni period</mat-label>
+            <mat-select  [formControl] = "timeControl">
               <mat-option *ngFor="let time of timeList" [value]="time">
                 {{time.start}} - {{time.end}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-          <button mat-raised-button (click)="onPharmacistSearch()"> Pronadji apoteke </button>
+          </mat-form-field >
+          <button mat-raised-button (click)="onPharmacistSearch()" [disabled]="!canSearch()" style="margin-left: 50px;"> Pronadji apoteke </button>
         </mat-expansion-panel>
       </mat-accordian>
 
