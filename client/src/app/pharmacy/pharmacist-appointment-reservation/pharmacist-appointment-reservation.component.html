@@ -1,21 +1,16 @@
 <!-- <div fxLayout="column" fxLayoutAlign="start"> -->
-  <h1> Slobodni termini farmaceuta</h1>
-  <table class="my-table-style" *ngIf="availablePharmacists">
-    <tr>
-      <th> Ime i prezime farmaceuta </th>      
-      <th></th>
+<h1> Slobodni termini farmaceuta</h1>
+<table class="my-table-style" *ngIf="availablePharmacists">
+  <tr>
+    <th> Ime i prezime farmaceuta </th>
+    <th></th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let pharmacist of availablePharmacists">
+      <td> {{pharmacist| json}}</td>
+      <td> <button mat-stroked-button (click)="createReservation(pharmacist.id)"> Rezervisi termin </button>
+      </td>
     </tr>
-    <tbody>
-      <tr *ngFor="let pharmacist of availablePharmacists">
-       
-        
-        <td> {{pharmacist| json}}</td>
-        
-        <td> <button mat-stroked-button 
-            (click)="createReservation(pharmacist)"> Rezervisi termin </button>
-        
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 <!-- </div> -->

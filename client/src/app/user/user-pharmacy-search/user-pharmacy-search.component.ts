@@ -68,7 +68,7 @@ export class UserPharmacySearchComponent implements OnInit {
     let date, time;
     date = this.dateControl.value;
     time = this.timeControl.value;
-    this.pharmacyService.storeData(time, date);    
+    this.pharmacyService.storeData(time, date.toLocaleString());    
     this.pharmacyService.getPharmaciesByAvailablePharamcistsOnDateAndTime(date, time)
         .subscribe( data => this.sortedpharmacyList = data);
     this.ifAdvancedSearch=true;

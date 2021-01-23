@@ -52,7 +52,10 @@ export class UserVisitsComponent implements OnInit {
     }
     this.visitTypePicker.value.option == 2 ? this.showActions = true : this.showActions = false;
   }
-
+  cancelAppointment(id: number){
+    this.appointmentService.cancelAppointmentWithPharmacist(id)
+      .subscribe(data => this.requestedData = data);
+  }
   canCanel(item) {
     return !isUnder24h(item.date, item.time);
 

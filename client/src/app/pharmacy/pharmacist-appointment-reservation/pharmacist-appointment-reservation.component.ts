@@ -12,6 +12,7 @@ export class PharmacistAppointmentReservationComponent implements OnInit {
   @Input() pharmacyId;
 
   availablePharmacists;
+  pacientId;
   constructor(private pharmacyService: PharmacyService,
     private pharmacistService: PharmacistService,
     private userService: UserService,
@@ -20,17 +21,22 @@ export class PharmacistAppointmentReservationComponent implements OnInit {
   ngOnInit() {
     this.pharmacyService.getByAvailablePharacistInPharmacy(this.pharmacyId)
       .subscribe(data => {
-        this.availablePharmacists = data;
-        console.log(data)
-      }
-      );
+        this.availablePharmacists = data
+      });
+    this.userService.getMyId().subscribe(me => { this.pacientId = me });
   }
 
   createReservation(pharmacistId: number) {
-    /*  this.userService.getMyId().subscribe(me => {
-        this.pharmacistService.makeReservationForVisit(
-         pharmacistId, me.id,  this.pickedDate, this.pickedTimes);      
-      });
-    }*/
+    let requestData = {
+      pharmacistId: pharmacistId,
+      pharmacyId: this.pharmacyId,
+      pacientId: this.pacientId,
+      date: this.pharmacyService.pickedDate,
+      start: this.pharmacyService.pickedTime.start,
+      end: this.pharmacyService.pickedTime.end,
+    }
+    this.pharmacistService.makeReservationForVisit(requestData).subscribe();
+
   }
 }
+

@@ -43,6 +43,9 @@ export class VisitsAndAppointmentsService {
     return this.apiService.get(this.configService.get_history_consultation_for_pacient(id));
   }
 
+  cancelAppointmentWithPharmacist( id: number){
+    return this.apiService.delete(this.configService.cancel_consultation(id));
+  }
 
   addNewAppointment(item: any) {
     console.log(" to be contrinued");

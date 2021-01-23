@@ -5,6 +5,7 @@ import { Period } from 'app/shared/models/Period';
   providedIn: 'root'
 })
 export class ConfigService {
+ 
   
 
 
@@ -132,8 +133,20 @@ export class ConfigService {
     return this._api_url + '/appointments/user/' + id+ '/pharmacist/history';
   }
   // PHARMACIST CONTROLLER
+
   get_available_pharmacist_on_date_and_time(): string {
     throw new Error('Method not implemented.');
+  }
+  
+  get_reserved_consultations_by_user(id :number): string{
+    return this._api_url + 'pharmacist/user/' + id; 
+  }
+  make_reservation_for_consultation(): string {
+   return this._api_url + '/pharmacist/create/reservation';
+  }
+  cancel_consultation(id: number): string {
+    return this._api_url + '/pharmacist/cancel/reservation/' + id;
+  
   }
  
 }

@@ -14,13 +14,12 @@ import { PharmacistService } from './pharmacist.service';
 })
 export class PharmacyService {
   //shared data
-  pickedTime;
+  pickedTime : Period;
   pickedDate;
 
   constructor(private dermatologs: DermatologService,
     private config: ConfigService,
     private apiService: ApiService,
-    private pharmacists: PharmacistService,
     private medications: MedicineService) { }
   storeData( time : Period, date : string){
     this.pickedTime = time;
