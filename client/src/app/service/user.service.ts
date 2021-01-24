@@ -30,35 +30,27 @@ export class UserService {
     return promise;
   }
   checkRole(role){
-    
-    let bool = false;
-    if(this.currentUser != null){            
-      this.currentUser.authorities.forEach(element => {      
-        if(element.authority === role){
-          bool = true;
-       }
-      });         
+    if(this.currentUser != null){      
+      if( this.currentUser.work_role == role)
+      return true;
     }
-    return bool;
+    return false;    
   }
-  amIAdmin(){
-    
-    return this.checkRole("ROLE_ADMIN");
+  amIAdmin(){    
+    return this.checkRole("Admin");
   }
-  amISuperUser(){
-    return this.checkRole("ROLE_SUPER_USER");
-  }
+  
   amIUser(){
-    return this.checkRole("ROLE_USER");
+    return this.checkRole("Pacient");
   }
   amISuperAdmin(){
-    return this.checkRole("ROLE_SUPER_ADMIN");
+    return this.checkRole("Superadmin");
   }
   amIDermatolog(){
-    return this.checkRole("ROLE_DERMATOLOG");
+    return this.checkRole("Dermatolog");
   }
   amIPharmacolog(){
-    return this.checkRole("ROLE_PHARMACOLOG");
+    return this.checkRole("Farmaceut");
   }
   getMyPharacyID(){
    return 1;
@@ -78,8 +70,7 @@ export class UserService {
   getMyInfo() {
     return this.apiService.get(this.config.whoami_url)
       .pipe(map(user => {
-        this.currentUser = user;
-        return user;
+        this.currentUser = user;        
       }));
   }
 

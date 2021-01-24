@@ -10,11 +10,20 @@ export class AdminPharmacyPanelComponent implements OnInit {
 
   constructor(private pharmacyService: PharmacyService, private userService: UserService) { }
   currentPharmacy;
+  dermatologs;
   ngOnInit(): void {
-    
-     this.currentPharmacy = this.pharmacyService.getById( this.userService.getMyPharacyID());
+    let pharmacyId = this.userService.getMyPharacyID();
+
+    this.pharmacyService.getById(pharmacyId)
+      .subscribe(data => {
+        this.currentPharmacy = data;
+        
+        this.pharmacyService.getDermatologsByPharmacyId(pharmacyId)
+          .subscribe(data => 
+            this.dermatologs = data);
+      }
+      );
   }
- 
 }
 
 

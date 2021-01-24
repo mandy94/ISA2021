@@ -2,6 +2,7 @@
   <div fxLayout="row">
     <div class="about-text">
       <mat-card *ngIf="currentPharmacy" class="about">
+        
         <mat-card-title>
           <button style=" float: right">
             <mat-icon>edit</mat-icon>
@@ -15,7 +16,7 @@
         <div fxLayout="row" fxLayoutAlign="space-between start">
           <mat-tab-group animationDuration='0ms' mat-align-tabs="center" style="width: 100%;">
             <mat-tab label="Dermatolozi">              
-              <app-dermatologists-tab></app-dermatologists-tab>
+              <app-dermatologists-tab *ngIf="dermatologs" [dermatologs]="dermatologs"  ></app-dermatologists-tab>
             </mat-tab>
             <mat-tab label="Farmaceuti">
               <h3> Spisak farmaceuta</h3>

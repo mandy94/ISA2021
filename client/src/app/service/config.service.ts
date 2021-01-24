@@ -36,6 +36,9 @@ export class ConfigService {
   get whoami_url(): string {
     return this._whoami_url;
   }
+  get user_work_role():string{
+    return this._api_url + '/user/workrole';
+  }
 
   private _users_url = this._user_url + '/all';
 
@@ -132,6 +135,7 @@ export class ConfigService {
   get_history_consultation_for_pacient(id: number): string{
     return this._api_url + '/appointments/user/' + id+ '/pharmacist/history';
   }
+  
   // PHARMACIST CONTROLLER
 
   get_available_pharmacist_on_date_and_time(): string {
@@ -148,5 +152,14 @@ export class ConfigService {
     return this._api_url + '/pharmacist/cancel/reservation/' + id;
   
   }
- 
+  // DERMATOLOG CONTROLLER
+  get_dermatologs_by_id(id:number):string{
+    throw new Error('Method not implemented.');
+  }
+  get_workingtime_for_dermatolog(id: number):string{
+    return this._api_url + '/dermatolog/' + id +'/business-hours';
+  }
+  get_workingtime_for_dermatolog_in_phamracy(dermatolog: number, pharacy:number):string{
+    return this._api_url + '/dermatolog/' + dermatolog + '/pharmacy/' + pharacy +'/business-hours';
+  }
 }

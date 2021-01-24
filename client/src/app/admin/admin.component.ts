@@ -15,14 +15,11 @@ export class AdminComponent implements OnInit {
     private router: Router) {
   }
   ngOnInit() {
-    this.currentPharmacy = this.pharmacyService.getById(this.userService.getMyPharacyID());
+    this.pharmacyService.getById(this.userService.getMyPharacyID())
+                        .subscribe( data=>this.currentPharmacy = data);
   }
-
-
   goto(url) {
-
     this.router.navigate([url]);
-
   }
 
 }
