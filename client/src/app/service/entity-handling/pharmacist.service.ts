@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '..';
+import { ConfigService } from '../config.service';
 import { ApiService } from '../api.service';
 import { DermatologService } from './dermatolog.service';
 

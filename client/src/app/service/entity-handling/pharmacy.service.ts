@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Period } from 'app/shared/models/Period';
 import { parseFromMoment } from 'app/shared/utilities/date-and-time.utils';
 import { Moment } from 'moment';
@@ -16,14 +16,17 @@ export class PharmacyService {
   //shared data
   pickedTime : Period;
   pickedDate;
+  service: PharmacistService;
 
-  constructor(private dermatologs: DermatologService,
+
+  constructor(private injector: Injector,
     private config: ConfigService,
     private apiService: ApiService,
     private medications: MedicineService) { }
   storeData( time : Period, date : string){
     this.pickedTime = time;
     this.pickedDate = date;
+    this.service = this.injector.get(PharmacistService);
   }
   getAll() {
     return this.apiService.get(this.config._pharmacy_all_url);
