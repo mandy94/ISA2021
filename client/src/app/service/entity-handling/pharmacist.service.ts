@@ -11,7 +11,9 @@ export class PharmacistService {
 
   constructor( private apiService: ApiService,
     private configService : ConfigService) { }
-  getAll(){}
+  getAll(){
+    return this.apiService.get(this.configService.get_all_pharmacists());
+  }
   getById(id: number){
     return null;
   }
@@ -24,6 +26,9 @@ export class PharmacistService {
   }
   makeReservationForVisit(requestData ){  
     return this.apiService.post(this.configService.make_reservation_for_consultation(), requestData );
+  }
+  add_new_pharmacy( pharmacy: any){
+    return this.apiService.post(this.configService._add_new_pharmacy, pharmacy);
   }
   
 }

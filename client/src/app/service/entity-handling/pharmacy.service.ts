@@ -32,6 +32,7 @@ export class PharmacyService {
   getById(id: number) {
     return this.apiService.get(this.config.get_pharmacy_by_id_url(id));
   }
+ 
   getDermatologsByPharmacyId(id: number): any {
     return this.apiService.get(this.config.get_dermatologs_by_pharmacy_id(id));
   }

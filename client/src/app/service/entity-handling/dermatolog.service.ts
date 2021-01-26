@@ -12,6 +12,9 @@ export class DermatologService {
     private configService: ConfigService
   ) { }
  
+  getAll(){
+    return this.apiService.get(this.configService.get_all_dermatologs());
+  }
   getById(id:number){
     return this.apiService.get( this.configService.get_dermatologs_by_id(id));
   }
