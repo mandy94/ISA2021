@@ -15,6 +15,8 @@ import { UserVisitsComponent } from './user/user-history/user-visits/user-visits
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { RegisterObjectComponent } from './super-admin/register-object/register-object.component';
+import { RegisterEmployeeComponent } from './super-admin/register-employee/register-employee.component';
 
 export const routes: Routes = [
   {
@@ -70,18 +72,28 @@ export const routes: Routes = [
     path: 'orders',
     loadChildren: './orders/orders.module#OrdersModule',
   },
-  {
-    path: '**',
-    redirectTo: '/404'
-  },
+ 
   {
     path: 'user-home',
     component: UserPharmacySearchComponent
   },
- 
+
   {
     path: 'user-visits',
     component: UserVisitsComponent
+  },
+  {
+    path: 'register/objects',
+    component: RegisterObjectComponent
+  },
+  {
+    path: 'register/employees',
+    component: RegisterEmployeeComponent
+  },
+
+  {
+    path: '**',
+    redirectTo: '/404'
   }
 ];
 

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import pharmacy.controller.dto.AdminDTO;
 import pharmacy.model.entity.Pharmacy;
 
 public interface PharmacyDetailsRepository extends JpaRepository<Pharmacy, Long>{
@@ -21,6 +22,12 @@ public interface PharmacyDetailsRepository extends JpaRepository<Pharmacy, Long>
 			"				select pharmacist_id from appointment_at_pharmacist a" + 
 			"				where a.start_time <= :start and a.end_time >= :end and a.date = :date );", nativeQuery=true)
 	public List<Pharmacy> getAllPharmaciesByAvailablePharmacist(Long start, Long end, String date);
+
+	@Query(value="Select * from pharmacy where admin_id = :id", nativeQuery=true)
+	public Pharmacy getByAdminId(Long id);
+	
+	@Query(value="Select * from pharmacy where admin_id is null", nativeQuery=true)
+	public List<AdminDTO> getWithoutAdmins();
 	
 	
 

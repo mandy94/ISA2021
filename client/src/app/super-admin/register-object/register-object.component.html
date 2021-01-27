@@ -1,0 +1,49 @@
+<div>
+  <div fxLayout="row">
+    <div class="about-text">
+      <mat-card class="about">
+        <mat-card-title>
+          <h2 class="move-up">Spisak registrovanih apoteka</h2>
+        </mat-card-title>
+
+        <mat-divider></mat-divider>
+
+        <div fxLayout="column" fxLayoutAlign="space-around stretch" class="strech-btn">
+          <button mat-button (click)="openDialog()" class="move-up">Dodaj novu apoteku </button>
+
+          <table mat-table [dataSource]="pharmacySource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Naziv apoteke </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="adress">
+              <th mat-header-cell *matHeaderCellDef> Adresa apoteke </th>
+              <td mat-cell *matCellDef="let element"> {{element.adress}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Akcije</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedPharmacyColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPharmacyColumns;"></tr>
+          </table>
+
+
+        </div>
+      </mat-card>
+    </div>
+  </div>

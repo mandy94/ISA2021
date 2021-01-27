@@ -6,6 +6,7 @@ import { ConfigService } from '../config.service';
 })
 export class AdminService {
 
+
   constructor(
     private apiService: ApiService,
     private configService: ConfigService
@@ -14,5 +15,7 @@ export class AdminService {
   getAll(){
     return this.apiService.get(this.configService.get_all_admins());
   }
-  
+  getAvailableAdmins() {
+    return this.apiService.get(this.configService.get_withouth_pharmacy());
+  }
 }

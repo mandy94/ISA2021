@@ -32,7 +32,7 @@ public class UserController {
 	public User loadById(@PathVariable Long userId) {
 		return this.userService.findById(userId);
 	}
-
+	
 	@GetMapping("/user/all")
 	@PreAuthorize("hasRole('ADMIN')")
 	public List<User> loadAll() {

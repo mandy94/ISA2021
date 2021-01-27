@@ -6,9 +6,6 @@ import { Period } from 'app/shared/models/Period';
 })
 export class ConfigService {
  
-  
-
-
   private _api_url = 'http://localhost:8081/api';
   private _auth_url = 'http://localhost:8081/auth';
   private _user_url = this._api_url + '/user';
@@ -98,6 +95,13 @@ export class ConfigService {
   get _pharmacy_all_url(): string{
     return this._api_url + '/pharmacy/all'; 
   }
+  get_all_pharmacies():string {
+    return this._api_url + '/pharmacy/all'; 
+  }
+  get_pharmacies_withouth_admins(): string {
+    return this._api_url + '/pharmacy/without/admin'; 
+  }
+ 
   get_pharmacy_by_id_url( id: number): string{
     return this._api_url + '/pharmacy/' + id; 
   }
@@ -112,6 +116,9 @@ export class ConfigService {
   }
   get_available_pharmacist_in_pharmacy(id : number): string{
     return this._api_url + '/pharmacy/' + id + '/available/pharmacists';
+  }
+  get _add_new_pharmacy(): string{
+    return this._api_url + '/pharmacy/add'; 
   }
 
   // APPOINTMENT CONTROLLER
@@ -137,7 +144,9 @@ export class ConfigService {
   }
   
   // PHARMACIST CONTROLLER
-
+  get_all_pharmacists(): string {
+    return this._api_url + '/pharmacist/all';
+  }
   get_available_pharmacist_on_date_and_time(): string {
     throw new Error('Method not implemented.');
   }
@@ -153,6 +162,10 @@ export class ConfigService {
   
   }
   // DERMATOLOG CONTROLLER
+  get_all_dermatologs(): string {
+    return this._api_url + '/dermatolog/all';
+  }
+ 
   get_dermatologs_by_id(id:number):string{
     throw new Error('Method not implemented.');
   }
@@ -162,4 +175,17 @@ export class ConfigService {
   get_workingtime_for_dermatolog_in_phamracy(dermatolog: number, pharacy:number):string{
     return this._api_url + '/dermatolog/' + dermatolog + '/pharmacy/' + pharacy +'/business-hours';
   }
+
+  // ADMIN CONTROLLER
+  get_all_admins(): string {
+   return this._api_url + '/admin/all';
+  }
+  get _add_new_admin() :string{
+    return this._api_url + '/admin/add';
+  }
+  get_withouth_pharmacy(){
+    return this._api_url +'/admin/withouth/pharmacy';
+  }
+  
+
 }

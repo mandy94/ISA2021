@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PharmacyService, UserService } from 'app/service';
+import {  UserService } from 'app/service';
+import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 
 @Component({
   selector: 'app-admin',

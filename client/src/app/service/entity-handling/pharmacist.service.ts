@@ -7,15 +7,18 @@ import { DermatologService } from './dermatolog.service';
   providedIn: 'root'
 })
 export class PharmacistService {
-  
+ 
 
   constructor( private apiService: ApiService,
     private configService : ConfigService) { }
   getAll(){
-    return this.apiService.get(this.configService.get_all_pharmacists());
+    return this.apiService.get(this.configService.get_all_pharmacies());
   }
   getById(id: number){
     return null;
+  }
+  getPharmaciesWithouthAdmins() {
+    return this.apiService.get(this.configService.get_pharmacies_withouth_admins());
   }
   
   getByPharmacyId( id:number){

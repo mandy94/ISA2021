@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PharmacyService } from 'app/service';
+import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 import { TimePickerService } from 'app/service/static-data/time-picker.service';
 
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';

@@ -17,6 +17,22 @@ public class AppointmentAtDermatologServiceImpl implements AppointmentAtDermatol
 	public List<AppointmentAtDermatolog> getAppointmentsForUserId(Long id) {
 		return dermatologApprepo.getAppointmentsForUserId(id);
 	}
+	@Override
+	public List<AppointmentAtDermatolog> getAppointmentsHistoryForUserId(Long id) {
+		return dermatologApprepo.getAppointmentsHistoryForUserId(id);
+	}
+	@Override
+	public List<AppointmentAtDermatolog> getAvailableAppointmentsAtDermatolog(Long id) {
+		return dermatologApprepo.getAvailableAppointemntsAtDermatolog(id);
+	}
+	@Override
+	public List<AppointmentAtDermatolog> getAvailableAppointmentsAtDermatologByPharmacy(Long id) {
+		return dermatologApprepo.getAvailableAppointmentsAtDermatologByPharmacy(id);
+	}
+	@Override
+	public List<AppointmentAtDermatolog> getReservedAppointemntsAtDermatologInPharmacy(Long userId, Long pharmacyId) {
+		return dermatologApprepo.getReservedAppointemntsAtDermatologInPharmacy(userId, pharmacyId);
+	}
 	
 
 }

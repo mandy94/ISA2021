@@ -18,7 +18,7 @@ public class PharmacistServiceImpl implements PharmacistService{
 
 	@Override
 	public List<User> getAll() {
-		return pharmacistRepo.findAll();
+		return pharmacistRepo.getAll();
 	}
 
 	@Override

@@ -2,11 +2,15 @@ package pharmacy.model.entity.appointments;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import pharmacy.model.entity.Pharmacy;
 import pharmacy.model.entity.User;
 
 @Entity
@@ -18,8 +22,11 @@ public class AppointmentAtDermatolog {
     private Long id;
     @ManyToOne
     private User dermatolog;
-    @ManyToOne
+    @JsonIgnore // dok se ne napravi DTO-ovi
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private User pacient;
+    @ManyToOne
+    private Pharmacy pharmacy;
     private String name;
     private int price;
     private Long startTime;

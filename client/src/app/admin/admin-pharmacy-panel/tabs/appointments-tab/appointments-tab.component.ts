@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { PharmacyService } from 'app/service';
-import { PharmacistService } from 'app/service/entity-handling/pharmacist.service';
+import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 import { VisitsAndAppointmentsService } from 'app/service/entity-handling/visits-and-appointments.service';
 import { CreateAppointmentComponent } from '../../dialogs/create-appointment/create-appointment.component';
 

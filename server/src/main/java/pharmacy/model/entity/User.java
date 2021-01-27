@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -65,6 +67,10 @@ public class User implements UserDetails{
     inverseJoinColumns = @JoinColumn(name = "pharmacy_id", referencedColumnName = "id"))
 	private List<Pharmacy> pharmacy = new ArrayList<Pharmacy>();
 	
+    @JsonIgnore
+    @OneToOne
+    private Pharmacy dedicated_pharmacy;
+    
     public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -84,8 +90,11 @@ public class User implements UserDetails{
     @JoinTable(name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
-    private List<Authority> authorities;
+    private List<Authority> authorities = new ArrayList<>();
 
+    public void addAuthority( Authority auth) {
+    	authorities.add(auth);
+    }
     public Long getId() {
         return id;
     }
@@ -186,6 +195,22 @@ public class User implements UserDetails{
 
 	public void setWork_role(String works_role) {
 		this.work_role = works_role;
+	}
+
+	public List<BusinessHours> getWorking_hours() {
+		return working_hours;
+	}
+
+	public void setWorking_hours(List<BusinessHours> working_hours) {
+		this.working_hours = working_hours;
+	}
+
+	public Pharmacy getDedicated_pharmacy() {
+		return dedicated_pharmacy;
+	}
+
+	public void setDedicated_pharmacy(Pharmacy dedicated_pharmacy) {
+		this.dedicated_pharmacy = dedicated_pharmacy;
 	}
 
 }

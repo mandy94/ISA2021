@@ -46,6 +46,11 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { CreateAppointmentComponent } from './admin/admin-pharmacy-panel/dialogs/create-appointment/create-appointment.component';
 import { PharmacistAppointmentReservationComponent } from './pharmacy/pharmacist-appointment-reservation/pharmacist-appointment-reservation.component';
 import { DermatologAppointmentReservationComponent } from './pharmacy/dermatolog-appointment-reservation/dermatolog-appointment-reservation.component';
+import { RegisterObjectComponent } from './super-admin/register-object/register-object.component';
+import { RegisterEmployeeComponent } from './super-admin/register-employee/register-employee.component';
+import { AddPharmacyDialogComponent } from './super-admin/register-object/dialogs/add-pharmacy-dialog/add-pharmacy-dialog.component';
+import { AddAdminDialogComponent } from './super-admin/register-employee/dialogs/add-admin-dialog/add-admin-dialog.component';
+
 
 
 
@@ -72,6 +77,8 @@ import { DermatologAppointmentReservationComponent } from './pharmacy/dermatolog
     UserVisitsComponent,
     UserPharmacySearchComponent,
     GuestComponent,
+    RegisterObjectComponent,
+    RegisterEmployeeComponent,
     DermatologComponent,
     UserReservationsComponent,
     UserPrescriptionsComponent,
@@ -80,7 +87,10 @@ import { DermatologAppointmentReservationComponent } from './pharmacy/dermatolog
     SuperAdminComponent,
     CreateAppointmentComponent,
     PharmacistAppointmentReservationComponent,
-    DermatologAppointmentReservationComponent
+    DermatologAppointmentReservationComponent,
+    RegisterEmployeeComponent,
+    AddPharmacyDialogComponent,
+    AddAdminDialogComponent,
   ],
   imports: [
     
@@ -115,6 +125,6 @@ import { DermatologAppointmentReservationComponent } from './pharmacy/dermatolog
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CreateAppointmentComponent,SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
+  entryComponents: [AddAdminDialogComponent, AddPharmacyDialogComponent,CreateAppointmentComponent,SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }

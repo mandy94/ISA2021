@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PharmacyService, UserService } from 'app/service';
-import { MatDialog } from '@angular/material/dialog';
+
+import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
+
 import { PrescriptionService } from 'app/service/entity-handling/prescription.service';
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 

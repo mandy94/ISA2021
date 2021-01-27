@@ -11,7 +11,10 @@ import pharmacy.model.entity.appointments.AppointmentAtPharmacist;
 
 public interface AppointmentAtPharmacistRepository extends JpaRepository<AppointmentAtPharmacist, Long> {
 	
-	@Query("Select e from AppointmentAtPharmacist e where e.pacient.id = :id")
+	@Query("Select e from AppointmentAtPharmacist e where e.pacient.id = :id and e.status = 'Rezervisan'")
 	List<AppointmentAtPharmacist> getAppointmentsForUserId(@Param("id") Long id);
+	
+	@Query("Select e from AppointmentAtPharmacist e where e.pacient.id = :id and e.status = 'Odrzan'")
+	List<AppointmentAtPharmacist> getAppointmentsHistoryForUserId(Long id);
 
 }

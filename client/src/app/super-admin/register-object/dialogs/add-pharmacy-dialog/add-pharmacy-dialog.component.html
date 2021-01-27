@@ -1,0 +1,45 @@
+<mat-card>
+  <h2> Dodavanje nove apoteke</h2>
+  <form class="example-form" [formGroup]="addPharmacyGroup">
+    <mat-form-field class="full-width">
+      <mat-label>Naziv apoteke</mat-label>
+      <input matInput  formControlName="nameControl">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Adresa apoteke</mat-label>
+      <textarea matInput  formControlName="adressControl"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label><span *ngIf="!data.admins">Odaberite administratora sistema</span>
+        <span *ngIf="data.admins" style="color: red;">Nema slobodnih administratora. Dodajte prvo administratora.</span>
+      </mat-label>
+      <mat-select formControlName="adminControl">
+        <mat-option *ngFor="let item of data.admins" [value]="item">
+          {{ item.firstName }} {{ item.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Odaberite zaposlene dermatologe</mat-label>
+      <mat-select multiple  formControlName ="dermatologsControl">
+        <mat-option *ngFor="let item of data.dermatologs" [value]="item">
+          {{ item.firstName }} {{ item.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Odaberite zaposlene farmaceute</mat-label>
+      <mat-select multiple  formControlName="pharmacistsControl">
+        <mat-option *ngFor="let item of data.pharmacists" [value]="item">
+          {{ item.firstName }} {{ item.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+<button mat-button (click)="addPharmacy()" [disabled]="!canSubmit()"> Zavrsi unos </button>
+
+  </form>
+</mat-card>

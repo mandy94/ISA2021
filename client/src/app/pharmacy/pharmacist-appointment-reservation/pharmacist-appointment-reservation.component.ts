@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PharmacyService, UserService } from 'app/service';
+import {  UserService } from 'app/service';
+import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 import { PharmacistService } from 'app/service/entity-handling/pharmacist.service';
-import { VisitsAndAppointmentsService } from 'app/service/entity-handling/visits-and-appointments.service';
 
 @Component({
   selector: 'app-pharmacist-appointment-reservation',
