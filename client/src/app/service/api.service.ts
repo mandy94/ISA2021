@@ -65,6 +65,17 @@ export class ApiService {
 
   }
 
+  postTyped<T>(path: string, body: any, customHeaders?: HttpHeaders): Observable<T> {
+    if (!customHeaders) {
+      customHeaders = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      });
+    }
+    return this.http.post<T>(path, body, {headers: customHeaders})
+    .pipe(catchError(this.checkError.bind(this)));
+  }
+
   put(path: string, body: any): Observable<any> {
     return this.request(path, body, RequestMethod.Put);
   }

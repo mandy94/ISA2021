@@ -36,7 +36,7 @@ export class CreateAppointmentComponent implements OnInit {
 
   ngOnInit() {
     this.pacientList = this.pacientService.getAll();
-    //this.dermotologList = this.dermologService.getAll();
+    this.dermotologList = [];
   }
   submit(){
     let app = new Appointment(this.newAppointment.value);

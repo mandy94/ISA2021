@@ -5,6 +5,24 @@ import {UserService} from './user.service';
 import {ConfigService} from './config.service';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { StateStorageService, TOKEN, TOKEN_PAYLOAD } from './state-storage.service';
+import jwt_decode from "jwt-decode";
+
+export interface UserTokenState {
+  accessToken: string;
+  expiresIn: number;
+}
+
+
+export interface TokenPayload {
+  iss: string;
+  sub: string;
+  aud: string;
+  iat: number;
+  exp: number;
+  pharmacyId?: number;
+}
+
 
 @Injectable()
 export class AuthService {
@@ -13,11 +31,10 @@ export class AuthService {
     private apiService: ApiService,
     private userService: UserService,
     private config: ConfigService,
-    private router: Router
+    private router: Router,
+    private stateStorageService: StateStorageService,
   ) {
   }
-
-  private access_token = null;
 
   login(user) {
     const loginHeaders = new HttpHeaders({
@@ -29,10 +46,12 @@ export class AuthService {
       'username' : user.username,
       'password' : user.password
     };
-    return this.apiService.post(this.config.login_url, JSON.stringify(body), loginHeaders)
+    return this.apiService.postTyped<UserTokenState>(this.config.login_url, JSON.stringify(body), loginHeaders)
       .pipe(map((res) => {
         console.log('Login success');
-        this.access_token = res.accessToken;
+        const tokenPayload = jwt_decode<TokenPayload>(res.accessToken);
+        this.stateStorageService.store(TOKEN, res.accessToken);
+        this.stateStorageService.store(TOKEN_PAYLOAD, tokenPayload);
       }));
   }
 
@@ -49,7 +68,6 @@ export class AuthService {
 
   logout() {
       this.userService.currentUser = null;
-      this.access_token = null; 
       this.router.navigate(['/login']);
   }
 
@@ -65,11 +83,11 @@ export class AuthService {
   }
 
   tokenIsPresent() {
-    return this.access_token != undefined && this.access_token != null;
+    return this.stateStorageService.retrieve(TOKEN) !== null;
   }
 
   getToken() {
-    return this.access_token;
+    return this.stateStorageService.retrieve(TOKEN);
   }
 
 }
