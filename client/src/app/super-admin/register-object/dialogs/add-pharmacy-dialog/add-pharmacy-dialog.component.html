@@ -11,8 +11,8 @@
       <textarea matInput  formControlName="adressControl"></textarea>
     </mat-form-field>
     <mat-form-field class="full-width">
-      <mat-label><span *ngIf="!data.admins">Odaberite administratora sistema</span>
-        <span *ngIf="data.admins" style="color: red;">Nema slobodnih administratora. Dodajte prvo administratora.</span>
+      <mat-label><span *ngIf="canSubmit()">Odaberite administratora sistema</span>
+        <span *ngIf="!canSubmit()" style="color: red;">Nema slobodnih administratora. Dodajte prvo administratora.</span>
       </mat-label>
       <mat-select formControlName="adminControl">
         <mat-option *ngFor="let item of data.admins" [value]="item">

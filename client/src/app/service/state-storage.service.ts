@@ -9,7 +9,11 @@ export const TOKEN = 'token';
 export class StateStorageService {
 
     store(key: string, value: any) {
-        localStorage.setItem(key, JSON.stringify(value));
+        if (typeof value === 'string') {
+            localStorage.setItem(key, JSON.stringify(value));
+            
+            return;
+        }
     }
 
     retrieve(key: string) {

@@ -39,7 +39,7 @@ export class AddPharmacyDialogComponent {
       
   }
   canSubmit(){
-    if(this.data.admins)
+    if(this.data.admins!=undefined)
       return true;
       else
       return false;

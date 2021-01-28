@@ -41,13 +41,15 @@ export class RegisterObjectComponent implements OnInit {
       data : {
         'pharmacists' : this.pharmacists,
         'dermatologs' : this.dermatologs,
-        'admins':  this.admins == [] ? undefined : this.admins,
+        'admins':  this.admins.length  === 0? undefined : this.admins,
       }
       
     });
+    
 
     dialogRef.afterClosed().subscribe(result => {
-      this.pharmacySource = result     
+      if( result)
+        this.pharmacySource = result     
     });
   }
 
