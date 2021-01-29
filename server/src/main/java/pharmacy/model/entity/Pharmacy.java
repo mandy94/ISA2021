@@ -35,6 +35,9 @@ public class Pharmacy {
 	
 	@ManyToMany
 	private List<User> employee = new ArrayList<User>(); // dermatologs, phramcist and admin
+
+	@OneToMany
+	private List<StockItem> has_medicines = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.MERGE)
@@ -77,6 +80,13 @@ public class Pharmacy {
 	public void setAdmin(User admin) {
 		this.admin = admin;
 	}
+	public List<StockItem> getHas_medicines() {
+		return has_medicines;
+	}
+	public void setHas_medicines(List<StockItem> has_medicines) {
+		this.has_medicines = has_medicines;
+	}
+	
 		  
 		  
 }

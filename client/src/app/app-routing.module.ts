@@ -17,6 +17,7 @@ import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-det
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { RegisterObjectComponent } from './super-admin/register-object/register-object.component';
 import { RegisterEmployeeComponent } from './super-admin/register-employee/register-employee.component';
+import { RegisterMedicationComponent } from './super-admin/register-medication/register-medication.component';
 
 export const routes: Routes = [
   {
@@ -89,6 +90,10 @@ export const routes: Routes = [
   {
     path: 'register/employees',
     component: RegisterEmployeeComponent
+  },
+  {
+    path: 'register/medication',
+    component: RegisterMedicationComponent
   },
 
   {

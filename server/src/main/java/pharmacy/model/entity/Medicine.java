@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,6 +36,8 @@ public class Medicine {
     private Manufacturer manufacturer;
     @ManyToMany
     private List<Ingredient> ingredients = new ArrayList<>();
+    @OneToOne
+    private StockItem stock = new StockItem(); 
     @ManyToMany
     private List<Offer> inOffers = new ArrayList<>();
     @ManyToMany
@@ -91,12 +95,7 @@ public class Medicine {
 	public void setWarningNotes(String warningNotes) {
 		this.warningNotes = warningNotes;
 	}
-	public List<Ingredient> getIngredients() {
-		return ingredients;
-	}
-	public void setIngredients(ArrayList<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
+
 	public Medicine getMedicine() {
 		return medicine;
 	}
@@ -151,5 +150,21 @@ public class Medicine {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public StockItem getStock() {
+		return stock;
+	}
+	public void setStock(StockItem stock) {
+		this.stock = stock;
+	}
+	@Override
+	public String toString() {
+		return "Medicine [id=" + id + ", code=" + code + ", name=" + name + ", type=" + type + ", shape=" + shape
+				+ ", mandatoryPrescription=" + mandatoryPrescription + ", warningNotes=" + warningNotes
+				+ ", initialPrice=" + initialPrice + ", currentPrice=" + currentPrice + ", activeDiscount="
+				+ activeDiscount + ", manufacturer=" + manufacturer + ", ingredients=" + ingredients + ", stock="
+				+ stock + ", inOffers=" + inOffers + ", inOrders=" + inOrders + ", medicine=" + medicine
+				+ ", replacements=" + replacements + "]";
+	}
+	
 	
 }

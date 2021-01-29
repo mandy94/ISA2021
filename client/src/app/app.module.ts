@@ -51,6 +51,11 @@ import { RegisterEmployeeComponent } from './super-admin/register-employee/regis
 import { AddPharmacyDialogComponent } from './super-admin/register-object/dialogs/add-pharmacy-dialog/add-pharmacy-dialog.component';
 import { AddAdminDialogComponent } from './super-admin/register-employee/dialogs/add-admin-dialog/add-admin-dialog.component';
 
+import { AddMedicationDialogComponent } from './super-admin/register-medication/dialogs/add-medication-dialog/add-medication-dialog.component';
+import { RegisterMedicationComponent } from './super-admin/register-medication/register-medication.component';
+import { ConfirmationDialogComponent } from './shared/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { EditMedicineDialogComponent } from './super-admin/register-medication/dialogs/edit-medicine-dialog/edit-medicine-dialog.component';
+
 
 
 
@@ -91,6 +96,9 @@ import { AddAdminDialogComponent } from './super-admin/register-employee/dialogs
     RegisterEmployeeComponent,
     AddPharmacyDialogComponent,
     AddAdminDialogComponent,
+    RegisterMedicationComponent,
+    AddMedicationDialogComponent,
+    EditMedicineDialogComponent,
   ],
   imports: [
     
@@ -125,6 +133,6 @@ import { AddAdminDialogComponent } from './super-admin/register-employee/dialogs
     MatIconRegistry,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddAdminDialogComponent, AddPharmacyDialogComponent,CreateAppointmentComponent,SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
+  entryComponents: [AddMedicationDialogComponent,EditMedicineDialogComponent,ConfirmationDialogComponent,AddMedicationDialogComponent, AddAdminDialogComponent, AddPharmacyDialogComponent,CreateAppointmentComponent,SchedulingVisitComponent,MedicationStockDialogComponent, PharmacyDetailsDialogComponent,CreateDiscountsComponent,AddAlergenComponent, EditUsersInfoComponent,EditDermatologistComponent, EditMedicationComponent]
 })
 export class AppModule { }

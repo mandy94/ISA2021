@@ -6,11 +6,13 @@ import { Period } from 'app/shared/models/Period';
 })
 export class ConfigService {
  
+ 
   private _api_url = 'http://localhost:8081/api';
   private _auth_url = 'http://localhost:8081/auth';
   private _user_url = this._api_url + '/user';
 
   private _refresh_token_url = this._api_url + '/refresh';
+  
 
   get refresh_token_url(): string {
     return this._refresh_token_url;
@@ -120,6 +122,9 @@ export class ConfigService {
   get _add_new_pharmacy(): string{
     return this._api_url + '/pharmacy/add'; 
   }
+  delete_pharamcy_by_id(id):string{
+    return this._api_url +'/pharmacy/delete/' +id ;
+  }
 
   // APPOINTMENT CONTROLLER
   get_history_appointments_at_dermatolog_for_pacient(id: number):string{
@@ -152,7 +157,7 @@ export class ConfigService {
   }
   
   get_reserved_consultations_by_user(id :number): string{
-    return this._api_url + 'pharmacist/user/' + id; 
+    return this._api_url + '/pharmacist/user/' + id; 
   }
   make_reservation_for_consultation(): string {
    return this._api_url + '/pharmacist/create/reservation';
@@ -160,6 +165,9 @@ export class ConfigService {
   cancel_consultation(id: number): string {
     return this._api_url + '/pharmacist/cancel/reservation/' + id;
   
+  }
+  delete_pharamcist_by_id(id):string{
+    return this._api_url +'/pharmacist/delete/' +id ;
   }
   // DERMATOLOG CONTROLLER
   get_all_dermatologs(): string {
@@ -175,7 +183,9 @@ export class ConfigService {
   get_workingtime_for_dermatolog_in_phamracy(dermatolog: number, pharacy:number):string{
     return this._api_url + '/dermatolog/' + dermatolog + '/pharmacy/' + pharacy +'/business-hours';
   }
-
+  delete_dermatolog_by_id(id):string{
+    return this._api_url +'/dermatolog/delete/' +id ;
+  }
   // ADMIN CONTROLLER
   get_all_admins(): string {
    return this._api_url + '/admin/all';
@@ -186,6 +196,35 @@ export class ConfigService {
   get_withouth_pharmacy(){
     return this._api_url +'/admin/withouth/pharmacy';
   }
+  delete_admin_by_id(id):string{
+    return this._api_url +'/admin/delete/' +id ;
+  }
+ 
   
+  // MEDICATIONA CONTROLLER
+  get_all_registed_medication(): string{
+    return this._api_url +'/medication/all';
+  }
+  get_all_medication_by_pharmacy_id(id: number): string {
+    return this._api_url +'/medication/pharmacy/' +id;
+  }
+  get_all_manufacturers(): string {
+    return this._api_url +'/medication/manufacturers/all';
+  }
+  get_all_ingrigients(): string {
+    return this._api_url +'/medication/ingridients/all';
+  }
+   get_all_discounts(): string {
+    return this._api_url +'/medication/discounts/all';
+  }
+ 
+ 
+  
+  add_new_medicine(): string {
+    return this._api_url +'/medication/create';
+  }
+  delete_medication_by_id(id: any): string {
+    return this._api_url +'/medication/delete/' +id;
+  }
 
 }

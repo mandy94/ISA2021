@@ -1,5 +1,9 @@
 package pharmacy.model.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DateAndTimeConverter {
 
 	public static Long convertTimeToDBFormat(String time) {
@@ -35,5 +39,20 @@ public class DateAndTimeConverter {
 	}
 	public static String convertDateToDBFormat(String date) {
 		return date.substring(0,10);
+	}
+	public static boolean isDateBehindToday(String date) {
+		
+		Date today =java.util.Calendar.getInstance().getTime();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	    try {
+			Date other = formatter.parse(formatter.format(new Date()));
+			if(other.compareTo(today) < 0){
+				return true;				
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    return false;
+		
 	}
 }

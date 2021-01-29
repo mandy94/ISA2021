@@ -112,21 +112,25 @@ INSERT INTO USER_AUTHORITY (user_id, authority_id) VALUES (3, 5);
 INSERT INTO USER_AUTHORITY (user_id, authority_id) VALUES (4, 3);
 INSERT INTO USER_AUTHORITY (user_id, authority_id) VALUES (5, 4);
 
+INSERT INTO DISCOUNT(about, valid_from, valid_until,value, is_active) VALUES ('Sezonsko snizenje', '17/01/2021', '28/02/2021', 40, true);
+INSERT INTO DISCOUNT (about, valid_from, valid_until,value, is_active) VALUES ('Pojedinacne akcija', '22/02/2021', '25/02/2021', 35, false);
+INSERT INTO DISCOUNT (about, valid_from, valid_until,value, is_active) VALUES ('Poklon paket', '31/02/2021', '31/03/2021', 20, false);
+
 
 INSERT INTO MANUFACTURER(name, adress) VALUES('HEMOFARM AD VRŠAC', 'Beogradski put bb, Vršac');
 INSERT INTO MANUFACTURER(name, adress) VALUES('GALENIKA AD BEOGRAD', 'Batajnički drum b.b., Beograd');
 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CR02', 50, 50, true , 'Panklav Forte', 'Prasak za oralnu suspenziju', 'Staklena bočica', null, null, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'B01AC06', 350, 350, false , 'Midol', 'Gastrorezistentna tableta', 'blister', null, null, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA04', 350, 350, false , '	Amoksicilin HF', 'Tvrda kapsula', 'blister', null, null, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'A06AB02', 350, 350, false , '	Panlax', 'Gastrorezistentna tableta', 'blister', null, null, 1, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CR02', 50, 50, true , 'Panklav Forte', 'Prasak za oralnu suspenziju', 'Staklena bočica', null, 1, 1, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'B01AC06', 350, 350, false , 'Midol', 'Gastrorezistentna tableta', 'Blister', null, 1, 1, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA04', 350, 350, false , '	Amoksicilin HF', 'Tvrda kapsula', 'Blister', null, 2, 1, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'A06AB02', 350, 350, false , '	Panlax', 'Gastrorezistentna tableta', 'Blister', null, 3, 1, null); 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CE30', 350, 350, true , '	Pancillin', 'Prašak za suspenziju za injekciju', 'Staklena bočica', null, null, 1, null); 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , '	Hemomycin', 'Prašak za suspenziju za injekciju', 'Staklena bočica', null, null, 1, null); 
 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'N02BE01', 350, 350, true , '	Paracetamol', 'Tableta', 'Blister', null, null, 2, null); 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA04', 350, 350, true , '	Sinacilin', 'Tableta', 'Blister', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA01', 350, 350, true , '	Pentrexyl', 'Tableta', 'Blister', null, null, 2, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA01', 350, 350, true , '	Pentrexyl', 'Tableta', 'Blister', null, 3, 2, null); 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'S01AA30', 350, 350, true , '	Enbecin', 'Mast za oči', 'Tuba', null, null, 2, null); 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01EE01', 350, 350, true , '	Bactrim', 'Sirup', 'Staklena bočica', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , '	Defrinol', 'Sirup', 'Staklena bočica', null, null, 2, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , '	Defrinol', 'Sirup', 'Staklena bočica', null, 2, 2, null); 
 

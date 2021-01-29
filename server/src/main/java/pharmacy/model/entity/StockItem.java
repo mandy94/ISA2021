@@ -6,19 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-public class PharmacyMedicine {
+public class StockItem {
 
 	
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;    
     
-    
-	@ManyToOne
+	@ManyToOne 
 	private Pharmacy pharmacy;
+	@OneToOne
+	private Medicine medicine;
 	
 	private int availableQuantity;
 
@@ -46,6 +48,14 @@ public class PharmacyMedicine {
 
 	public void setPharmacy(Pharmacy pharmacy) {
 		this.pharmacy = pharmacy;
+	}
+
+	public Medicine getMedicine() {
+		return medicine;
+	}
+
+	public void setMedicine(Medicine medicine) {
+		this.medicine = medicine;
 	}
 	
 	

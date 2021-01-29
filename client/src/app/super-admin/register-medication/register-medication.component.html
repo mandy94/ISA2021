@@ -1,0 +1,60 @@
+<div>
+  <div fxLayout="row">
+    <div class="about-text">
+      <mat-card class="about">
+        <mat-card-title>
+          <h2 class="move-up">Spisak registrovanih lekova</h2>
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <div fxLayout="column" fxLayoutAlign="space-around stretch" >
+          <form >
+            <mat-form-field class="width-45">
+              <mat-label>Unesi ime leka za pretragu</mat-label>
+              <input matInput >
+            </mat-form-field>
+            <button mat-button class="down"> Trazi</button>
+
+            <button mat-button (click)="onCreate()" class="float-r down">Dodaj novi lek <mat-icon>add</mat-icon></button>
+          </form>          
+
+          <table mat-table [dataSource]="medicationSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Sifra </th>
+              <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Naziv leka </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> Tip i oblik lika</th>
+              <td mat-cell *matCellDef="let element"> {{element.type}} {{element.shape}}  </td>
+            </ng-container>
+            <ng-container matColumnDef="mandatoryPrescription">
+              <th mat-header-cell *matHeaderCellDef> Recept</th>
+              <td mat-cell *matCellDef="let element"> {{element.mandatoryPrescription}}  </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef>  Cena  </th>
+              <td mat-cell *matCellDef="let element"> {{element.initialPrice}}, ternutno {{element.currentPrice}}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Akcije</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="onEdit(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button (click)="onDelete(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedMedicationColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedMedicationColumns;"></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+  </div>

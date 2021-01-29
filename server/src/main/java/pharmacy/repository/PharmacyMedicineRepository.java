@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pharmacy.model.entity.PharmacyMedicine;
+import pharmacy.model.entity.StockItem;
 
-public interface PharmacyMedicineRepository extends JpaRepository<PharmacyMedicine, Long> {
+public interface PharmacyMedicineRepository extends JpaRepository<StockItem, Long> {
 
 
-		List<PharmacyMedicine> findAllByPharmacy(long pharmacyId);
-		List<PharmacyMedicine> findAllByPharmacyAndAvailableQuantityGreaterThan(long pharmacyId, int availableQuantity);
+		List<StockItem> findAllByPharmacy(long pharmacyId);
+		List<StockItem> findAllByPharmacyAndAvailableQuantityGreaterThan(long pharmacyId, int availableQuantity);
 }

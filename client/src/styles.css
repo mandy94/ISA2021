@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-.my-table-style {
+/* .my-table-style {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -24,7 +24,8 @@
     text-align: center;
     background-color: #6b44f8;
     color: white;
-  }
+  } */
+ .mat-header-cell {    text-align: center;    }
 .left-distance{
     margin-left: 10%;
     margin-bottom: 5px;
