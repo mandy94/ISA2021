@@ -6,7 +6,7 @@ import { ApiService } from '../api.service';
   providedIn: 'root'
 })
 export class MedicationService {
- 
+  
   constructor(
     private apiService: ApiService,
     private configService: ConfigService
@@ -24,7 +24,10 @@ export class MedicationService {
   getManufacturers(): any {
     return this.apiService.get(this.configService.get_all_manufacturers());
   }
-
+  getDiscounts() {
+    return this.apiService.get(this.configService.get_all_discounts());
+  }
+ 
   getAllRegisteredMeds(){
     return this.apiService.get( this.configService.get_all_registed_medication());
   }
