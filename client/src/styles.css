@@ -49,8 +49,14 @@
 .width-30{
   width: 30%;
 }
+.width-40{
+  width: 40%;
+}
 .width-45{
   width: 45%;
+}
+.width-50{
+  width: 50%;
 }
 .full-width{
   width: 100%  

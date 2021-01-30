@@ -24,11 +24,12 @@ export class RegisterMedicationComponent implements OnInit {
   }
   onCreate() {
     const dialogRef = this.dialog.open(AddMedicationDialogComponent, {
-      width: '650px'
+      width: '780px'
     });
     dialogRef.afterClosed().subscribe(result => {
-     this.medicationSource = result;
-     console.log(result);
+      if(result)
+       this.medicationSource = result;
+     
     });
   }
 

@@ -1,72 +1,97 @@
 <mat-card>
   <h2> Dodavanje novog leka</h2>
   <form [formGroup]="addMedicationGroup">
-    <mat-form-field class="full-width">
+    <mat-form-field class="width-30 margin-l">
       <mat-label>Šifra leka</mat-label>
-      <input matInput formControlName="codeControl" autocomplete="false">
+      <input matInput formControlName="codeControl" autocomplete="false" required>
     </mat-form-field>
 
+    <mat-form-field class="small margin-l">
+      <mat-label> Cena leka</mat-label>
+      <input matInput formControlName="priceControl" autocomplete="false" required>
+    </mat-form-field>   
+
+    <mat-form-field class="width-30 margin-l">
+      <mat-label> Dodaj popust na lek </mat-label>
+      <mat-select formControlName="discountControl">
+        <mat-option *ngFor="let item of discountsList" [value]="item.id">
+          {{item.about}} - {{item.value}}%
+        </mat-option>
+      </mat-select>
+    </mat-form-field>  
+
+    
     <mat-form-field class="full-width">
-      <mat-label>Naziv leka</mat-label>
-      <input matInput formControlName="nameControl">
+      <mat-label> Naziv leka</mat-label>
+      <input matInput formControlName="nameControl" autocomplete="false" required>
     </mat-form-field>
-    <mat-form-field class="width-45 margin-r">
-      <mat-label>Tip leka</mat-label>
-      <mat-select formControlName="typeControl">
+    <mat-form-field class="width-30 margin-r">
+      <mat-label> Tip leka</mat-label>
+      <mat-select formControlName="typeControl" required>
         <mat-option *ngFor="let item of medTypeList" [value]="item">
-          {{item}}
+          {{item}}  
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="width-45 margin-l">
-      <mat-label>Oblik leka</mat-label>
+    <mat-form-field class="width-30 margin-l" required> 
+      <mat-label> Oblik leka</mat-label>
       <mat-select formControlName="shapeControl">
         <mat-option *ngFor="let item of medShapeList" [value]="item">
           {{item}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field >
-      <mat-label>Cena leka</mat-label>
-      <input matInput formControlName="priceControl">
+    <mat-form-field class="width-30">
+      <mat-label> Proizvodjac leka</mat-label>
+      <mat-select formControlName="manufacturerControl" required>
+        <mat-option *ngFor="let item of manufacturersList" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-form-field class="width-45 margin-l">
-        <mat-label>Dodaj popust na lek</mat-label>
-        <mat-select formControlName="discountControl">
-          <mat-option *ngFor="let item of discoutsList" [value]="item.id">
-            {{item.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+
     <div class="full-width">
-      <mat-label>Da li je obavezan recept?</mat-label>
-      <mat-radio-group aria-label="Da li je obavezan recept?" formControlName="mandatoryPrescriptionControl">
-        <mat-radio-button value="1" >Da </mat-radio-button>
+      <mat-label> Da li je obavezan recept?</mat-label>
+      <mat-radio-group aria-label="Da li je obavezan recept?" formControlName="mandatoryPrescriptionControl" required>
+        <mat-radio-button value="1">Da </mat-radio-button>
         <mat-radio-button value="2">Ne</mat-radio-button>
-        <mat-radio-button value="3">Mozda</mat-radio-button>
       </mat-radio-group>
-      <mat-form-field class="width-45 margin-l">
-        <mat-label>Proizvodjac leka</mat-label>
-        <mat-select formControlName="manufacturerControl">
-          <mat-option *ngFor="let item of manufacturersList" [value]="item.id">
-            {{item.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!-- <mat-form-field class="width-45 margin-l">
-        <mat-label>Sastojci leka</mat-label>
-        <mat-select formControlName="ingridientControl" multiple>
-          <mat-option *ngFor="let item of ingiridentList" [value]="item.id">
-            {{item.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> ako bude tebalo xd
-    --> 
     </div>
-   
+
+    <mat-form-field class="width-50 margin-l">
+      <mat-label>Sastojci leka</mat-label>
+      <mat-select formControlName="ingridientControl" multiple required >
+        <mat-option *ngFor="let item of ingiridentList" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="width-45">
+      <mat-label> Kontraindikacije koje lek moze da ispolji</mat-label>
+      <mat-select formControlName="sideEffectControl" multiple>
+        <mat-option *ngFor="let item of sideEffesctList" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width margin-l">
+      <mat-label> Dodaj zamenske lekove</mat-label>
+      <mat-select formControlName="replacementControl" multiple>
+        <mat-option *ngFor="let item of replacementList" [value]="item.id">
+          {{item.name}} - {{item.shape}}, {{item.manufacturer}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Posebna napomena prilikom uzimanja leka</mat-label>
+      <textarea matInput placeholder="Kome se preporucuje ili ne itd..."></textarea>
+    </mat-form-field>
+
   </form>
   <mat-card-actions>
-    <button mat-button (click)="onCreate()">Dodaj lek</button>
+    <button mat-button (click)="onCreate()" [disabled]="!addMedicationGroup.valid">Dodaj lek</button>
     <button mat-button (click)="onCancel()">Odustani</button>
   </mat-card-actions>
 </mat-card>
