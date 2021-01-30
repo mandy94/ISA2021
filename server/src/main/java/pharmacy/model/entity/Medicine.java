@@ -4,14 +4,15 @@ package pharmacy.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,17 +35,19 @@ public class Medicine {
     private Discount activeDiscount;
     @ManyToOne
     private Manufacturer manufacturer;
+    @ElementCollection
+    private List<String> sideEffects = new ArrayList<>();
     @ManyToMany
     private List<Ingredient> ingredients = new ArrayList<>();
-    @OneToOne
-    private StockItem stock = new StockItem(); 
+    @OneToMany
+    private List<StockItem> is_on_stock_at = new ArrayList<>(); 
     @ManyToMany
     private List<Offer> inOffers = new ArrayList<>();
     @ManyToMany
     private List<Order> inOrders = new ArrayList<>();
     
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Medicine medicine; // for selfreferencing 
     
     @JsonIgnore
@@ -150,21 +153,23 @@ public class Medicine {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public StockItem getStock() {
-		return stock;
+	
+	public List<String> getSideEffects() {
+		return sideEffects;
 	}
-	public void setStock(StockItem stock) {
-		this.stock = stock;
+	public void setSideEffects(List<String> sideEffects) {
+		this.sideEffects = sideEffects;
 	}
-	@Override
-	public String toString() {
-		return "Medicine [id=" + id + ", code=" + code + ", name=" + name + ", type=" + type + ", shape=" + shape
-				+ ", mandatoryPrescription=" + mandatoryPrescription + ", warningNotes=" + warningNotes
-				+ ", initialPrice=" + initialPrice + ", currentPrice=" + currentPrice + ", activeDiscount="
-				+ activeDiscount + ", manufacturer=" + manufacturer + ", ingredients=" + ingredients + ", stock="
-				+ stock + ", inOffers=" + inOffers + ", inOrders=" + inOrders + ", medicine=" + medicine
-				+ ", replacements=" + replacements + "]";
+	public List<Ingredient> getIngredients() {
+		return ingredients;
 	}
+	public List<StockItem> getIs_on_stock_at() {
+		return is_on_stock_at;
+	}
+	public void setIs_on_stock_at(List<StockItem> is_on_stock_at) {
+		this.is_on_stock_at = is_on_stock_at;
+	}
+
 	
 	
 }

@@ -19,6 +19,7 @@ public class CreateMedicationDTO {
     
     private Long activeDiscount;
     private Long manufacturer;
+    private List<String> sideEffects = new ArrayList<>();
     private List<Long> ingredients = new ArrayList<>();    
     private List<Long> replacements = new ArrayList<>();
 
@@ -114,6 +115,14 @@ public class CreateMedicationDTO {
 
 	public boolean getMandatoryPrescription() {
 		return mandatoryPrescription;
+	}
+
+	public List<String> getSideEffects() {
+		return sideEffects;
+	}
+
+	public void setSideEffects(List<String> sideEffects) {
+		this.sideEffects = sideEffects;
 	}
 
 	

@@ -22,7 +22,7 @@ public class DermatologServiceImpl implements DermatologService{
 	@Override
 	public List<BusinessHours> getDermatologBusinessHoursByPharmacy(Long dermatolog, Long pharmacy) {
 		
-		return businessHourRepo.getBusinessHoursForDermatologInPharmacy(dermatolog, pharmacy);
+		return businessHourRepo.getBusinessHoursForEmployeeInPharmacy(dermatolog, pharmacy);
 	}
 	@Override
 	public List<BusinessHours> getDermatologBusinessHours(Long id) {

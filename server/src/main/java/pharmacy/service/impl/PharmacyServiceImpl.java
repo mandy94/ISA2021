@@ -13,11 +13,10 @@ import pharmacy.model.entity.DateAndTimeConverter;
 import pharmacy.model.entity.Pharmacy;
 import pharmacy.model.entity.User;
 import pharmacy.model.entity.DTOs.AboutUserTimeTableDTO;
-import pharmacy.repository.OfferRepository;
+import pharmacy.repository.BusinessHoursRepository;
 import pharmacy.repository.PharmacyDetailsRepository;
 import pharmacy.repository.PharmacyEmployeeRepository;
 import pharmacy.service.DermatologService;
-import pharmacy.service.OfferService;
 import pharmacy.service.PharmacyService;
 @Service
 public class PharmacyServiceImpl implements PharmacyService{
@@ -31,6 +30,8 @@ public class PharmacyServiceImpl implements PharmacyService{
 	@Autowired
 	private DermatologService dermatologService;
 	
+	@Autowired
+	private BusinessHoursRepository businessHoursRepo; 
 	@Override
 	public List<User> getAllEmployeeByPharmacyId(Long id) {
 		 return employeeRepository.getAllByPharmacyId(id);
@@ -89,12 +90,22 @@ public class PharmacyServiceImpl implements PharmacyService{
 	}
 
 	@Override
-	public List<User> getAvailablePharmacistInPharmacyForDate(Long id, String start, String end, String date) {
+	public List<AboutUserTimeTableDTO> getAvailablePharmacistInPharmacyForDate(Long id, String start, String end, String date) {
 		List<User> temp = employeeRepository.getAllAvailablePharamacistInPharmacyForDateAndTime(id,DateAndTimeConverter.convertTimeToDBFormat(start), 
 				DateAndTimeConverter.convertTimeToDBFormat(end), date);
+		List<AboutUserTimeTableDTO> dto = new ArrayList<>();
 		for(User u : temp)
-			System.out.println(u.getEmail());
-		return temp;
+		{
+			u.setWorking_hours(businessHoursRepo.getBusinessHoursForEmployeeInPharmacy(u.getId(), id));
+			AboutUserTimeTableDTO newDto = new AboutUserTimeTableDTO();
+			newDto.setEmployeeAsDTO(u);
+			for( BusinessHours h: u.getWorking_hours()) {
+				newDto.setStartTime(DateAndTimeConverter.convertTimeFromDBFormat(h.getStartTime()));
+				newDto.setEndTime(DateAndTimeConverter.convertTimeFromDBFormat(h.getEndTime()));				
+			}
+			dto.add(newDto);
+		}
+		return dto;
 		
 	}
 

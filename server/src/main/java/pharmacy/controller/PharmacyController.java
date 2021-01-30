@@ -56,7 +56,7 @@ public class PharmacyController {
 		return pharmacyService.getAllPharmacistsByPharmacyId(id);
 	}
 	@PostMapping("/{id}/available/pharmacists")
-	public List<User> getAvailablePharmacistsForDateInPharmacy(@PathVariable Long id, @RequestBody DateAndTime requests) {
+	public List<AboutUserTimeTableDTO> getAvailablePharmacistsForDateInPharmacy(@PathVariable Long id, @RequestBody DateAndTime requests) {
 		return pharmacyService.getAvailablePharmacistInPharmacyForDate(id, requests.start, requests.end, requests.date.substring(0,10));
 	}
 	

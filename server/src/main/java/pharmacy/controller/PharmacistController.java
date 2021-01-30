@@ -44,7 +44,7 @@ public class PharmacistController {
 		return pharmacistAppointmentService.getAppointmentsForUserId(id);
 	}
 	@PostMapping("/create/reservation")
-	public void getAvailablePharmacyForAvailablePharmacistForDate(@RequestBody ConsultationReservationRequest requests) {
+	public void makeReservationForConsultation(@RequestBody ConsultationReservationRequest requests) {
 		pharmacistAppointmentService.makeReservationForConsultation(
 				requests.pharmacistId,
 				requests.pacientId,

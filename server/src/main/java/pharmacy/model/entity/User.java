@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -61,6 +62,8 @@ public class User implements UserDetails{
     @ManyToMany
     private List<BusinessHours> working_hours = new ArrayList<>();
     
+    @OneToMany
+    private List<Prescription> prescriptions = new ArrayList<>();
     @ManyToMany    
     @JoinTable(name = "users_work_in_pharmacies",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -211,6 +214,14 @@ public class User implements UserDetails{
 
 	public void setDedicated_pharmacy(Pharmacy dedicated_pharmacy) {
 		this.dedicated_pharmacy = dedicated_pharmacy;
+	}
+
+	public List<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(List<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
 	}
 
 }

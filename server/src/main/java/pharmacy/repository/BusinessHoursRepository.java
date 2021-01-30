@@ -11,5 +11,6 @@ public interface BusinessHoursRepository extends JpaRepository<BusinessHours, Lo
 	
 	@Query(value="Select * from business_hours b JOIN Pharmacy p ON p.id = b.at_pharmacy_id "
 			+ "where b.employee_id = :dermatolog and p.id = :pharmacy", nativeQuery=true)
-	List<BusinessHours> getBusinessHoursForDermatologInPharmacy(Long dermatolog, Long pharmacy);
+	List<BusinessHours> getBusinessHoursForEmployeeInPharmacy(Long dermatolog, Long pharmacy);
+
 }

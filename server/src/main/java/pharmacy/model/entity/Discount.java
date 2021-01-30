@@ -33,9 +33,6 @@ public class Discount {
     
     //--------------------------------------------------------------------
 
-	
-
-
 	public String getAbout() {
 		return about;
 	}
@@ -82,6 +79,14 @@ public class Discount {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
     
 }

@@ -120,17 +120,43 @@ INSERT INTO DISCOUNT (about, valid_from, valid_until,value, is_active) VALUES ('
 INSERT INTO MANUFACTURER(name, adress) VALUES('HEMOFARM AD VRŠAC', 'Beogradski put bb, Vršac');
 INSERT INTO MANUFACTURER(name, adress) VALUES('GALENIKA AD BEOGRAD', 'Batajnički drum b.b., Beograd');
 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CR02', 50, 50, true , 'Panklav Forte', 'Prasak za oralnu suspenziju', 'Staklena bočica', null, 1, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'B01AC06', 350, 350, false , 'Midol', 'Gastrorezistentna tableta', 'Blister', null, 1, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA04', 350, 350, false , '	Amoksicilin HF', 'Tvrda kapsula', 'Blister', null, 2, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'A06AB02', 350, 350, false , '	Panlax', 'Gastrorezistentna tableta', 'Blister', null, 3, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CE30', 350, 350, true , '	Pancillin', 'Prašak za suspenziju za injekciju', 'Staklena bočica', null, null, 1, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , '	Hemomycin', 'Prašak za suspenziju za injekciju', 'Staklena bočica', null, null, 1, null); 
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Diklofenak-kalijum', 2352);
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Aspirin', 4532);
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Ibuprofen', 6336);
+INSERT INTO INGREDIENT (name, code) VALUES ( 'cefaleksin', 8908); -- Palitrex
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Diazepam', 6806); -- bensedin
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Laktoza', 5789);-- bensedin
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Monohidrat', 2463);-- bensedin
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Magnezijum-stearat', 2322);-- bensedin
+INSERT INTO INGREDIENT (name, code) VALUES ( 'Povidon', 1223); -- bensedin
 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'N02BE01', 350, 350, true , '	Paracetamol', 'Tableta', 'Blister', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA04', 350, 350, true , '	Sinacilin', 'Tableta', 'Blister', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA01', 350, 350, true , '	Pentrexyl', 'Tableta', 'Blister', null, 3, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'S01AA30', 350, 350, true , '	Enbecin', 'Mast za oči', 'Tuba', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01EE01', 350, 350, true , '	Bactrim', 'Sirup', 'Staklena bočica', null, null, 2, null); 
-INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , '	Defrinol', 'Sirup', 'Staklena bočica', null, 2, 2, null); 
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01CA01', 350, 350, true , 'DEXTROSE / VIOSER 10%', 'Rastvor za infuziju', 'Glukoza', null, 3, 2, null); 
+
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'S01AA30', 350, 350, true , 'Anexate', 'Rastvor za injekciju', 'Flumazenil', null, null, 2, null); 
+
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01EE01', 350, 350, true , 'Bensedin', 'Tableta', 'Diazepan', null, null, 2, null); 
+
+INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , 'Palitrex', 'Prašak za oralnu suspenziju', 'Cefaleksin', null, 2, 2, null); 
+
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 3, 3);
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 4, 3);
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 5, 3);
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 6, 3);
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 7, 3);
+INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 4, 4);
+
+INSERT INTO prescription_item (amount, medicine_id) VALUES (2, 1); -- dve dekstroze
+INSERT INTO prescription_item (amount, medicine_id) VALUES (1, 4); -- jedan palitrex
+INSERT INTO prescription_item (amount, medicine_id) VALUES (1, 4); -- jos jedan palitrex
+INSERT INTO prescription_item (amount, medicine_id) VALUES (1, 3); -- odbijeno bensedin
+
+INSERT INTO prescription (code, date,pacient_id,status) VALUES (3456124, '30/01/2021', 1, 'Nov');
+INSERT INTO prescription (code, date,pacient_id,status) VALUES (3456938, '15/01/2021', 1, 'Nov');
+INSERT INTO prescription (code, date,pacient_id,status) VALUES (94762, '13/01/2021', 5, 'Odbijen');
+
+INSERT INTO prescription_item_medicine( prescription_id, item_medicine_id) VALUES ( 1 , 1);
+INSERT INTO prescription_item_medicine( prescription_id, item_medicine_id) VALUES ( 1 , 2); -- na provm receptu 2 leka
+INSERT INTO prescription_item_medicine( prescription_id, item_medicine_id) VALUES ( 2 , 3); -- na drugom jedan lek
+INSERT INTO prescription_item_medicine( prescription_id, item_medicine_id) VALUES ( 3 , 4); -- odbijeni lek. ne moze 5 kutija bensedina bre
+
 

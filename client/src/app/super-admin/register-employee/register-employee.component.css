@@ -39,6 +39,9 @@ mat-divider{
 
 }
 .strech-btn{
-    margin-top: 10%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
     width: 100%;
 }
+.mat-header-cell {    text-align: center;    }

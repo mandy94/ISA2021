@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'app/service';
 
 import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 
@@ -15,30 +16,58 @@ import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 
 export class PharmacyComponent implements OnInit {
   constructor(private _Activatedroute: ActivatedRoute,
+    private userService: UserService,
     private pharmacyService: PharmacyService,
-    private prescriptionService: PrescriptionService,  
- ) { }
+    private prescriptionService: PrescriptionService,
+  ) { }
   @Input() pharmacyId;
   @Input() dataType;
-  currentPharmacy;
- 
+
+  currentPharmacy={};
+  myId;
+
   medicationList;
   sortedMedicines;
-  prescrptionList;
-  
+  prescrptionList =[];
+
   searchText = new FormControl('');
   prescriptionCheckControl = new FormControl('');
-  pharmacistColumnsIndexes = [ 'name' , 'surname', 'rating'];  
-  pharmacistColumnsTitles = { name: 'Ime', surname:'Prezime', rating:'Ocena'};
+  pharmacistColumnsIndexes = ['name', 'surname', 'rating'];
+  pharmacistColumnsTitles = { name: 'Ime', surname: 'Prezime', rating: 'Ocena' };
 
   ngOnInit() {
-    
-    this.currentPharmacy = this.pharmacyService.getById(this.pharmacyId);
-    this.medicationList = this.pharmacyService.getAvailableMedications(this.pharmacyId);
-    this.prescrptionList = this.prescriptionService.getPrescriptionsForUserID(1);  
+    let arr = []
+    this.userService.getMyId()
+      .subscribe( data =>{
+        this.myId =data;
+        this.prescriptionService.getPrescriptionsByPacientIdForSearch(this.myId)
+        .subscribe(data => {
+          data.forEach(el => {
+            let temp = {
+              id: el.id,
+              code: el.code,
+              pacient: el.pacient,
+              date: el.date,
+              medicine: {}
+            };
+            el.itemMedicine.forEach(med => {
+              temp.medicine = med;          
+              this.prescrptionList.push(JSON.parse(JSON.stringify(temp))); 
+            });
+          });    
+        });
+        // .subscribe(data =>this.prescrptionList =data);
+      });
+    this.pharmacyService.getById(this.pharmacyId)
+      .subscribe(data => this.currentPharmacy = data);
+    this.pharmacyService.getMedicationsByPharmacyId(this.pharmacyId)
+      .subscribe(data => this.medicationList = data);
+   
+
+    //  
 
   }
- 
+
   onSearch() {
     this.sortedMedicines = new PropFilterPipe().transform(this.medicationList, this.searchText.value, 'name');
   }

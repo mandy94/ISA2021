@@ -227,4 +227,8 @@ export class ConfigService {
     return this._api_url +'/medication/delete/' +id;
   }
 
+  // PRESCRIPTION CONTROLLER
+  get_prescription_by_pacient_id(id : number):string{
+    return this._api_url + '/prescription/pacient/'+id;
+  }
 }

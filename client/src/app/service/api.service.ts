@@ -18,11 +18,18 @@ export enum RequestMethod {
   providedIn: 'root'
 })
 export class ApiService {
+  
+  getRoleOptions(): any {
+   return [ this.ADMIN, this.DERMATOLOG, this.PHARMACIST];
+  }
 
   headers = new HttpHeaders({
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   });
+  ADMIN= 'Admin';
+  DERMATOLOG = ' Dermatolog';
+  PHARMACIST = ' Farmaceut';
 
   constructor(private http: HttpClient) {
   }

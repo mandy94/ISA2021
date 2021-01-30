@@ -25,6 +25,20 @@
     background-color: #6b44f8;
     color: white;
   } */
+  img {
+    margin-top: 10px;
+    object-fit:cover;
+    height: 90px;
+    width: 100%;
+  }
+  
+  .top-margin{
+    margin-top: 15px;
+  }
+  .content {
+    margin: 10px 70px;
+  }
+  
  .mat-header-cell {    text-align: center;    }
 .left-distance{
     margin-left: 10%;
@@ -40,12 +54,13 @@
 }
 .margin-r{
  /* margin: 10px;*/
-  margin-right: 5%;
+  margin-right: 10px;
 }
 .margin-l{
   /* margin: 10px;*/
-   margin-right: 5%;
+   margin-right: 10px;
  }
+
 .width-30{
   width: 30%;
 }
@@ -58,6 +73,15 @@
 .width-50{
   width: 50%;
 }
+.search-field{
+  margin-left: 15px;
+  width: 70%;
+}
+.search-btn{
+  margin-left: 15px;
+  width: 15%;
+}
+
 .full-width{
   width: 100%  
 }

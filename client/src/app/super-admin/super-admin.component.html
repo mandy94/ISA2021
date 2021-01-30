@@ -1,26 +1,22 @@
-<div>
-  <div fxLayout="row">
-    <div class="about-text">
-      <mat-card  class="about">
-        <mat-card-title>
-          <h2 class="move-up">I a m s u p e r a d m i n !</h2>
-        </mat-card-title>
-       
-        <mat-divider></mat-divider>
+<div class="about-text">
+  <mat-card >
+    <mat-card-title>
+      <h2 class="move-up">I a m s u p e r a d m i n !</h2>
+    </mat-card-title>
 
-        <div fxLayout="column" fxLayoutAlign="space-around stretch"  class="strech-btn" >
-          <app-navigation fxFlex title="Registracija apoteka i administratora" (click)="goto('/register/objects')">            
-          </app-navigation>
-          <app-navigation fxFlex title="Registracija osoblja" (click)="goto('/register/employees')" >
-          </app-navigation>
-          <app-navigation fxFlex title="Registracija dobavljaca" (click)="goto('/register/suppliers')">
-           </app-navigation>          
-          <app-navigation fxFlex title="Sifrarnik lekova" (click)="goto('/register/medication')" >
-          </app-navigation>          
-          <app-navigation fxFlex title="Dodavanje ostalih administratora" (click)="goto('/other-admins')" >
-          </app-navigation>
+    <mat-divider></mat-divider>
+    <div fxLayout="column" fxLayoutAlign="space-around stretch" class="strech-btn">
+      <app-navigation fxFlex title="Registracija apoteka i administratora" (click)="goto('/register/objects')">
+      </app-navigation>
+      <app-navigation fxFlex title="Registracija osoblja" (click)="goto('/register/employees')">
+      </app-navigation>
+      <app-navigation fxFlex title="Registracija dobavljaca" (click)="goto('/register/suppliers')">
+      </app-navigation>
+      <app-navigation fxFlex title="Sifrarnik lekova" (click)="goto('/register/medication')">
+      </app-navigation>
+      <app-navigation fxFlex title="Dodavanje ostalih administratora" (click)="goto('/other-admins')">
+      </app-navigation>
 
-        </div>
-      </mat-card>
     </div>
+  </mat-card>
   </div>

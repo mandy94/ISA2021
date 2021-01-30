@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
+import { ApiService, ConfigService } from '..';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicineService {
-  items = [
-    { name: 'Andol', dose: 2, rating: 1, id: 1 ,type:'tableta'},
-    { name: 'Brufen', dose: 2, rating: 5, id: 2 ,type:'sirup'},
-    { name: 'Febricet', dose: 2, rating: 2, id: 3 ,type:'tableta'},
-    { name: 'Tritiko', dose: 2, rating: 3, id: 4,type:'pilula' },
-    { name: 'Borodual', dose: 2, rating: 1, id: 5,type:'tableta'}
-  ]
+ 
 
-  constructor() { }
+  constructor(   private config: ConfigService,
+    private apiService: ApiService) { }
   
   getByPharmacyId( id: number){
-   return this.items; 
+   return this.apiService.get(this.config.get_all_medication_by_pharmacy_id(id)); 
   }
 }

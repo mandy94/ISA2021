@@ -68,23 +68,36 @@ public class MedicineServiceImpl implements MedicineService{
 	public void createNewMedicine(CreateMedicationDTO med) {
 		Medicine x = new Medicine();
 		x.setName(med.getName());
-		x.setCode(med.getCode());
-		x.setCurrentPrice(med.getInitialPrice());
-		x.setInitialPrice(med.getInitialPrice());
+		x.setCode(med.getCode());		
 		x.setShape(med.getShape());
 		x.setType(med.getType());
+		x.setInitialPrice(med.getInitialPrice());
+		
+		for(String effect : med.getSideEffects()) {
+			x.getSideEffects().add(effect);
+		}		
+		
 		if(med.getActiveDiscount()!=null)
-			x.setActiveDiscount(discountService.getById(med.getActiveDiscount()));
-		List<Ingredient> ingredientLit = new ArrayList<>();
+		{
+			Discount d = discountService.getById(med.getActiveDiscount());
+			x.setActiveDiscount(d);
+			x.setCurrentPrice(x.getInitialPrice()*d.getValue()/100);
+		}else {
+			x.setCurrentPrice(med.getInitialPrice());
+		}
+		
+		List<Ingredient> ingredientList = new ArrayList<>();
 		for(Long id: med.getIngredients()) {
 			Ingredient i = ingredientRepo.findById(id).orElse(null);
 			if( i !=null)
-			ingredientLit.add(i);
+			ingredientList.add(i);
 		}
-		x.setIngredients(ingredientLit);
+		x.setIngredients(ingredientList);
+		
 		x.setMandatoryPrescription(med.getMandatoryPrescription());
 		if(med.getManufacturer()!=null)
 			x.setManufacturer(manufacturerRepo.findById(med.getManufacturer()).orElse(null));
+		
 		List<Medicine> rep = new ArrayList<>();
 		for(Long id: med.getReplacements()) {
 			Medicine m = medicineRepository.findById(id).orElse(null);
@@ -93,8 +106,11 @@ public class MedicineServiceImpl implements MedicineService{
 		}
 		StockItem s = new StockItem();
 		stockRepo.save(s);
-		x.setStock(s);
-		x.setReplacements(rep);
+		x.getIs_on_stock_at().add(s);
+		if(!rep.isEmpty())
+			x.setReplacements(rep);
+		else
+			x.setReplacements(new ArrayList<>());
 		
 		medicineRepository.save(x);
 		

@@ -8,6 +8,7 @@ public class AboutUserTimeTableDTO {
  	private String startTime; // represents format in seconds
  	private String endTime;
  	private Pharmacy at_pharmacy;
+ 	
 	public SimpleUserDTO getEmployee() {
 		return employee;
 	}

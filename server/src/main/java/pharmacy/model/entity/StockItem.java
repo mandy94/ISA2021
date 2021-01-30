@@ -18,9 +18,9 @@ public class StockItem {
     private Long id;    
     
 	@ManyToOne 
-	private Pharmacy pharmacy;
-	@OneToOne
-	private Medicine medicine;
+	private Pharmacy pharmacy; 
+	@ManyToOne
+	private Medicine medicine; 
 	
 	private int availableQuantity;
 

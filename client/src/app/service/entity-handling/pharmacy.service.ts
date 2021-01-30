@@ -58,7 +58,7 @@ export class PharmacyService {
                   start : time.start,
                   end: time.end});
   }
-  getAvailableMedications(id: number): any {
+  getMedicationsByPharmacyId(id: number): any {
     return this.medications.getByPharmacyId(id);
   }
 }

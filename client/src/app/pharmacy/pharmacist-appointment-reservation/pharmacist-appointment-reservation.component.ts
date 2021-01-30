@@ -21,16 +21,16 @@ export class PharmacistAppointmentReservationComponent implements OnInit {
   ngOnInit() {
     this.pharmacyService.getByAvailablePharacistInPharmacy(this.pharmacyId)
       .subscribe(data => {
-        this.availablePharmacists = data
+        this.availablePharmacists = data;
       });
-    this.userService.getMyId().subscribe(me => { this.pacientId = me });
+    this.userService.getMyInfo();
   }
 
   createReservation(pharmacistId: number) {
     let requestData = {
       pharmacistId: pharmacistId,
       pharmacyId: this.pharmacyId,
-      pacientId: this.pacientId,
+      pacientId: this.userService.currentUser.id,
       date: this.pharmacyService.pickedDate,
       start: this.pharmacyService.pickedTime.start,
       end: this.pharmacyService.pickedTime.end,

@@ -21,7 +21,7 @@ public interface PharmacyService {
 	public List<Pharmacy> getAllPharmaciesByAvailablePharmacist(String start, String end, String date);
 	public List<Pharmacy> getAll();
 	public Pharmacy getById(Long id);
-	public List<User> getAvailablePharmacistInPharmacyForDate(Long id , String start, String end, String date);
+	public List<AboutUserTimeTableDTO> getAvailablePharmacistInPharmacyForDate(Long id , String start, String end, String date);
 	public List<AboutUserTimeTableDTO> getAllDermatologs(Long id);
 	public List<User> getAllPharmacists(Long id);
 	public void addNewPharmacy(PharmacyDTO newPharmacy);

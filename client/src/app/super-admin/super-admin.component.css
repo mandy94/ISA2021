@@ -26,7 +26,7 @@ mat-card-title, mat-card-subtitle{text-align: center;}
 }
 .about-text{
 
-    width: 70%
+    width: 100%
 }
 
 .move-up{
@@ -39,6 +39,6 @@ mat-divider{
 
 }
 .strech-btn{
-    margin-top: 10%;
+    margin-top: 15px;
     width: 100%;
 }

@@ -3,14 +3,15 @@
 <table class="my-table-style" *ngIf="availablePharmacists">
   <tr>
     <th> Ime i prezime farmaceuta </th>
-    <th></th>
+    <th> Radno vreme farmaceuta u apoteci</th>
   </tr>
   <tbody>
     <tr *ngFor="let pharmacist of availablePharmacists">
-      <td> {{pharmacist| json}}</td>
-      <td> <button mat-stroked-button (click)="createReservation(pharmacist.id)"> Rezervisi termin </button>
+      <td> {{pharmacist.employee.firstName}} {{pharmacist.employee.lastName}}</td>
+      <td> {{pharmacist.startTime}} - {{pharmacist.endTime}} </td>
+      <td> <button mat-stroked-button (click)="createReservation(pharmacist.employee.id)"> Rezervisi termin </button>
       </td>
     </tr>
-  </tbody>
+  </tbody>  
 </table>
 <!-- </div> -->
