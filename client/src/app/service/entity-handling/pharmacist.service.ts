@@ -24,6 +24,9 @@ export class PharmacistService {
   getByPharmacyId( id:number){
     return null;
   }
+  getReservedConsultationsByDate(id: number, date: string){
+    return this.apiService.post(this.configService.get_reserved_consultations_by_date(id), date);
+  }
   getReservedConsultationsByUserId(id:number){
     return this.apiService.get(this.configService.get_reserved_consultations_by_user(id));
   }

@@ -5,7 +5,8 @@ import { Period } from 'app/shared/models/Period';
   providedIn: 'root'
 })
 export class ConfigService {
- 
+  
+
  
   private _api_url = 'http://localhost:8081/api';
   private _auth_url = 'http://localhost:8081/auth';
@@ -130,9 +131,10 @@ export class ConfigService {
   get_history_appointments_at_dermatolog_for_pacient(id: number):string{
     return this._api_url + '/appointments/user/' + id + '/dermatolog/history';
   }
-  get_reservation_appointments_at_dermatolog_for_pacient(id: number):string{
-    return this._api_url + '/appointments/user/' + id + '/dermatolog/reservation';
+  get_history_consultation_for_pacient(id: number): string{
+    return this._api_url + '/appointments/user/' + id+ '/pharmacist/history';
   }
+  
   get_available_appointments_at_dermatolog(id: number):string{
     return this._api_url + '/appointments/dermatolog/' + id + '/available';
     
@@ -140,13 +142,17 @@ export class ConfigService {
   get_available_appointments_at_dermatolog_for_pharmacy(id: number):string{
     return this._api_url + '/appointments/dermatolog/pharmacy/' + id + '/available';    
   }
+  get_reservation_appointments_at_dermatolog_for_pacient(id: number):string{
+    return this._api_url + '/appointments/user/' + id + '/dermatolog/reservation';
+  }
+  get_reserved_consultations_by_date(id): string {
+    return this._api_url + '/appointments/date/pharmacist/'+id+'/all';
+  }
   get_reserved_consultation_for_pacient(id: number): string{
       return this._api_url + '/appointments/user/' + id+ '/pharmacist/reservation';
       
   }
-  get_history_consultation_for_pacient(id: number): string{
-    return this._api_url + '/appointments/user/' + id+ '/pharmacist/history';
-  }
+ 
   
   // PHARMACIST CONTROLLER
   get_all_pharmacists(): string {
@@ -162,6 +168,10 @@ export class ConfigService {
   make_reservation_for_consultation(): string {
    return this._api_url + '/pharmacist/create/reservation';
   }
+  make_reservation_for_appointment(): string {
+    return this._api_url + '/dermatolog/create/reservation';
+  }
+ 
   cancel_consultation(id: number): string {
     return this._api_url + '/pharmacist/cancel/reservation/' + id;
   
@@ -183,6 +193,7 @@ export class ConfigService {
   get_workingtime_for_dermatolog_in_phamracy(dermatolog: number, pharacy:number):string{
     return this._api_url + '/dermatolog/' + dermatolog + '/pharmacy/' + pharacy +'/business-hours';
   }
+  
   delete_dermatolog_by_id(id):string{
     return this._api_url +'/dermatolog/delete/' +id ;
   }

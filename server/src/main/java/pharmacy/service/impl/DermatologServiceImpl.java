@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import pharmacy.model.entity.BusinessHours;
 import pharmacy.model.entity.User;
+import pharmacy.model.entity.appointments.AppointmentAtDermatolog;
 import pharmacy.repository.AppointmentAtDermatologRepository;
 import pharmacy.repository.BusinessHoursRepository;
 import pharmacy.repository.DermatologRepository;
 import pharmacy.service.DermatologService;
+import pharmacy.service.UserService;
 @Service
 public class DermatologServiceImpl implements DermatologService{
 	@Autowired
@@ -19,6 +21,8 @@ public class DermatologServiceImpl implements DermatologService{
 	private BusinessHoursRepository businessHourRepo;
 	@Autowired
 	private DermatologRepository dermatologRepo;
+	@Autowired
+	private UserService userService;
 	@Override
 	public List<BusinessHours> getDermatologBusinessHoursByPharmacy(Long dermatolog, Long pharmacy) {
 		
@@ -32,6 +36,15 @@ public class DermatologServiceImpl implements DermatologService{
 	@Override
 	public List<User> getAll() {
 		return dermatologRepo.getAll();
+	}
+	@Override
+	public void makeReservationForAppointment(Long appointmentId, Long pacientId) {
+		AppointmentAtDermatolog app = appointmtRepo.findById(appointmentId).orElse(null);
+		User pacient = userService.findById(pacientId);
+		app.setPacient(pacient);
+		app.setStatus("Rezervisan");
+		appointmtRepo.save(app);
+		
 	}
 }
 

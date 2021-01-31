@@ -9,7 +9,7 @@ import { PharmacistService } from './pharmacist.service';
   providedIn: 'root'
 })
 export class VisitsAndAppointmentsService {
-
+  
   nextId = 4;
   constructor(private pharmacistService: PharmacistService,
     private apiService: ApiService,
@@ -50,14 +50,14 @@ export class VisitsAndAppointmentsService {
   addNewAppointment(item: any) {
     console.log(" to be contrinued");
   }
-  makeReservationForTheAppointment(appointmentId, me) {
-    /*let target = this.scheduledAppointments.find(
-      element => element.id === appointmentId
-    );
-    target.status = 'Rezervisan';
-    target.pacientid = me.id;
-    target.pacient_fullname = me.firstName + " " + me.lastName;*/
-    console.log(" to be contrinued 2");
+  makeReservationForTheAppointment(appointmentId:number, paicnetId: number) {
+    let request = {
+      appointmentId :appointmentId, 
+      pacientId : paicnetId
+    };
+    return this.apiService.post(this.configService.make_reservation_for_appointment(), request);
 
   }
+  
+
 }

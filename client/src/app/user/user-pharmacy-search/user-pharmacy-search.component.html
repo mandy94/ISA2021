@@ -57,7 +57,7 @@
             <mat-card-actions>
               <button mat-button (click)="gotoPharmacistPage(item.id)" *ngIf="ifAdvancedSearch">
                 Pogledaj listu slobodnih farmaceuta</button>
-              <button mat-button (click)="gotoPharmacyPage(item.id)">
+              <button mat-button (click)="gotoPharmacyPage(item.id)" *ngIf="!ifAdvancedSearch">
                 Pogledaj stranicu apoteke
               </button>
             </mat-card-actions>

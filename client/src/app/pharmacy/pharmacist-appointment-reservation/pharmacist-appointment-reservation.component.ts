@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {  UserService } from 'app/service';
+import { UserService } from 'app/service';
 import { PharmacyService } from 'app/service/entity-handling/pharmacy.service';
 import { PharmacistService } from 'app/service/entity-handling/pharmacist.service';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { SchedulingVisitComponent } from '../dialogs/scheduling-visit/scheduling-visit.component';
+import { Period } from 'app/shared/models/Period';
 
 @Component({
   selector: 'app-pharmacist-appointment-reservation',
@@ -16,6 +20,8 @@ export class PharmacistAppointmentReservationComponent implements OnInit {
   constructor(private pharmacyService: PharmacyService,
     private pharmacistService: PharmacistService,
     private userService: UserService,
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -26,14 +32,40 @@ export class PharmacistAppointmentReservationComponent implements OnInit {
     this.userService.getMyInfo();
   }
 
-  createReservation(pharmacistId: number) {
+  showAvailableTerm(doctor) {
+    let dialogRef
+
+    this.pharmacistService.getReservedConsultationsByDate(doctor.employee.id, this.pharmacyService.getPickedDate())
+      .subscribe(scheduledAppointments => {
+        dialogRef = this.dialog.open(SchedulingVisitComponent, {
+          width: '550px',
+          data: {
+            "workingHours": {
+              start: doctor.startTime,
+              end: doctor.endTime
+            },
+            "scheduledAppointments": scheduledAppointments
+
+          }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if(result){
+            this.createReservation(doctor.employee.id, result);
+            this.router.navigate(['/user-visits']);
+          }
+        });
+      });
+     
+
+  }
+  createReservation(pharmacistId: number, newPeriod: Period) {
     let requestData = {
       pharmacistId: pharmacistId,
       pharmacyId: this.pharmacyId,
       pacientId: this.userService.currentUser.id,
       date: this.pharmacyService.pickedDate,
-      start: this.pharmacyService.pickedTime.start,
-      end: this.pharmacyService.pickedTime.end,
+      start: newPeriod.start,
+      end: newPeriod.end,
     }
     this.pharmacistService.makeReservationForVisit(requestData).subscribe();
 

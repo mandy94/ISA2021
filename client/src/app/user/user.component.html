@@ -27,7 +27,7 @@
 
   <app-user-pharmacy-search (pharamcyEmiter)="gotoPharmacyPage($event)" (pharmacistEmiter)="gotoPharmacistPage($event)"
     *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search>
-  <app-user-visits *ngIf="view === 'user-visits'"></app-user-visits>
+  <!-- <app-user-visits *ngIf="view === 'user-visits'"></app-user-visits> -->
   <app-user-profile *ngIf="view === 'user-profile'"></app-user-profile>
   <app-user-reservations *ngIf="view === 'user-reservations'"></app-user-reservations>
   <app-user-prescriptions *ngIf="view ==='user-prescriptions'"></app-user-prescriptions>

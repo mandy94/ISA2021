@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { UserService } from 'app/service';
 import { PrescriptionService } from 'app/service/entity-handling/prescription.service';
 
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
@@ -11,7 +12,8 @@ import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 })
 export class UserPrescriptionsComponent implements OnInit {
 
-  constructor(private prescriptionService: PrescriptionService) { }
+  constructor(private prescriptionService: PrescriptionService,
+    private userService: UserService) { }
   status = ['Nov', 'Obradjen', 'Odbijen'];
   sortOptions = [{ text: 'Datumu izdavanja - rastucem', prop: 'name', order: 'asc' },
                  { text: 'Datumu izdavanja - opadajucem', prop: 'name', order: 'desc' }]; // itd...
@@ -21,7 +23,8 @@ export class UserPrescriptionsComponent implements OnInit {
   searchPrescriptionsControl = new FormControl('');
   sortControl = new FormControl('');
   ngOnInit() {
-    this.myPrescriptions = this.prescriptionService.getPrescriptionsForUserID(1);
+    
+    this.myPrescriptions = this.prescriptionService.getPrescriptionsByPacientId(this.userService.currentUser.id);
   }
 
   submit() {

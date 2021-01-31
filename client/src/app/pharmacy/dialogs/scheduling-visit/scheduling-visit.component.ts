@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DermatologService } from 'app/service/entity-handling/dermatolog.service';
+import { PharmacistService } from 'app/service/entity-handling/pharmacist.service';
+import { TimePickerService } from 'app/service/static-data/time-picker.service';
 
 
 @Component({
@@ -10,21 +11,19 @@ import { DermatologService } from 'app/service/entity-handling/dermatolog.servic
 })
 export class SchedulingVisitComponent implements OnInit {
 
-  constructor(
-    public dialogRef: MatDialogRef<SchedulingVisitComponent>,
-    private dermatologService: DermatologService,
+  constructor(private tpService: TimePickerService,
+    public dialogRef: MatDialogRef<SchedulingVisitComponent>,     
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-    dermatolog;
-
-    ngOnInit() {
-      this.dermatolog = this.dermatologService.getById(this.data);
-     console.log(this.data);
-    
-    }
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-
-
-
+  dermatolog;
+  timeOptions = [];
+  ngOnInit() {
+    this.timeOptions = this.tpService.getTimeListInIntervalAndExcludeAppointments(this.data.workingHours, this.data.scheduledAppointments);
+  }
+  onReserve(appointment){
+  
+    this.dialogRef.close({'start': appointment.start, 'end':appointment.end});  
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

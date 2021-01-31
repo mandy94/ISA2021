@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pharmacy.model.entity.DateAndTimeConverter;
 import pharmacy.model.entity.User;
-import pharmacy.model.entity.appointments.AppointmentAtPharmacist;
+import pharmacy.model.entity.DTOs.AppointmentAtPharmacistDTO;
 import pharmacy.model.entity.helper.ConsultationReservationRequest;
 import pharmacy.service.AppointmentAtPharmacistService;
 import pharmacy.service.PharmacistService;
@@ -33,12 +33,13 @@ public class PharmacistController {
 		return pharmacistService.getAll();
 	}
 	
+	
 	@GetMapping("/reservation/user/{id}")
-	public List<AppointmentAtPharmacist> getReservedConsultationForUser(@PathVariable Long id){
+	public List<AppointmentAtPharmacistDTO> getReservedConsultationForUser(@PathVariable Long id){
 		return pharmacistAppointmentService.getAppointmentsForUserId(id);
 	}
 	@DeleteMapping("/cancel/reservation/{id}")
-	public List<AppointmentAtPharmacist> cancelAppointment(@PathVariable Long id) {
+	public List<AppointmentAtPharmacistDTO> cancelAppointment(@PathVariable Long id) {
 		 // TODO email confirmation
 		pharmacistAppointmentService.cancelReservation(id);
 		return pharmacistAppointmentService.getAppointmentsForUserId(id);

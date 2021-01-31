@@ -6,7 +6,7 @@ import pharmacy.model.entity.appointments.AppointmentAtPharmacist;
 public class AppointmentAtPharmacistDTO {
 
     private Long id;
-    private String pharmacist;
+    private String doctor;
     private String startTime;
  
 	private String endTime;
@@ -15,9 +15,9 @@ public class AppointmentAtPharmacistDTO {
     
     public AppointmentAtPharmacistDTO(AppointmentAtPharmacist app) {
     	this.id = app.getId();
-    	this.pharmacist = app.getPharmacist().getFirstName() + " " +app.getPharmacist().getLastName();
-    	this.startTime = DateAndTimeConverter.convertTimeFromDBFormat(app.getEndTime());
-    	this.endTime = DateAndTimeConverter.convertTimeFromDBFormat(app.getStartTime());
+    	this.doctor = app.getPharmacist().getFirstName() + " " +app.getPharmacist().getLastName();
+    	this.startTime = DateAndTimeConverter.convertTimeFromDBFormat(app.getStartTime());
+    	this.endTime = DateAndTimeConverter.convertTimeFromDBFormat(app.getEndTime());
     	this.date = app.getDate();
     	this.status = app.getStatus();
     	
@@ -29,10 +29,10 @@ public class AppointmentAtPharmacistDTO {
 		this.id = id;
 	}
 	public String getPharmacist() {
-		return pharmacist;
+		return doctor;
 	}
 	public void setPharmacist(String pharmacist) {
-		this.pharmacist = pharmacist;
+		this.doctor = pharmacist;
 	}
 	
 	public String getStartTime() {

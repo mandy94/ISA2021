@@ -14,4 +14,6 @@ public interface DermatologService {
 
 	List<BusinessHours> getDermatologBusinessHoursByPharmacy(Long dermatolog, Long pharmacy);
 
+	void makeReservationForAppointment(Long appointmentId, Long pacientId);
+
 }

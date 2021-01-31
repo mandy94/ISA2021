@@ -43,22 +43,23 @@ WHERE id = 12;
 
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 4, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 5, 1);
-INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 6, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 5, 2);
+INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 6, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 7, 2);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 7, 3);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 8, 3);
+INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 8, 1);
 INSERT INTO users_work_in_pharmacies(user_id, pharmacy_id ) values( 9, 2);
 
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (29010, 35420 , 1,4);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28810, 32420 , 1,5);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (43210, 46820 , 2,5);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28810, 46820 , 1,6);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28810, 46820 , 2,7);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (50410, 64820 , 3,7);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (50410, 64820 , 3,8);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28810, 32420 , 1,8);
-INSERT INTO business_hours(start_time,end_time, at_pharmacy_id, employee_id) VALUES (28810, 32420 , 1,9);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (29010, 35420, 4 , 1);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (28810, 39600, 5 , 1);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (43210, 46820, 5 , 2);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (28810, 46820, 6 , 1);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (28810, 46820, 7 , 2);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (50410, 64820, 7 , 3);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (50410, 64820, 8 , 3);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (28810, 32420, 8 , 1);
+INSERT INTO business_hours(start_time,end_time, employee_id, at_pharmacy_id) VALUES (28810, 32420, 9 , 2);
 
 INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name, price, status, start_time, end_time, dermatolog_id, pacient_id, pharmacy_id) VALUES 
 ('25/01/2021', 'Ponovljeni kratki pregled', 0, 'Rezervisan', 28800, 32400, 6, 1, 1);
@@ -74,7 +75,10 @@ INSERT INTO APPOINTMENT_AT_DERMATOLOG (date, name, price, status, start_time, en
 ('27/01/2021', 'Pregled pluca i dijafragme', 1400, 'Slobodan', 50400, 54000, 7, 3);
 
 INSERT INTO appointment_at_pharmacist (date,status,start_time, end_time, pharmacist_id ,pacient_id) VALUES 
-('17/01/2021',  'Aktivan', 32400, 39600, 5, 1);
+('17/01/2021',  'Odrzan', 32400, 39600, 5, 1);
+
+INSERT INTO appointment_at_pharmacist (date,status,start_time, end_time, pharmacist_id ,pacient_id) VALUES 
+('17/02/2021',  'Rezervisan', 37800, 39600, 5, 1); -- 10:30 do 11:00
 
 INSERT INTO AUTHORITY (name) VALUES ('ROLE_USER');
 INSERT INTO AUTHORITY (name) VALUES ('ROLE_ADMIN');

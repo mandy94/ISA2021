@@ -23,11 +23,14 @@ export class PharmacyService {
     private config: ConfigService,
     private apiService: ApiService,
     private medications: MedicineService) { }
+    
   storeData( time : Period, date : string){
     this.pickedTime = time;
     this.pickedDate = date;
     this.service = this.injector.get(PharmacistService);
   }
+  getPickedDate(){ return this.pickedDate;}
+  
   getAll() {
     return this.apiService.get(this.config._pharmacy_all_url);
   }

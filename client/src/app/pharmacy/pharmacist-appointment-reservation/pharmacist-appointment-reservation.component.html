@@ -6,10 +6,10 @@
     <th> Radno vreme farmaceuta u apoteci</th>
   </tr>
   <tbody>
-    <tr *ngFor="let pharmacist of availablePharmacists">
-      <td> {{pharmacist.employee.firstName}} {{pharmacist.employee.lastName}}</td>
-      <td> {{pharmacist.startTime}} - {{pharmacist.endTime}} </td>
-      <td> <button mat-stroked-button (click)="createReservation(pharmacist.employee.id)"> Rezervisi termin </button>
+    <tr *ngFor="let item of availablePharmacists">
+      <td> {{item | json}}</td>
+      <td> {{item.startTime}} - {{item.endTime}} </td>
+      <td> <button mat-stroked-button (click)="showAvailableTerm(item)"> Odaberi slobodan termin </button>
       </td>
     </tr>
   </tbody>  

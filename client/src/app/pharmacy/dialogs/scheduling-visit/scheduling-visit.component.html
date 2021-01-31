@@ -1,18 +1,10 @@
-<mat-card>
-  <h1>Zakazivanje posete kod dermatologa</h1>
-   <table *ngIf="dermatolog">
-    <th colspan='10'>Radno vreme u ovoj apoteci</th>
-    <tr>
-      <th *ngFor="let item of dermatolog.workingTime " >
-        {{item.day}}
-      </th>
-    </tr>
-    <tr>
-      <td *ngFor="let item of dermatolog.workingTime ">
-        <button *ngIf="item.time">
-          {{item.time.start}} - {{item.time.end}}
-        </button>
-      </td>
-    </tr>
-  </table>
+<mat-card *ngIf="timeOptions">
+  <h1>Biranje termina za zakazivanje</h1>
+  <div *ngFor="let item of timeOptions ">
+    <button [disabled]="item.disabled" mat-button class="full-width" (click)="onReserve(item)">
+      {{item.start}} - {{item.end}} 
+      <span *ngIf="item.disabled"> Termin je vec zauzet </span>
+      <span *ngIf="!item.disabled" class="valid"> Termin je slobodan </span>
+    </button>
+  </div>
 </mat-card>

@@ -28,7 +28,10 @@ export class UserVisitsComponent implements OnInit {
       this.appointmentService.getHistoryVisitsForPacient(id)
         .subscribe(data => this.visitHistoryList = data);
       this.appointmentService.getReservedAppointmentsForPacient(id)
-        .subscribe(data => this.futureVisitList = data);
+        .subscribe(data => {
+          this.futureVisitList = data;
+          this.requestedData = data;
+        });
       this.appointmentService.getHistoryConsultationForPacient(id)
         .subscribe(data => this.consultationHistoryList = data);
       this.appointmentService.getReservedConsultationForPacient(id)
@@ -52,7 +55,7 @@ export class UserVisitsComponent implements OnInit {
     }
     this.visitTypePicker.value.option == 2 ? this.showActions = true : this.showActions = false;
   }
-  cancelAppointment(id: number){
+  cancelAppointment(id: number) {
     this.appointmentService.cancelAppointmentWithPharmacist(id)
       .subscribe(data => this.requestedData = data);
   }

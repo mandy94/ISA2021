@@ -2,15 +2,16 @@ package pharmacy.service;
 
 import java.util.List;
 
-
-import pharmacy.model.entity.appointments.AppointmentAtPharmacist;
+import pharmacy.model.entity.DTOs.AppointmentAtPharmacistDTO;
 
 public interface AppointmentAtPharmacistService {
 
 	
-	public List<AppointmentAtPharmacist> getAppointmentsForUserId(Long id);
+	public List<AppointmentAtPharmacistDTO> getAppointmentsForUserId(Long id);
 
-	public List<AppointmentAtPharmacist> getAppointmentsHistoryForUserId(Long id);
+	public List<AppointmentAtPharmacistDTO> getAppointmentsForPharmacistByDate(Long pharmacist, String date);
+
+	public List<AppointmentAtPharmacistDTO> getAppointmentsHistoryForUserId(Long id);
 	
 	public void makeReservationForConsultation(Long pharmacistId, Long pacientId, Long start, Long end, String date );
 

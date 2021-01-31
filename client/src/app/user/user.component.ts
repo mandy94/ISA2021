@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
     // plus jos neesto
     
   }
-  showVisits(){ this.view = 'user-visits';}
+  showVisits(){ this.router.navigate(['/user-visits']);}
   showConsultations(){}
   showPharamcySearch(){this.view ='pharmacy-search';}
   showMedications(){this.view = 'user-reservations';}

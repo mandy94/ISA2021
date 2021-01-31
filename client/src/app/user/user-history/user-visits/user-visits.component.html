@@ -27,18 +27,19 @@
     <tr class="header">
       <td>#</td>
       <td> Datum i vreme</td>
-      <td> Kod farmaceuta</td>
-     
+      <td> Kod doktora</td>
+
       <td *ngIf="showActions"> Akcije</td>
     </tr>
 
     <tr *ngFor="let item of requestedData ">
       <td>{{item.id}}</td>
       <td> {{item.date}} u {{item.startTime}} do {{item.endTime}}</td>
-      <td> {{item.pharmacist}}</td>
-      
+      <td> {{item  | json}}</td>
+
       <td *ngIf="showActions" class="padding-8">
-        <button [disabled]="canCanel(item)" mat-button class="warning" (click)="cancelAppointment(item.id)"> Otkazi pregled </button>
+        <button [disabled]="canCanel(item)" mat-button class="warning" (click)="cancelAppointment(item.id)"> Otkazi
+          pregled </button>
       </td>
     </tr>
 
