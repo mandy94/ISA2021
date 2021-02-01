@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { UserService } from 'app/service';
 import { PropFilterPipe } from 'app/shared/pipe/prop-filter.pipe';
 import { stringify } from 'querystring';
 import { AddAlergenComponent } from './dialogs/add-alergen/add-alergen.component';
@@ -17,26 +18,13 @@ export class UserComponent implements OnInit {
 
   pickedPharmacyId;
   whatToShow;
-  constructor(private router: Router){}
-  ngOnInit() {
-  
+  constructor(private userService: UserService,
+    private router: Router){}
+  ngOnInit() { 
+    this.userService.getMyInfo().subscribe(data=> this.user=data);
   }
-  view = 'pharmacy-search';
-  user = {
-    basicInfo: {
-      name: 'Petar',
-      surname: 'Petrovic',
-      JMBG: 745103741223,
-      birthdate: '10-03-1980',
-      email: 'pera@gmail.com'
-    },
-    alergies: [{ id: 1, name: 'Soja' }],
-    loyalty: {
-      points: 23,
-      category: 'Silver',
-      availableDiscounts: 'Neke sa strane'
-    }
-  }
+  view;
+  user;
   
   gotoPharmacyPage($event){
     this.showPickedPharamcy();   
@@ -52,7 +40,7 @@ export class UserComponent implements OnInit {
     
   }
   showVisits(){ this.router.navigate(['/user-visits']);}
-  showConsultations(){}
+  showConsultations(){this.router.navigate(['/user-consultations']);}
   showPharamcySearch(){this.view ='pharmacy-search';}
   showMedications(){this.view = 'user-reservations';}
   showPrescriptions(){this.view='user-prescriptions';}

@@ -39,24 +39,11 @@ export class PharmacyComponent implements OnInit {
     let arr = []
     this.userService.getMyId()
       .subscribe( data =>{
-        this.myId =data;
-        this.prescriptionService.getPrescriptionsByPacientIdForSearch(this.myId)
-        .subscribe(data => {
-          data.forEach(el => {
-            let temp = {
-              id: el.id,
-              code: el.code,
-              pacient: el.pacient,
-              date: el.date,
-              medicine: {}
-            };
-            el.itemMedicine.forEach(med => {
-              temp.medicine = med;          
-              this.prescrptionList.push(JSON.parse(JSON.stringify(temp))); 
-            });
-          });    
-        });
-        // .subscribe(data =>this.prescrptionList =data);
+        this.myId = data;
+        this.prescriptionService.getPrescriptionsByPacientId(this.myId)
+        .subscribe(data =>{
+          this.prescrptionList =this.prescriptionService.seperatePrescrptionsByMedicines(data);
+        });    
       });
     this.pharmacyService.getById(this.pharmacyId)
       .subscribe(data => this.currentPharmacy = data);

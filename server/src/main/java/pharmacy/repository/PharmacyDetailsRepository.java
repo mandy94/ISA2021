@@ -30,6 +30,11 @@ public interface PharmacyDetailsRepository extends JpaRepository<Pharmacy, Long>
 	@Query(value="Select * from pharmacy where admin_id is null", nativeQuery=true)
 	public List<AdminDTO> getWithoutAdmins();
 	
+	@Query(value="Select * from pharmacy_has_medicines h JOIN pharmacy p ON p.id = h.pharmacy_id\r\n"
+			+ "where h.has_medicines_id = :id", nativeQuery=true)
+//	@Query(value="Select * from pharmacy where admin_id = :id", nativeQuery=true)
+	public List<Pharmacy> getPharmaciesWhoHaveMedicationFromPrescription(Long id);
+	
 	
 
 }

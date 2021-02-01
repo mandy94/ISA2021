@@ -46,6 +46,7 @@ public class PharmacistController {
 	}
 	@PostMapping("/create/reservation")
 	public void makeReservationForConsultation(@RequestBody ConsultationReservationRequest requests) {
+		
 		pharmacistAppointmentService.makeReservationForConsultation(
 				requests.pharmacistId,
 				requests.pacientId,

@@ -2,10 +2,18 @@
   <h1> Spisak registrovanih apoteka</h1>
   <div>
     <form>
-      <mat-form-field class="full-width">
+      <mat-form-field class="width-70">
         <input matInput placeholder="Pretraga apoteka po imenu" [formControl]="searchText">
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <button mat-button (click)="onPharmacySearch()" class="width-20"> Tazi </button>
+      <mat-form-field class="width-70">
+        <mat-label>Pretrazuj apoteke po eReceptu</mat-label>
+        <mat-select [formControl]="prescriptionControl">
+          <mat-option *ngFor="let item of myPrescriptions" [value]="item">{{item.medicine.medicine | json}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button (click)="onPrescriptionSearch()" class="width-20"> Traži po eReceptu </button>
+      <mat-form-field class="width-70">
         <mat-label>Sortiraj rezultate po</mat-label>
         <mat-select [formControl]="searchControl">
           <mat-option *ngFor="let item of sortOptions" [value]="item">
@@ -13,46 +21,47 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button (click)="onPharmacySearch()"> Tazi </button>
+      <button mat-button (click)="onPharmacySearch()" class="width-20"> Sortiraj </button>
       <mat-accordian>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              
+           Pretraga apoteke po slobodnim terminima farmaceuta
             </mat-panel-title>
             <mat-panel-description>
-              Pretraga po slobodnim farmaceutima
+                (Functionalnost 3.16)
             </mat-panel-description>
           </mat-expansion-panel-header>
-
-          <mat-form-field class="margin-r">
+         
+          <mat-form-field class="width-30 margin-r">
             <mat-label>Odaberi datum savetovanja</mat-label>
             <input matInput [matDatepicker]="picker" autocomplete="false" [formControl]="dateControl">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field class="width-30">
             <mat-label>Odaberite zeljeni period</mat-label>
-            <mat-select  [formControl] = "timeControl">
+            <mat-select [formControl]="timeControl">
               <mat-option *ngFor="let time of timeList" [value]="time">
                 {{time.start}} - {{time.end}}
               </mat-option>
             </mat-select>
-          </mat-form-field >
-          <button mat-raised-button (click)="onPharmacistSearch()" [disabled]="!canSearch()" style="margin-left: 50px;"> Pronadji apoteke </button>
+          </mat-form-field>
+          <button mat-raised-button (click)="onPharmacistSearch()" [disabled]="!canSearch()" style="margin-left: 50px;">
+            Pronadji apoteke </button>
         </mat-expansion-panel>
       </mat-accordian>
-
     </form>
     <div class="full-width">
       <mat-grid-list cols="2" rowHeight="2:1">
         <mat-grid-tile *ngFor="let item of sortedpharmacyList">
           <mat-card class="pharmacy-card">
-            <mat-card-title>
+            <mat-card-title [ngClass]="{'by-name' : searchControl.value.prop ==='name'}">
               {{item.name}}
             </mat-card-title>
             <mat-card-content>
-              <p> Ocena: {{item.rating}}</p>
+              <b [ngClass]="{'by-rating' : searchControl.value.prop ==='rating'}"> Ocena: {{item.rating}}</b>
+              <p [ngClass]="{'by-city' : searchControl.value.prop ==='city'}"> Grad: {{item.city}}, {{item.adress}}</p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-button (click)="gotoPharmacistPage(item.id)" *ngIf="ifAdvancedSearch">

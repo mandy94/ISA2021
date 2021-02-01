@@ -27,6 +27,7 @@ public interface PharmacyService {
 	public void addNewPharmacy(PharmacyDTO newPharmacy);
 	public void savePharmacy(Pharmacy p);
 	public List<AdminDTO> getWithouthAdmins();
+	public List<Pharmacy> getPharamciesWhoHaveMedicationFromPrescription(Long id);
 	
 	
 	

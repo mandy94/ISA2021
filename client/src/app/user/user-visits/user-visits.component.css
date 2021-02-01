@@ -5,8 +5,10 @@
     left: 0;
     right: 0;
   }
-  .width-30{   
-   width: 30%;
+  .width-30{
+    
+
+    width: 30%;
 }
  .width-45{
      margin-left: 5px;
@@ -15,20 +17,12 @@
  }
 
   .side{
-      width: 15%;
+      width: 20%;
       min-width: 250px;
       background-color: #6544d0;
   }
-  .by-name{
-      color: rgb(29, 207, 29);
-  }
-  .by-rating{
-    color: rgb(29, 207, 29);
-}
-.by-city{
-    color: rgb(29, 207, 29);
-}
-   img, .side-div{
+  
+  button, img, .side-div{
       margin:  15px;
   }
   .margin-btn{
@@ -43,6 +37,5 @@
       margin-right: 10%;
   }
   .pharmacy-card {
-    
     width: 80%;
    }

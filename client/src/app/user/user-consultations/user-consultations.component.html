@@ -1,5 +1,5 @@
 <div class="main-content">
-  <h1> Kalendar vasih poseta</h1>
+  <h1> Kalendar vasih konsultacija sa farmaceutima</h1>
   <form>
     <mat-form-field class="width-30">
       <mat-label>Odaberi vrstu posete</mat-label>
@@ -10,20 +10,12 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="width-45">
-      <mat-label>Odaberi posete</mat-label>
-      <mat-select [formControl]="visitPicker">
-        <mat-option *ngFor="let item of availableVisits" [value]="item">
-          {{item.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
     <button mat-button (click)="onClick()"> Tazi </button>
 
   </form>
 
   <table class="my-table-style" *ngIf="requestedData">
-    <th colspan="10">{{visitPicker.value.name}}</th>
+    <th colspan="10"></th>
     <tr class="header">
       <td>#</td>
       <td> Datum i vreme</td>

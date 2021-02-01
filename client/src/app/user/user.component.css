@@ -15,7 +15,9 @@
 
      width: 45%;
  }
-
+ .sidebar-text{
+     color: whitesmoke;     
+ }
   .side{
       width: 20%;
       min-width: 250px;

@@ -52,9 +52,7 @@ export class UserService {
   amIPharmacolog(){
     return this.checkRole("Farmaceut");
   }
-  getMyPharacyID(){
-   return 1;
-  }
+
   getMyId() {
     return this.apiService.get(this.config.whoami_url)
       .pipe(map(user => {

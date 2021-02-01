@@ -33,7 +33,7 @@ import { AppointmentsTabComponent } from './admin/admin-pharmacy-panel/tabs/appo
 import { AddAlergenComponent } from './user/dialogs/add-alergen/add-alergen.component';
 import { EditUsersInfoComponent } from './user/dialogs/edit-users-info/edit-users-info.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
+
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 import { GuestComponent } from './guest/guest.component';
 import { DermatologComponent } from './dermatolog/dermatolog.component';
@@ -55,6 +55,9 @@ import { AddMedicationDialogComponent } from './super-admin/register-medication/
 import { RegisterMedicationComponent } from './super-admin/register-medication/register-medication.component';
 import { ConfirmationDialogComponent } from './shared/dialogs/confirmation-dialog/confirmation-dialog.component';
 import { EditMedicineDialogComponent } from './super-admin/register-medication/dialogs/edit-medicine-dialog/edit-medicine-dialog.component';
+
+import { UserConsultationsComponent } from './user/user-consultations/user-consultations.component';
+import { UserVisitsComponent } from './user/user-visits/user-visits.component';
 
 
 
@@ -99,6 +102,8 @@ import { EditMedicineDialogComponent } from './super-admin/register-medication/d
     RegisterMedicationComponent,
     AddMedicationDialogComponent,
     EditMedicineDialogComponent,
+    
+    UserConsultationsComponent,
   ],
   imports: [
     

@@ -6,6 +6,7 @@ import { Period } from 'app/shared/models/Period';
 })
 export class ConfigService {
   
+  
 
  
   private _api_url = 'http://localhost:8081/api';
@@ -119,6 +120,9 @@ export class ConfigService {
   }
   get_available_pharmacist_in_pharmacy(id : number): string{
     return this._api_url + '/pharmacy/' + id + '/available/pharmacists';
+  }
+  get_pharmacies_by_medication(medicationId: number): string {
+    return this._api_url +'/pharmacy/search/medication/' + medicationId; 
   }
   get _add_new_pharmacy(): string{
     return this._api_url + '/pharmacy/add'; 
@@ -242,4 +246,5 @@ export class ConfigService {
   get_prescription_by_pacient_id(id : number):string{
     return this._api_url + '/prescription/pacient/'+id;
   }
+  
 }

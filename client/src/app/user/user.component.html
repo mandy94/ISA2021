@@ -5,16 +5,17 @@
         <img width="75px" height="75px" alt="something" src="../../assets/image/user.png">
         <div fxLayout="column" class="white">
           <p>
-            {{user.basicInfo.name}} {{user.basicInfo.surname}}
-            <br>
-            {{user.loyalty.category}}
-            <br>
+            {{user|json}}
             <button mat-button> Uredi profil </button>
           </p>
         </div>
       </div>
       <mat-divider></mat-divider>
       <div class="margin-btn" fxLayout="column">
+        <div fxLayoutAlign="center center" fxLayout="column" class="sidebar-text">
+          <p>Korisnicki linkovi</p>
+          <strong>(Funkcionalnost 3.9)</strong>
+        </div>
         <button mat-raised-button (click)="showPharamcySearch()"> Lista apoteka</button>
         <button mat-raised-button (click)="showVisits()"> Posete kod dermatologa </button>
         <button mat-raised-button (click)="showConsultations()">Savetovanja kod farmaceuta</button>
@@ -25,13 +26,13 @@
     </div>
   </mat-sidenav>
 
-  <app-user-pharmacy-search (pharamcyEmiter)="gotoPharmacyPage($event)" (pharmacistEmiter)="gotoPharmacistPage($event)"
-    *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search>
+   <app-user-pharmacy-search (pharamcyEmiter)="gotoPharmacyPage($event)" (pharmacistEmiter)="gotoPharmacistPage($event)"
+    *ngIf="view === 'pharmacy-search'"></app-user-pharmacy-search> 
   <!-- <app-user-visits *ngIf="view === 'user-visits'"></app-user-visits> -->
-  <app-user-profile *ngIf="view === 'user-profile'"></app-user-profile>
-  <app-user-reservations *ngIf="view === 'user-reservations'"></app-user-reservations>
-  <app-user-prescriptions *ngIf="view ==='user-prescriptions'"></app-user-prescriptions>
-  <app-pharmacy [pharmacyId]='pickedPharmacyId' [dataType]='whatToShow' *ngIf="view === 'user-pharmacy-page'">
-  </app-pharmacy>
+  <!-- <app-user-profile *ngIf="view === 'user-profile'"></app-user-profile> -->
+  <!-- <app-user-reservations *ngIf="view === 'user-reservations'"></app-user-reservations> -->
+  <!-- <app-user-prescriptions *ngIf="view ==='user-prescriptions'"></app-user-prescriptions> -->
+  <!-- <app-pharmacy [pharmacyId]='pickedPharmacyId' [dataType]='whatToShow' *ngIf="view === 'user-pharmacy-page'"> -->
+  <!-- </app-pharmacy> -->
 
 </mat-sidenav-container>

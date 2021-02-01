@@ -127,7 +127,7 @@ public class PharmacyServiceImpl implements PharmacyService{
 		pharmacy.setEmployee(pharmacy.getEmployee());
 		User admin = employeeRepository.findById(newPharmacy.getAdminId()).orElse(null);
 		admin.setDedicated_pharmacy(pharmacy);
-		pharmacy.setAdmin(admin);
+		pharmacy.getAdmins().add(admin);
 		
 		aboutPharmacyRepository.save(pharmacy);
 		employeeRepository.save(admin);
@@ -142,6 +142,11 @@ public class PharmacyServiceImpl implements PharmacyService{
 	@Override
 	public List<AdminDTO> getWithouthAdmins() {
 		return aboutPharmacyRepository.getWithoutAdmins();
+	}
+
+	@Override
+	public List<Pharmacy> getPharamciesWhoHaveMedicationFromPrescription(Long id) {
+		return aboutPharmacyRepository.getPharmaciesWhoHaveMedicationFromPrescription(id);
 	}
 
 	

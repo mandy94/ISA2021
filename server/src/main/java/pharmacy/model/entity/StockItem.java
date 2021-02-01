@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class StockItem {
@@ -16,7 +17,7 @@ public class StockItem {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
-    
+    @JsonIgnore
 	@ManyToOne 
 	private Pharmacy pharmacy; 
 	@ManyToOne

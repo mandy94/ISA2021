@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		u = this.userRepository.save(u);
 		if(userRequest.getPharmacyId() != null) {
 			Pharmacy p = pharmacyService.getById(userRequest.getPharmacyId());
-			p.setAdmin(u);
+			p.getAdmins().add(u);
 			this.pharmacyService.savePharmacy(p);
 			u.setDedicated_pharmacy(p);
 		}else {

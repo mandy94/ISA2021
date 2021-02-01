@@ -25,9 +25,16 @@ INSERT INTO USERS( username, password, first_name, last_name, email, enabled, la
 INSERT INTO USERS( username, password, first_name, last_name, email, enabled, last_password_reset_date, work_role) VALUES ( 'admin2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Kosta', 'Nikolic', 'admin3@example.com', true, '2017-10-01 18:57:58.508-07', 'Admin');
 
 
-INSERT INTO PHARMACY (name, adress, admin_id)VALUES ('Apoteka dobro srce', 'Radnicka 23',10);
-INSERT INTO PHARMACY (name, adress, admin_id)VALUES ('Pharmacy good', 'Somborski bulevar 125',11);
-INSERT INTO PHARMACY (name, adress, admin_id)VALUES ('Medisan d.o.o', 'Djordja Rajkovica bb',12);
+INSERT INTO PHARMACY (name, adress, city, rating) VALUES ('Apoteka dobro srce', 'Radnicka 23', 'Novi Sad', 5.0);
+INSERT INTO PHARMACY (name, adress, city, rating) VALUES ('Pharmacy good', 'Somborski bulevar 125', 'Novi Sad', 4.8);
+INSERT INTO PHARMACY (name, adress, city, rating) VALUES ('Medisan d.o.o', 'Djordja Rajkovica bb', 'Beograd', 2.3);
+INSERT INTO PHARMACY (name, adress, city, rating) VALUES ('Medisan d.o.o', 'Branka Ćopića 134', 'Subotica', 2.8);
+INSERT INTO PHARMACY (name, adress, city, rating) VALUES ('Benu', 'Svetozara MIletića 12', 'Bečej', 3.7);
+
+INSERT INTO PHARMACY_ADMINS ( pharmacy_id, admins_id) VALUES (1, 10);
+INSERT INTO PHARMACY_ADMINS ( pharmacy_id, admins_id) VALUES (2, 11);
+INSERT INTO PHARMACY_ADMINS ( pharmacy_id, admins_id) VALUES (3, 12);
+
 
 UPDATE users
 SET dedicated_pharmacy_id = 1
@@ -141,6 +148,10 @@ INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01EE01', 350, 350, true , 'Bensedin', 'Tableta', 'Diazepan', null, null, 2, null); 
 
 INSERT INTO MEDICINE (code, initial_price, current_price, mandatory_prescription, name, shape, type, warning_notes, active_discount_id, manufacturer_id, medicine_id) VALUES ( 'J01FA10', 350, 350, false , 'Palitrex', 'Prašak za oralnu suspenziju', 'Cefaleksin', null, 2, 2, null); 
+
+INSERT INTO stock_item (pharmacy_id, medicine_id,available_quantity) values (1, 1, 3);
+
+INSERT INTO pharmacy_has_medicines (pharmacy_id, has_medicines_id) VALUES (1,1);
 
 INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 3, 3);
 INSERT INTO ingredient_found_in (ingredient_id, found_in_id) VALUES ( 4, 3);

@@ -65,6 +65,11 @@ public class PharmacyController {
 		return pharmacyService.getAllPharmaciesByAvailablePharmacist(requests.start, requests.end, requests.date.substring(0,10));
 	}
 
+	@GetMapping("/search/medication/{id}")
+	public List<Pharmacy> getPharmaciesWhoHaveMedicationFromPrescrption(@PathVariable Long id)
+	{
+		return pharmacyService.getPharamciesWhoHaveMedicationFromPrescription(id);
+	}
   @PostMapping("/add")
 	public List<Pharmacy> addNewPharmacy(@RequestBody PharmacyDTO newPharmacy) {	
 		pharmacyService.addNewPharmacy(newPharmacy);

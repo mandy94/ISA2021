@@ -13,6 +13,7 @@ import { PharmacistService } from './pharmacist.service';
   providedIn: 'root'
 })
 export class PharmacyService {
+ 
   //shared data
   pickedTime : Period;
   pickedDate;
@@ -63,5 +64,8 @@ export class PharmacyService {
   }
   getMedicationsByPharmacyId(id: number): any {
     return this.medications.getByPharmacyId(id);
+  }
+  getPharmaciesByMedication(medicationId:number) {
+    return this.apiService.get(this.config.get_pharmacies_by_medication(medicationId));
   }
 }

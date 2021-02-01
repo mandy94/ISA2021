@@ -1,0 +1,63 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened mode="side" class="side">
+    <div fxLayout="column" class="side-div">
+      <div fxLayout="row">
+        <img width="75px" height="75px" src="../../assets/image/user.png">
+        <div fxLayout="column" class="white">
+          <p>
+            {{user}}
+            <button mat-button> Uredi profil </button>
+          </p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="margin-btn" fxLayout="column">
+        <button mat-raised-button (click)="showPharamcySearch()"> Lista apoteka</button>
+        <button mat-raised-button (click)="showVisits()"> Posete kod dermatologa </button>
+        <button mat-raised-button (click)="showConsultations()">Savetovanja kod farmaceuta</button>
+        <button mat-raised-button (click)="showPrescriptions()"> eRecepti </button>
+        <button mat-raised-button (click)="showMedications()"> Moji lekova</button>
+
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <h1> Kalendar vasih poseta</h1>
+  <form>
+    <mat-form-field class="width-30">
+      <mat-label>Odaberi vrstu posete</mat-label>
+      <mat-select [formControl]="visitTypePicker">
+        <mat-option *ngFor="let item of visitType" [value]="item">
+          {{item.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-button (click)="onClick()"> Tazi </button>
+
+  </form>
+
+  <table class="my-table-style" *ngIf="requestedData">
+    <th colspan="10"></th>
+    <tr class="header">
+      <td>#</td>
+      <td> Datum i vreme</td>
+      <td> Kod doktora</td>
+
+      <td *ngIf="showActions"> Akcije</td>
+    </tr>
+
+    <tr *ngFor="let item of requestedData ">
+      <td>{{item.id}}</td>
+      <td> {{item.date}} u {{item.startTime}} do {{item.endTime}}</td>
+      <td> {{item | json}}</td>
+
+      <td *ngIf="showActions" class="padding-8">
+        <button [disabled]="canCanel(item)" mat-button class="warning" (click)="cancelAppointment(item.id)"> Otkazi
+          pregled </button>
+      </td>
+    </tr>
+
+  </table>
+
+</mat-sidenav-container>

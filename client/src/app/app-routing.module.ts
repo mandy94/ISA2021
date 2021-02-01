@@ -11,13 +11,14 @@ import { ForbiddenComponent } from './shared/component/pages/forbidden';
 import { NotFoundComponent } from './shared/component/pages/not-found';
 import { SignupComponent } from './shared/component/pages/signup';
 import { AdminDiscountsPanelComponent } from './admin/admin-discounts-panel/admin-discounts-panel.component';
-import { UserVisitsComponent } from './user/user-history/user-visits/user-visits.component';
+import { UserVisitsComponent } from './user/user-visits/user-visits.component';
 import { UserPharmacySearchComponent } from './user/user-pharmacy-search/user-pharmacy-search.component';
 import { PharmacyDetailsDialogComponent } from './component/dialogs/pharmacy-details-dialog/pharmacy-details-dialog.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { RegisterObjectComponent } from './super-admin/register-object/register-object.component';
 import { RegisterEmployeeComponent } from './super-admin/register-employee/register-employee.component';
 import { RegisterMedicationComponent } from './super-admin/register-medication/register-medication.component';
+import { UserConsultationsComponent } from './user/user-consultations/user-consultations.component';
 
 export const routes: Routes = [
   {
@@ -83,6 +84,11 @@ export const routes: Routes = [
   {
     path: 'user-visits',
     component: UserVisitsComponent
+  },
+  {
+    path: 'user-consultations',
+    component: UserConsultationsComponent
+
   },
   {
     path: 'register/objects',

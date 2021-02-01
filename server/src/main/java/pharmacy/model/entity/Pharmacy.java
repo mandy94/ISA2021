@@ -29,6 +29,8 @@ public class Pharmacy {
 	private String name;
 	@Column
 	private String adress;
+	private String city;
+	private float rating;
 	
 	@OneToMany
 	private List<AppointmentAtDermatolog> appointments_at_dermatolog = new ArrayList<AppointmentAtDermatolog>();
@@ -40,8 +42,8 @@ public class Pharmacy {
 	private List<StockItem> has_medicines = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.MERGE)
-	private User admin ;
+	@OneToMany(cascade = CascadeType.MERGE)
+	private List<User> admins = new ArrayList<User>() ;
 	
 	public Pharmacy() {}
 	public Long getId() {
@@ -74,17 +76,30 @@ public class Pharmacy {
 	public void setAppointments_at_dermatolog(List<AppointmentAtDermatolog> appointments_at_dermatolog) {
 		this.appointments_at_dermatolog = appointments_at_dermatolog;
 	}
-	public User getAdmin() {
-		return admin;
-	}
-	public void setAdmin(User admin) {
-		this.admin = admin;
-	}
+	
 	public List<StockItem> getHas_medicines() {
 		return has_medicines;
 	}
 	public void setHas_medicines(List<StockItem> has_medicines) {
 		this.has_medicines = has_medicines;
+	}
+	public List<User> getAdmins() {
+		return admins;
+	}
+	public void setAdmins(List<User> admins) {
+		this.admins = admins;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public float getRating() {
+		return rating;
+	}
+	public void setRating(float rating) {
+		this.rating = rating;
 	}
 	
 		  
