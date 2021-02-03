@@ -5,7 +5,7 @@ import {UserService} from './user.service';
 import {ConfigService} from './config.service';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { StateStorageService, TOKEN, TOKEN_PAYLOAD } from './state-storage.service';
+import { CURRENT_USER, StateStorageService, TOKEN, TOKEN_PAYLOAD } from './state-storage.service';
 import jwt_decode from "jwt-decode";
 
 export interface UserTokenState {
@@ -21,6 +21,7 @@ export interface TokenPayload {
   iat: number;
   exp: number;
   pharmacyId?: number;
+  firstTimeLogin?: boolean;
 }
 
 
@@ -52,6 +53,10 @@ export class AuthService {
         const tokenPayload = jwt_decode<TokenPayload>(res.accessToken);
         this.stateStorageService.store(TOKEN, res.accessToken);
         this.stateStorageService.store(TOKEN_PAYLOAD, tokenPayload);
+        this.userService.getMyInfo().toPromise().then(myInfo => {
+          this.stateStorageService.store(CURRENT_USER, myInfo);
+
+        });
       }));
   }
 

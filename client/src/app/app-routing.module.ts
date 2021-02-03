@@ -25,7 +25,7 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     pathMatch: 'full'
-  },
+    },
   {
     path: 'signup',
     component: SignupComponent,
@@ -87,7 +87,9 @@ export const routes: Routes = [
   },
   {
     path: 'user-consultations',
-    component: UserConsultationsComponent
+    component: UserConsultationsComponent,
+    canActivate: [LoginGuard],
+
 
   },
   {

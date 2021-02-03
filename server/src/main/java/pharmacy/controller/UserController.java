@@ -39,8 +39,8 @@ public class UserController {
 		return this.userService.findAll();
 	}
 
+	 @PreAuthorize("isAuthenticated()")
 	@GetMapping("/whoami")
-	@PreAuthorize("hasRole('USER')")
 	public User user(Principal user) {
 		System.out.println(">>>" + user.getName());
 		return this.userService.findByUsername(user.getName());

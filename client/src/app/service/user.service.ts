@@ -1,19 +1,26 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {ApiService} from './api.service';
 import {ConfigService} from './config.service';
 import {map} from 'rxjs/operators';
+import { CURRENT_USER, StateStorageService } from './state-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  getMyPharacyID(): number {
+    return null;
+  }
 
   currentUser;
+  private stateStorage: StateStorageService;
 
-  constructor(
+  constructor(private injector: Injector,
+    
     private apiService: ApiService,
     private config: ConfigService
   ) {
+    this.stateStorage = injector.get(StateStorageService);
   }
 
   initUser() {
@@ -22,6 +29,7 @@ export class UserService {
         if (res.access_token !== null) {
           return this.getMyInfo().toPromise()
             .then(user => {
+              this.stateStorage.store(CURRENT_USER, user);
               this.currentUser = user;
             });
         }
@@ -69,6 +77,8 @@ export class UserService {
     return this.apiService.get(this.config.whoami_url)
       .pipe(map(user => {
         this.currentUser = user;        
+        this.stateStorage.store(CURRENT_USER, user);
+        return user;
       }));
   }
 

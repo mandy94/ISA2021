@@ -58,6 +58,9 @@ public class User implements UserDetails{
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
     
+    @Column(columnDefinition = "boolean default true")
+   	private boolean firstTimeLogin = true;
+    
     @ManyToMany
     private List<BusinessHours> working_hours = new ArrayList<>();
     
@@ -87,6 +90,9 @@ public class User implements UserDetails{
 
 	private String work_role; 
 	
+	
+	
+   
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
@@ -223,4 +229,13 @@ public class User implements UserDetails{
 		this.prescriptions = prescriptions;
 	}
 
+	public boolean isFirstTimeLogin() {
+		return firstTimeLogin;
+	}
+
+	public void setFirstTimeLogin(boolean firstTimeLogin) {
+		this.firstTimeLogin = firstTimeLogin;
+	}
+
+	
 }
